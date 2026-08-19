@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronDown, MessageCircle, Phone, Mail } from "lucide-react";
+import { ArrowRight, MessageCircle, Phone, Mail } from "lucide-react";
 
 const FOOTER_NAV_LINKS = [
   { href: "/", label: "HOME" },
@@ -12,7 +11,6 @@ const FOOTER_NAV_LINKS = [
 ] as const;
 
 export function SiteFooter() {
-  const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
     <footer className="bg-[#fdf8f8] border-t border-[#c4c7c7]/65 pt-12 md:pt-showcase-py pb-navbar-px px-navbar-px relative z-20">
@@ -26,7 +24,7 @@ export function SiteFooter() {
         </div>
 
         {/* Content Grid (Split Layout on Desktop) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-6 mb-10">
           
           {/* FIND US - Desktop Layout */}
           <div className="hidden md:flex col-span-1 border border-[#c4c7c7]/55 rounded-lg p-8 flex-col justify-between hover:bg-[#f7f3f2]/40 transition-colors duration-300">
@@ -147,39 +145,19 @@ export function SiteFooter() {
 
         </div>
 
-        {/* Navigation Row with Mobile Dropdown Accordion */}
+        {/* Navigation Row */}
         <div className="border-y border-[#c4c7c7]/65 py-4 md:py-6 mb-8">
-          {/* Mobile Accordion Toggle */}
-          <button 
-            onClick={() => setIsNavOpen(!isNavOpen)}
-            className="flex md:hidden w-full items-center justify-between py-1 font-label-caps text-label-caps text-[#1c1b1b] uppercase cursor-pointer"
-          >
-            <span>Navigation</span>
-            <ChevronDown className={`size-4.5 text-[#1c1b1b] transition-transform duration-200 ${isNavOpen ? 'rotate-180' : ''}`} />
-          </button>
-
-          {/* Links List */}
-          <div className={`grid transition-all duration-300 ease-in-out overflow-hidden md:block ${
-            isNavOpen 
-              ? 'grid-rows-[1fr] opacity-100 mt-4 visible' 
-              : 'grid-rows-[0fr] opacity-0 mt-0 invisible md:visible md:opacity-100'
-          }`}>
-            <nav className="min-h-0 flex flex-col md:flex-row md:flex-wrap gap-x-8 md:gap-x-12 justify-start md:justify-center items-stretch md:items-center">
-              {FOOTER_NAV_LINKS.map((link, index) => (
-                <Link 
-                  key={link.href} 
-                  className={`font-label-caps text-label-caps text-[#1c1b1b] hover:text-[#5d5f5f] transition-colors uppercase py-3 md:py-0 ${
-                    index === FOOTER_NAV_LINKS.length - 1 
-                      ? "border-none" 
-                      : "border-b border-[#c4c7c7]/20 md:border-none"
-                  }`} 
-                  href={link.href}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
+          <nav className="flex flex-wrap gap-x-6 md:gap-x-12 gap-y-2 justify-center items-center">
+            {FOOTER_NAV_LINKS.map((link) => (
+              <Link 
+                key={link.href} 
+                className="font-label-caps text-label-caps text-[#1c1b1b] hover:text-[#5d5f5f] transition-colors uppercase" 
+                href={link.href}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
         </div>
 
         {/* Primary Branding on Mobile (Centered immediately after navigation) */}

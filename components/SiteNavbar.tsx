@@ -46,17 +46,41 @@ function CloseIcon() {
   );
 }
 
+function ScrollLock() {
+  useEffect(() => {
+    const header = document.querySelector("header");
+    const smoothScroll = document.querySelector("div.fixed.top-0.left-0.w-full") as HTMLElement | null;
+
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+      if (header) {
+        header.style.paddingRight = `${scrollbarWidth}px`;
+      }
+      if (smoothScroll) {
+        smoothScroll.style.paddingRight = `${scrollbarWidth}px`;
+      }
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+      if (header) {
+        header.style.paddingRight = "";
+      }
+      if (smoothScroll) {
+        smoothScroll.style.paddingRight = "";
+      }
+    };
+  }, []);
+
+  return null;
+}
+
 export function SiteNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [previewRoute, setPreviewRoute] = useState<MenuRoute>("/");
   const pathname = usePathname();
-
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -77,7 +101,7 @@ export function SiteNavbar() {
           <button className="inline-flex size-10 items-center justify-center rounded-full border border-[#e5e2e1] text-[#1c1b1b]" type="button" aria-label="Search collections">
             <svg aria-hidden="true" className="size-[18px] fill-none stroke-current stroke-[1.75]" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.25" /><path d="m16 16 4.25 4.25" strokeLinecap="round" /></svg>
           </button>
-          <button className="inline-flex items-center gap-2.5 font-label-caps text-label-caps text-[#1c1b1b] uppercase" type="button" aria-expanded={isOpen} aria-controls="primary-navigation" onClick={() => setIsOpen(true)}>
+          <button className="font-raleway inline-flex items-center gap-2.5  text-[1rem] text-[#1c1b1b] uppercase" type="button" aria-expanded={isOpen} aria-controls="primary-navigation" onClick={() => setIsOpen(true)}>
             <span className="hidden md:block">Menu</span>
             <MenuIcon />
           </button>
@@ -94,6 +118,7 @@ export function SiteNavbar() {
             exit={{ clipPath: "inset(100% 0 0 0)" }}
             transition={{ duration: 0.7, ease: [0.77, 0, 0.175, 1] }}
           >
+            <ScrollLock />
             <div className="mx-auto flex h-navbar-h w-full max-w-[1440px] items-center justify-between px-navbar-px shrink-0">
               <Link className={wordmarkClass} href="/" onClick={() => setIsOpen(false)}>DECORIUM</Link>
               <button className="inline-flex size-10 items-center justify-center text-[#1c1b1b]" type="button" aria-label="Close menu" onClick={() => setIsOpen(false)}>
