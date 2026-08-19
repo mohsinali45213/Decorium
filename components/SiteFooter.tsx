@@ -75,7 +75,7 @@ export function SiteFooter() {
           <div className="hidden md:flex col-span-1 border border-[#c4c7c7]/55 rounded-lg p-8 flex-col justify-between hover:bg-[#f7f3f2]/40 transition-colors duration-300">
             <div>
               <h3 className="font-hanken-grotesk text-[11px] font-semibold tracking-[0.16em] uppercase mb-4 text-[#5d5f5f]">
-                LET'S TALK
+                LET&apos;S TALK
               </h3>
               
               <div className="flex flex-col mt-8 space-y-1">
@@ -118,7 +118,7 @@ export function SiteFooter() {
           {/* LET'S TALK - Mobile Layout */}
           <div className="flex md:hidden flex-col gap-6 col-span-1">
             <h3 className="font-hanken-grotesk text-[11px] font-semibold tracking-[0.16em] uppercase text-[#5d5f5f]">
-              Let's Talk
+              Let&apos;s Talk
             </h3>
             <div className="flex flex-col border-t border-[#c4c7c7]/55">
               <a className="flex items-center justify-between py-6 border-b border-[#c4c7c7]/55 group" href="#">
@@ -152,28 +152,34 @@ export function SiteFooter() {
           {/* Mobile Accordion Toggle */}
           <button 
             onClick={() => setIsNavOpen(!isNavOpen)}
-            className="flex md:hidden w-full items-center justify-between py-1 text-[12px] font-semibold tracking-[0.15em] text-[#1c1b1b] uppercase font-hanken-grotesk cursor-pointer"
+            className="flex md:hidden w-full items-center justify-between py-1 text-[14px] font-semibold tracking-[0.15em] text-[#1c1b1b] uppercase font-hanken-grotesk cursor-pointer"
           >
             <span>Navigation</span>
             <ChevronDown className={`size-4.5 text-[#1c1b1b] transition-transform duration-200 ${isNavOpen ? 'rotate-180' : ''}`} />
           </button>
 
           {/* Links List */}
-          <nav className={`${isNavOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row flex-wrap gap-x-8 md:gap-x-12 mt-4 md:mt-0 justify-start md:justify-center items-stretch md:items-center`}>
-            {FOOTER_NAV_LINKS.map((link, index) => (
-              <Link 
-                key={link.href} 
-                className={`text-[12px] font-semibold tracking-[0.15em] text-[#1c1b1b] hover:text-[#5d5f5f] transition-colors uppercase font-hanken-grotesk py-3 md:py-0 ${
-                  index === FOOTER_NAV_LINKS.length - 1 
-                    ? "border-none" 
-                    : "border-b border-[#c4c7c7]/20 md:border-none"
-                }`} 
-                href={link.href}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+          <div className={`grid transition-all duration-300 ease-in-out overflow-hidden md:block ${
+            isNavOpen 
+              ? 'grid-rows-[1fr] opacity-100 mt-4 visible' 
+              : 'grid-rows-[0fr] opacity-0 mt-0 invisible md:visible md:opacity-100'
+          }`}>
+            <nav className="min-h-0 flex flex-col md:flex-row md:flex-wrap gap-x-8 md:gap-x-12 justify-start md:justify-center items-stretch md:items-center">
+              {FOOTER_NAV_LINKS.map((link, index) => (
+                <Link 
+                  key={link.href} 
+                  className={`text-[12px] font-semibold tracking-[0.15em] text-[#1c1b1b] hover:text-[#5d5f5f] transition-colors uppercase font-hanken-grotesk py-3 md:py-0 ${
+                    index === FOOTER_NAV_LINKS.length - 1 
+                      ? "border-none" 
+                      : "border-b border-[#c4c7c7]/20 md:border-none"
+                  }`} 
+                  href={link.href}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
         </div>
 
         {/* Primary Branding on Mobile (Centered immediately after navigation) */}

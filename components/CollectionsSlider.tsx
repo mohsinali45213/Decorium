@@ -16,19 +16,14 @@ export function CollectionsSlider() {
   const mobileSliderRef = useRef<Slider>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const goTo = useCallback((idx: number) => {
-    setActiveIndex(idx);
-    mobileSliderRef.current?.slickGoTo(idx);
-  }, []);
-
   const startTimer = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
-      setActiveIndex((prev) => {
-        const nextIdx = (prev + 1) % CATALOG_CATEGORIES.length;
-        mobileSliderRef.current?.slickGoTo(nextIdx);
-        return nextIdx;
-      });
+      if (mobileSliderRef.current) {
+        mobileSliderRef.current.slickNext();
+      } else {
+        setActiveIndex((prev) => (prev + 1) % CATALOG_CATEGORIES.length);
+      }
     }, 5000);
   }, []);
 
@@ -42,21 +37,20 @@ export function CollectionsSlider() {
   // Manual navigation resets the timer so it never fires
   // right on top of a click-triggered transition.
   const handleNext = () => {
-    setActiveIndex((prev) => {
-      const nextIdx = (prev + 1) % CATALOG_CATEGORIES.length;
-      mobileSliderRef.current?.slickGoTo(nextIdx);
-      return nextIdx;
-    });
+    if (mobileSliderRef.current) {
+      mobileSliderRef.current.slickNext();
+    } else {
+      setActiveIndex((prev) => (prev + 1) % CATALOG_CATEGORIES.length);
+    }
     startTimer();
   };
 
   const handlePrev = () => {
-    setActiveIndex((prev) => {
-      const prevIdx =
-        (prev - 1 + CATALOG_CATEGORIES.length) % CATALOG_CATEGORIES.length;
-      mobileSliderRef.current?.slickGoTo(prevIdx);
-      return prevIdx;
-    });
+    if (mobileSliderRef.current) {
+      mobileSliderRef.current.slickPrev();
+    } else {
+      setActiveIndex((prev) => (prev - 1 + CATALOG_CATEGORIES.length) % CATALOG_CATEGORIES.length);
+    }
     startTimer();
   };
 
