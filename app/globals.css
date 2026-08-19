@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --font-hanken-grotesk: var(--font-hanken-grotesk);
+  --font-raleway: var(--font-raleway);
+
+  /* Custom fluid typography */
+  --font-size-wordmark: clamp(23px, calc((32 / 1920) * 100vw), 32px);
+  --font-size-menu-item: clamp(56px, calc((96 / 1920) * 100vw), 96px);
+  --line-height-menu-item: clamp(62px, calc((106 / 1920) * 100vw), 106px);
+
+  /* Custom fluid spacing */
+  --spacing-navbar-px: clamp(24px, calc((64 / 1920) * 100vw), 64px);
+  --spacing-navbar-h: clamp(68px, calc((80 / 1920) * 100vw), 80px);
+  --spacing-categories-px: clamp(32px, calc((64 / 1920) * 100vw), 64px);
+  --spacing-categories-py: clamp(24px, calc((48 / 1920) * 100vw), 48px);
+  --spacing-showcase-py: clamp(40px, calc((80 / 1920) * 100vw), 80px);
+}
