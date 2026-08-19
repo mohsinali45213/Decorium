@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-hanken-grotesk: var(--font-hanken-grotesk);
   --font-raleway: var(--font-raleway);
@@ -165,4 +167,15 @@
 }
 .h-bar-indicator.active-nav-bar::before {
   height: 100%;
+}
+
+/* Dark mode adjustments for navigation indicator */
+.dark .h-bar-indicator::before {
+  background: #f4f0ef;
+}
+.dark .h-bar-indicator:hover {
+  color: #f4f0ef !important;
+}
+.dark .h-bar-indicator.active-nav-bar {
+  color: #f4f0ef !important;
 }

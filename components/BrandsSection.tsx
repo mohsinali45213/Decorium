@@ -51,19 +51,19 @@ export function BrandsSection() {
   const activeImage = BRAND_IMAGES[activeBrand._id] || BRAND_IMAGES["brand-salvatori"];
 
   return (
-    <section className="bg-[#fdf8f8] py-16 md:py-24 px-navbar-px max-w-[1440px] mx-auto border-t border-[#c4c7c7]/65 relative z-20">
+    <section className="bg-[#fdf8f8] dark:bg-[#121212] py-16 md:py-24 px-navbar-px max-w-[1440px] mx-auto border-t border-[#c4c7c7]/65 dark:border-[#262626] relative z-20 transition-colors duration-300">
       
       {/* Header */}
-      <div className="mb-5 md:mb-10">
-        <span className="font-label-caps text-label-caps text-[#5d5f5f] uppercase block mb-3">
+      <div className="mb-5 md:mb-10 text-left">
+        <span className="font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] uppercase block mb-3">
           BRAND & PARTNERS
         </span>
-        <h2 className="font-raleway text-headline-lg text-[#1c1b1b] uppercase tracking-wide">
+        <h2 className="font-raleway text-headline-lg text-[#1c1b1b] dark:text-[#f4f0ef] uppercase tracking-wide">
           Explore Brands
         </h2>
       </div>
 
-      {/* Desktop Layout (Split Pane - Interactive List on Left, Animated Card on Right) */}
+      {/* Desktop Layout */}
       <div 
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
@@ -71,19 +71,19 @@ export function BrandsSection() {
       >
         
         {/* Left Column: Vertical Interactive Menu */}
-        <div className="col-span-5 flex flex-col gap-1 w-full pr-6">
+        <div className="col-span-5 flex flex-col gap-1 w-full pr-6 text-left">
           {CATALOG_BRANDS.map((brand, index) => {
             const isActive = desktopActiveIndex === index;
             return (
               <div
                 key={brand._id}
                 onMouseEnter={() => setActiveIndex(index)}
-                className="group py-3.5 border-b border-[#c4c7c7]/30 flex items-center justify-between cursor-pointer transition-all duration-300"
+                className="group py-3.5 border-b border-[#c4c7c7]/30 dark:border-[#262626] flex items-center justify-between cursor-pointer transition-all duration-300"
               >
                 <div className="flex items-center gap-6">
                   {/* Slide number */}
                   <span className={`font-label-caps text-label-caps-sm transition-colors duration-300 ${
-                    isActive ? "text-[#1c1b1b]" : "text-[#5d5f5f]/40"
+                    isActive ? "text-[#1c1b1b] dark:text-[#f4f0ef]" : "text-[#5d5f5f]/40 dark:text-[#8e8e8e]/40"
                   }`}>
                     0{index + 1}
                   </span>
@@ -91,8 +91,8 @@ export function BrandsSection() {
                   {/* Brand name */}
                   <span className={`font-raleway text-body-lg uppercase tracking-[0.15em] transition-all duration-300 ${
                     isActive 
-                      ? "text-[#1c1b1b] font-normal translate-x-2" 
-                      : "text-[#5d5f5f]/60 font-light group-hover:text-[#1c1b1b] group-hover:translate-x-1"
+                      ? "text-[#1c1b1b] dark:text-[#f4f0ef] font-normal translate-x-2" 
+                      : "text-[#5d5f5f]/60 dark:text-[#8e8e8e]/60 font-light group-hover:text-[#1c1b1b] dark:group-hover:text-[#f4f0ef] group-hover:translate-x-1"
                   }`}>
                     {brand.name}
                   </span>
@@ -100,7 +100,7 @@ export function BrandsSection() {
 
                 {/* Micro-arrow icon for active item */}
                 <ArrowRight 
-                  className={`size-4 text-[#1c1b1b] transition-all duration-300 ${
+                  className={`size-4 text-[#1c1b1b] dark:text-[#f4f0ef] transition-all duration-300 ${
                     isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
                   }`} 
                   strokeWidth={1.75}
@@ -114,7 +114,7 @@ export function BrandsSection() {
         <div className="col-span-7 pl-6 h-full flex flex-col justify-center">
           <Link
             href={`/products?brand=${activeBrand.slug}`}
-            className="relative w-full aspect-[16/10] bg-[#f1edec] rounded-lg border border-[#c4c7c7]/50 overflow-hidden group/img shadow-xs block cursor-pointer"
+            className="relative w-full aspect-[16/10] bg-[#f1edec] dark:bg-[#1f1f1f] rounded-lg border border-[#c4c7c7]/50 dark:border-[#2e2e2e] overflow-hidden group/img shadow-xs block cursor-pointer"
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -134,7 +134,7 @@ export function BrandsSection() {
                 />
                 {/* Dark overlay & Centered "Explore Collections" button on hover */}
                 <div className="absolute inset-0 bg-black/25 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
-                  <span className="px-6 py-3.5 bg-[#fdf8f8] text-[#1c1b1b] font-label-caps text-label-caps uppercase rounded-md shadow-md flex items-center gap-2 transform translate-y-2 group-hover/img:translate-y-0 transition-all duration-300">
+                  <span className="px-6 py-3.5 bg-[#fdf8f8] dark:bg-[#121212] text-[#1c1b1b] dark:text-[#f4f0ef] font-label-caps text-label-caps uppercase rounded-md shadow-md flex items-center gap-2 transform translate-y-2 group-hover/img:translate-y-0 transition-all duration-300 border border-transparent dark:border-[#2e2e2e]">
                     Explore Collections
                     <ArrowUpRight className="size-4" strokeWidth={1.75} />
                   </span>
@@ -146,8 +146,8 @@ export function BrandsSection() {
 
       </div>
 
-      {/* Mobile Layout (Responsive Vertical Accordion Menu) */}
-      <div className="flex md:hidden flex-col w-full border-t border-[#c4c7c7]/30">
+      {/* Mobile Layout */}
+      <div className="flex md:hidden flex-col w-full border-t border-[#c4c7c7]/30 dark:border-[#262626]">
         {CATALOG_BRANDS.map((brand, index) => {
           const isActive = activeIndex === index;
           const img = BRAND_IMAGES[brand._id] || BRAND_IMAGES["brand-salvatori"];
@@ -155,42 +155,41 @@ export function BrandsSection() {
             <div
               key={brand._id}
               onClick={() => setActiveIndex(isActive ? null : index)}
-              className="border-b border-[#c4c7c7]/30 py-5 flex flex-col cursor-pointer"
+              className="border-b border-[#c4c7c7]/30 dark:border-[#262626] py-5 flex flex-col cursor-pointer text-left"
             >
               {/* Accordion Header */}
               <div className="flex justify-between items-center w-full">
                 <div className="flex items-center gap-4">
                   <span className={`font-label-caps text-label-caps-sm transition-colors duration-300 ${
-                    isActive ? "text-[#1c1b1b]" : "text-[#5d5f5f]/40"
+                    isActive ? "text-[#1c1b1b] dark:text-[#f4f0ef]" : "text-[#5d5f5f]/40 dark:text-[#8e8e8e]/40"
                   }`}>
                     0{index + 1}
                   </span>
                   <h3 className={`font-raleway text-body-lg uppercase tracking-[0.12em] transition-colors duration-300 ${
-                    isActive ? "text-[#1c1b1b] font-normal" : "text-[#5d5f5f]/60 font-light"
+                    isActive ? "text-[#1c1b1b] dark:text-[#f4f0ef] font-normal" : "text-[#5d5f5f]/60 dark:text-[#8e8e8e]/60 font-light"
                   }`}>
                     {brand.name}
                   </h3>
                 </div>
                 
                 <ArrowRight 
-                  className={`size-4 text-[#1c1b1b] transition-transform duration-300 ${
-                    isActive ? "rotate-90 text-[#1c1b1b]" : "text-[#5d5f5f]/50"
+                  className={`size-4 text-[#1c1b1b] dark:text-[#f4f0ef] transition-transform duration-300 ${
+                    isActive ? "rotate-90 text-[#1c1b1b] dark:text-[#f4f0ef]" : "text-[#5d5f5f]/50 dark:text-[#8e8e8e]/50"
                   }`} 
                   strokeWidth={1.75}
                 />
               </div>
 
-              {/* Accordion Body (Collapsible Grid Container) */}
+              {/* Accordion Body */}
               <div className={`grid transition-all duration-300 ease-in-out overflow-hidden ${
                 isActive 
                   ? 'grid-rows-[1fr] opacity-100 mt-4 visible' 
                   : 'grid-rows-[0fr] opacity-0 mt-0 invisible pointer-events-none'
               }`}>
                 <div className="min-h-0 flex flex-col">
-                  {/* Brand Image Frame with Centered explore collections button */}
                   <Link
                     href={`/products?brand=${brand.slug}`}
-                    className="relative w-full aspect-[16/10] bg-[#f1edec] rounded-lg border border-[#c4c7c7]/40 overflow-hidden mb-2 block cursor-pointer"
+                    className="relative w-full aspect-[16/10] bg-[#f1edec] dark:bg-[#1f1f1f] rounded-lg border border-[#c4c7c7]/40 dark:border-[#2e2e2e] overflow-hidden mb-2 block cursor-pointer"
                   >
                     <Image
                       alt={brand.name}
@@ -200,7 +199,7 @@ export function BrandsSection() {
                       src={img}
                     />
                     <div className="absolute inset-0 bg-black/25 flex items-center justify-center z-10">
-                      <span className="px-4 py-2.5 bg-[#fdf8f8] text-[#1c1b1b] font-label-caps text-label-caps uppercase rounded-md shadow-md flex items-center gap-1.5">
+                      <span className="px-4 py-2.5 bg-[#fdf8f8] dark:bg-[#121212] text-[#1c1b1b] dark:text-[#f4f0ef] font-label-caps text-label-caps uppercase rounded-md shadow-md flex items-center gap-1.5 border border-transparent dark:border-[#2e2e2e]">
                         Explore Collections
                         <ArrowUpRight className="size-3.5" strokeWidth={1.75} />
                       </span>

@@ -11,6 +11,7 @@ import aboutPreview from "@/stitch_decorium_editorial_navbar/decorium_premium_fu
 import contactPreview from "@/stitch_decorium_editorial_navbar/decorium_premium_full_screen_menu/contact.jpg";
 import homePreview from "@/stitch_decorium_editorial_navbar/decorium_premium_full_screen_menu/home.jpg";
 import featuredSpace from "@/stitch_decorium_editorial_navbar/decorium_premium_full_screen_menu_mobile/featured-interior-space.jpg";
+import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   { href: "/", label: "Home", number: "01" },
@@ -88,20 +89,22 @@ export function SiteNavbar() {
     }
   }, [isOpen, pathname]);
 
-  const wordmarkClass = "font-raleway text-[clamp(1.45rem,2.4vw,2rem)] font-normal leading-none tracking-[-0.075em] text-[#1c1b1b]";
+  const wordmarkClass = "font-raleway text-[clamp(1.45rem,2.4vw,2rem)] font-normal leading-none tracking-[-0.075em] text-[#1c1b1b] dark:text-[#f4f0ef]";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#e5e2e1] bg-[#fdf8f8]/95">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#e5e2e1] dark:border-[#262626] bg-[#fdf8f8]/95 dark:bg-[#121212]/95 backdrop-blur-sm transition-colors duration-300">
       <div className="mx-auto flex h-navbar-h max-w-[1440px] items-center justify-between px-navbar-px">
         <Link className={wordmarkClass} href="/" onClick={() => setIsOpen(false)}>
           DECORIUM
         </Link>
 
-        <div className="flex items-center gap-3.5 md:gap-6">
-          <button className="inline-flex size-10 items-center justify-center rounded-full border border-[#e5e2e1] text-[#1c1b1b]" type="button" aria-label="Search collections">
+        <div className="flex items-center gap-3 md:gap-5">
+          <ThemeToggle />
+
+          <button className="inline-flex size-10 items-center justify-center rounded-full border border-[#e5e2e1] dark:border-[#2e2e2e] text-[#1c1b1b] dark:text-[#f4f0ef] hover:bg-[#f1edec] dark:hover:bg-[#1f1f1f] transition-colors" type="button" aria-label="Search collections">
             <svg aria-hidden="true" className="size-[18px] fill-none stroke-current stroke-[1.75]" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.25" /><path d="m16 16 4.25 4.25" strokeLinecap="round" /></svg>
           </button>
-          <button className="font-raleway inline-flex items-center gap-2.5  text-[1rem] text-[#1c1b1b] uppercase" type="button" aria-expanded={isOpen} aria-controls="primary-navigation" onClick={() => setIsOpen(true)}>
+          <button className="font-raleway inline-flex items-center gap-2.5 text-[1rem] text-[#1c1b1b] dark:text-[#f4f0ef] uppercase hover:opacity-80 transition-opacity" type="button" aria-expanded={isOpen} aria-controls="primary-navigation" onClick={() => setIsOpen(true)}>
             <span className="hidden md:block">Menu</span>
             <MenuIcon />
           </button>
@@ -112,7 +115,7 @@ export function SiteNavbar() {
         {isOpen && (
           <motion.div
             id="primary-navigation"
-            className="fixed inset-0 z-50 flex min-h-dvh flex-col bg-[#fdf8f8]"
+            className="fixed inset-0 z-50 flex min-h-dvh flex-col bg-[#fdf8f8] dark:bg-[#121212] text-[#1c1b1b] dark:text-[#f4f0ef] transition-colors duration-300"
             initial={{ clipPath: "inset(100% 0 0 0)" }}
             animate={{ clipPath: "inset(0 0 0 0)" }}
             exit={{ clipPath: "inset(100% 0 0 0)" }}
@@ -121,9 +124,12 @@ export function SiteNavbar() {
             <ScrollLock />
             <div className="mx-auto flex h-navbar-h w-full max-w-[1440px] items-center justify-between px-navbar-px shrink-0">
               <Link className={wordmarkClass} href="/" onClick={() => setIsOpen(false)}>DECORIUM</Link>
-              <button className="inline-flex size-10 items-center justify-center text-[#1c1b1b]" type="button" aria-label="Close menu" onClick={() => setIsOpen(false)}>
-                <CloseIcon />
-              </button>
+              <div className="flex items-center gap-3.5">
+                <ThemeToggle />
+                <button className="inline-flex size-10 items-center justify-center text-[#1c1b1b] dark:text-[#f4f0ef] hover:opacity-80 transition-opacity" type="button" aria-label="Close menu" onClick={() => setIsOpen(false)}>
+                  <CloseIcon />
+                </button>
+              </div>
             </div>
             
             {/* Desktop Layout (md and up) */}
@@ -133,7 +139,7 @@ export function SiteNavbar() {
                   {links.map((link, index) => {
                     const active = pathname === link.href;
                     const selected = active || previewRoute === link.href;
-                    const menuItemClass = `h-bar-indicator inline-flex w-fit items-baseline gap-[18px] font-raleway text-headline-lg uppercase ${selected ? "active-nav-bar text-[#1c1b1b]" : "text-[#5d5f5f]"}`;
+                    const menuItemClass = `h-bar-indicator inline-flex w-fit items-baseline gap-[18px] font-raleway text-headline-lg uppercase transition-colors ${selected ? "active-nav-bar text-[#1c1b1b] dark:text-[#f4f0ef]" : "text-[#5d5f5f] dark:text-[#8e8e8e] hover:text-[#1c1b1b] dark:hover:text-[#f4f0ef]"}`;
                     return (
                       <motion.div key={link.href} initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.22 + index * 0.09, duration: 0.45 }}>
                         {link.href === "/products" ? (
@@ -152,49 +158,49 @@ export function SiteNavbar() {
                     );
                   })}
                 </div>
-                <div className="mt-8 flex flex-wrap gap-7 border-t border-[#c4c7c7] pt-5">
-                  <Link className="group inline-flex items-center gap-3 text-[#1c1b1b]" href="/contect" onClick={() => setIsOpen(false)}>
-                    <span className="flex size-9 items-center justify-center rounded-full bg-[#1c1b1b] text-[#fdf8f8] transition-colors group-hover:bg-[#5d5f5f]">
+                <div className="mt-8 flex flex-wrap gap-7 border-t border-[#c4c7c7] dark:border-[#2e2e2e] pt-5">
+                  <Link className="group inline-flex items-center gap-3 text-[#1c1b1b] dark:text-[#f4f0ef]" href="/contect" onClick={() => setIsOpen(false)}>
+                    <span className="flex size-9 items-center justify-center rounded-full bg-[#1c1b1b] dark:bg-[#f4f0ef] text-[#fdf8f8] dark:text-[#121212] transition-colors group-hover:bg-[#5d5f5f] dark:group-hover:bg-[#c4c7c7]">
                       <Phone aria-hidden="true" size={15} strokeWidth={1.7} />
                     </span>
                     <span className="flex flex-col gap-0.5">
-                      <span className="font-label-caps text-label-caps-sm text-[#1c1b1b]">Call</span>
-                      <span className="font-label-caps text-[9px] uppercase tracking-[0.12em] text-[#5d5f5f]">Direct line</span>
+                      <span className="font-label-caps text-label-caps-sm text-[#1c1b1b] dark:text-[#f4f0ef]">Call</span>
+                      <span className="font-label-caps text-[9px] uppercase tracking-[0.12em] text-[#5d5f5f] dark:text-[#8e8e8e]">Direct line</span>
                     </span>
                   </Link>
-                  <Link className="group inline-flex items-center gap-3 text-[#1c1b1b]" href="/contect" onClick={() => setIsOpen(false)}>
-                    <span className="flex size-9 items-center justify-center rounded-full bg-[#1c1b1b] text-[#fdf8f8] transition-colors group-hover:bg-[#5d5f5f]">
+                  <Link className="group inline-flex items-center gap-3 text-[#1c1b1b] dark:text-[#f4f0ef]" href="/contect" onClick={() => setIsOpen(false)}>
+                    <span className="flex size-9 items-center justify-center rounded-full bg-[#1c1b1b] dark:bg-[#f4f0ef] text-[#fdf8f8] dark:text-[#121212] transition-colors group-hover:bg-[#5d5f5f] dark:group-hover:bg-[#c4c7c7]">
                       <MessageCircle aria-hidden="true" size={15} strokeWidth={1.7} />
                     </span>
                     <span className="flex flex-col gap-0.5">
-                      <span className="font-label-caps text-label-caps-sm text-[#1c1b1b]">WhatsApp</span>
-                      <span className="font-label-caps text-[9px] uppercase tracking-[0.12em] text-[#5d5f5f]">Message us</span>
+                      <span className="font-label-caps text-label-caps-sm text-[#1c1b1b] dark:text-[#f4f0ef]">WhatsApp</span>
+                      <span className="font-label-caps text-[9px] uppercase tracking-[0.12em] text-[#5d5f5f] dark:text-[#8e8e8e]">Message us</span>
                     </span>
                   </Link>
                 </div>
               </nav>
-              <div className="relative overflow-hidden bg-[#fdf8f8] min-h-full pr-categories-px pb-categories-py flex flex-col justify-end">
+              <div className="relative overflow-hidden bg-[#fdf8f8] dark:bg-[#121212] min-h-full pr-categories-px pb-categories-py flex flex-col justify-end">
                 <AnimatePresence mode="wait">
                   {previewRoute === "/products" ? (
-                    <motion.div key="categories" className="flex h-full flex-col justify-center pl-4 pr-0 pt-4 pb-0 bg-[#fdf8f8]" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -14 }} transition={{ duration: 0.3 }}>
+                    <motion.div key="categories" className="flex h-full flex-col justify-center pl-4 pr-0 pt-4 pb-0 bg-[#fdf8f8] dark:bg-[#121212]" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -14 }} transition={{ duration: 0.3 }}>
                       <div className="mb-7 flex items-end justify-between gap-4">
                         <div>
-                          <p className="font-label-caps text-label-caps-sm text-[#5d5f5f] mb-2 uppercase">Product index</p>
-                          <h2 className="font-raleway text-headline-md text-[#1c1b1b] leading-tight">Categories</h2>
+                          <p className="font-label-caps text-label-caps-sm text-[#5d5f5f] dark:text-[#8e8e8e] mb-2 uppercase">Product index</p>
+                          <h2 className="font-raleway text-headline-md text-[#1c1b1b] dark:text-[#f4f0ef] leading-tight">Categories</h2>
                         </div>
-                        <Link className="inline-flex items-center gap-2 rounded-lg bg-[#1c1b1b] px-3 py-2 font-label-caps text-label-caps-sm text-white transition-opacity hover:opacity-80 uppercase" href="/products" onClick={() => setIsOpen(false)}>
+                        <Link className="inline-flex items-center gap-2 rounded-lg bg-[#1c1b1b] dark:bg-[#f4f0ef] px-3 py-2 font-label-caps text-label-caps-sm text-white dark:text-[#121212] transition-opacity hover:opacity-80 uppercase" href="/products" onClick={() => setIsOpen(false)}>
                           All categories <ArrowRight aria-hidden="true" size={14} strokeWidth={1.5} />
                         </Link>
                       </div>
                       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                         {CATALOG_CATEGORIES.map((category, index) => (
                           <Link
-                            className="group flex gap-4 rounded-lg border border-[#c4c7c7]/50 bg-[#fdf8f8] p-3 transition-colors hover:bg-white items-center"
+                            className="group flex gap-4 rounded-lg border border-[#c4c7c7]/50 dark:border-[#2e2e2e] bg-[#fdf8f8] dark:bg-[#181818] p-3 transition-colors hover:bg-white dark:hover:bg-[#202020] items-center"
                             href="/products"
                             key={category.slug}
                             onClick={() => setIsOpen(false)}
                           >
-                            <div className="relative size-16 shrink-0 overflow-hidden rounded-md bg-[#f1edec]">
+                            <div className="relative size-16 shrink-0 overflow-hidden rounded-md bg-[#f1edec] dark:bg-[#252525]">
                               <Image
                                 alt={category.name}
                                 className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -205,8 +211,8 @@ export function SiteNavbar() {
                               />
                             </div>
                             <div className="flex flex-col flex-grow justify-between h-16 py-0.5 min-w-0">
-                              <small className="font-label-caps text-label-caps-sm text-[#5d5f5f]">0{index + 1}</small>
-                              <span className="flex items-end justify-between gap-3 font-raleway text-sm font-normal leading-tight tracking-[-0.02em] text-[#1c1b1b]">
+                              <small className="font-label-caps text-label-caps-sm text-[#5d5f5f] dark:text-[#8e8e8e]">0{index + 1}</small>
+                              <span className="flex items-end justify-between gap-3 font-raleway text-sm font-normal leading-tight tracking-[-0.02em] text-[#1c1b1b] dark:text-[#f4f0ef]">
                                 <span className="truncate">{category.name}</span>
                                 <ArrowRight aria-hidden="true" className="size-4 shrink-0 transition-transform group-hover:translate-x-1" strokeWidth={1.4} />
                               </span>
@@ -218,7 +224,7 @@ export function SiteNavbar() {
                   ) : (
                     <motion.div 
                       key={previewRoute} 
-                      className="relative w-full h-full rounded-lg overflow-hidden border border-[#c4c7c7]/50 bg-[#f1edec]" 
+                      className="relative w-full h-full rounded-lg overflow-hidden border border-[#c4c7c7]/50 dark:border-[#2e2e2e] bg-[#f1edec] dark:bg-[#1f1f1f]" 
                       initial={{ opacity: 0 }} 
                       animate={{ opacity: 1 }} 
                       exit={{ opacity: 0 }} 
@@ -236,7 +242,7 @@ export function SiteNavbar() {
             {/* Mobile Layout (under md) */}
             <div className="mx-auto flex md:hidden flex-col w-full flex-1 overflow-y-auto px-6 pb-6 justify-between">
               <div>
-                <div className="font-label-caps text-label-caps text-[#5d5f5f] mt-8 mb-6 uppercase">
+                <div className="font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] mt-8 mb-6 uppercase">
                   NAVIGATION
                 </div>
                 <nav className="flex flex-col gap-5">
@@ -251,12 +257,12 @@ export function SiteNavbar() {
                           type="button"
                           onClick={() => setPreviewRoute("/products")}
                         >
-                          <span className="font-label-caps text-label-caps text-[#5d5f5f] w-6">
+                          <span className="font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] w-6">
                             {link.number}
                           </span>
                           <span
                             className={`text-headline-md uppercase transition-all duration-300 flex items-center gap-1.5 ${
-                              selected ? "text-[#1c1b1b]" : "text-[#1c1b1b]/50"
+                              selected ? "text-[#1c1b1b] dark:text-[#f4f0ef]" : "text-[#1c1b1b]/50 dark:text-[#f4f0ef]/50"
                             }`}
                           >
                             {link.label}
@@ -272,12 +278,12 @@ export function SiteNavbar() {
                         href={link.href}
                         onClick={() => setIsOpen(false)}
                       >
-                        <span className="font-label-caps text-label-caps text-[#5d5f5f] w-6">
+                        <span className="font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] w-6">
                           {link.number}
                         </span>
                         <span
                           className={`text-headline-md uppercase transition-all duration-300 ${
-                            active ? "text-[#1c1b1b]" : "text-[#1c1b1b]/50"
+                            active ? "text-[#1c1b1b] dark:text-[#f4f0ef]" : "text-[#1c1b1b]/50 dark:text-[#f4f0ef]/50"
                           }`}
                         >
                           {link.label}
@@ -295,7 +301,7 @@ export function SiteNavbar() {
                     {previewRoute === "/products" ? (
                       <motion.div
                         key="categories-mobile"
-                        className="w-full bg-[#fdf8f8] rounded-lg border border-[#c4c7c7]/30 p-3.5 shadow-sm animate-in fade-in duration-300"
+                        className="w-full bg-[#fdf8f8] dark:bg-[#181818] rounded-lg border border-[#c4c7c7]/30 dark:border-[#2e2e2e] p-3.5 shadow-sm animate-in fade-in duration-300"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
@@ -303,11 +309,11 @@ export function SiteNavbar() {
                       >
                         <div className="mb-4 flex items-end justify-between gap-4">
                           <div>
-                            <p className="font-label-caps text-[9px] text-[#5d5f5f] uppercase mb-1">Product index</p>
-                            <h3 className="font-raleway text-body-lg font-normal text-[#1c1b1b] uppercase">Categories</h3>
+                            <p className="font-label-caps text-[9px] text-[#5d5f5f] dark:text-[#8e8e8e] uppercase mb-1">Product index</p>
+                            <h3 className="font-raleway text-body-lg font-normal text-[#1c1b1b] dark:text-[#f4f0ef] uppercase">Categories</h3>
                           </div>
                           <Link
-                            className="inline-flex items-center gap-1 rounded-md bg-[#1c1b1b] px-2 py-1 font-label-caps text-[9px] text-white transition-opacity hover:opacity-80 uppercase"
+                            className="inline-flex items-center gap-1 rounded-md bg-[#1c1b1b] dark:bg-[#f4f0ef] px-2 py-1 font-label-caps text-[9px] text-white dark:text-[#121212] transition-opacity hover:opacity-80 uppercase"
                             href="/products"
                             onClick={() => setIsOpen(false)}
                           >
@@ -317,12 +323,12 @@ export function SiteNavbar() {
                         <div className="grid grid-cols-2 gap-2">
                           {CATALOG_CATEGORIES.map((category, index) => (
                             <Link
-                              className="group flex gap-2 rounded-md border border-[#c4c7c7]/40 bg-[#fdf8f8] p-2 shadow-sm hover:shadow-md transition-all hover:bg-white items-center"
+                              className="group flex gap-2 rounded-md border border-[#c4c7c7]/40 dark:border-[#2e2e2e] bg-[#fdf8f8] dark:bg-[#1c1c1c] p-2 shadow-sm hover:shadow-md transition-all hover:bg-white dark:hover:bg-[#252525] items-center"
                               href="/products"
                               key={category.slug}
                               onClick={() => setIsOpen(false)}
                             >
-                              <div className="relative size-10 shrink-0 overflow-hidden rounded bg-[#f1edec]">
+                              <div className="relative size-10 shrink-0 overflow-hidden rounded bg-[#f1edec] dark:bg-[#2e2e2e]">
                                 <Image
                                   alt={category.name}
                                   className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -333,8 +339,8 @@ export function SiteNavbar() {
                                 />
                               </div>
                               <div className="flex flex-col flex-grow justify-center min-h-10 min-w-0">
-                                <small className="font-label-caps text-[8px] text-[#5d5f5f] uppercase">0{index + 1}</small>
-                                <span className="flex items-end justify-between gap-1 font-raleway text-body-sm font-normal leading-[14px] text-[#1c1b1b] min-w-0">
+                                <small className="font-label-caps text-[8px] text-[#5d5f5f] dark:text-[#8e8e8e] uppercase">0{index + 1}</small>
+                                <span className="flex items-end justify-between gap-1 font-raleway text-body-sm font-normal leading-[14px] text-[#1c1b1b] dark:text-[#f4f0ef] min-w-0">
                                   <span className="truncate">{category.name}</span>
                                   <ArrowRight aria-hidden="true" className="size-3 shrink-0 transition-transform group-hover:translate-x-0.5 self-end mb-0.5" strokeWidth={1.4} />
                                 </span>
@@ -346,7 +352,7 @@ export function SiteNavbar() {
                     ) : (
                       <motion.div
                         key="image-mobile"
-                        className="w-full aspect-[4/3] rounded-lg overflow-hidden border border-[#c4c7c7]/30 shadow-sm relative"
+                        className="w-full aspect-[4/3] rounded-lg overflow-hidden border border-[#c4c7c7]/30 dark:border-[#2e2e2e] shadow-sm relative"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -366,18 +372,18 @@ export function SiteNavbar() {
                 </div>
                 
                 {/* Bottom Action Section */}
-                <div className="border-t border-[#c4c7c7]/50 pt-5 flex w-full gap-3 mt-5 mb-5 shrink-0">
+                <div className="border-t border-[#c4c7c7]/50 dark:border-[#2e2e2e] pt-5 flex w-full gap-3 mt-5 mb-5 shrink-0">
                   <Link 
                     href="/contect" 
                     onClick={() => setIsOpen(false)}
-                    className="flex-grow flex items-center justify-center gap-2 py-3 border border-[#c4c7c7]/50 hover:bg-[#f7f3f2]/40 transition-colors uppercase font-label-caps text-label-caps-sm text-[#1c1b1b]"
+                    className="flex-grow flex items-center justify-center gap-2 py-3 border border-[#c4c7c7]/50 dark:border-[#2e2e2e] hover:bg-[#f7f3f2]/40 dark:hover:bg-[#1f1f1f] transition-colors uppercase font-label-caps text-label-caps-sm text-[#1c1b1b] dark:text-[#f4f0ef]"
                   >
                     <span>WhatsApp</span>
                   </Link>
                   <Link 
                     href="/contect" 
                     onClick={() => setIsOpen(false)}
-                    className="flex-grow flex items-center justify-center gap-2 py-3 border border-[#c4c7c7]/50 hover:bg-[#f7f3f2]/40 transition-colors uppercase font-label-caps text-label-caps-sm text-[#1c1b1b]"
+                    className="flex-grow flex items-center justify-center gap-2 py-3 border border-[#c4c7c7]/50 dark:border-[#2e2e2e] hover:bg-[#f7f3f2]/40 dark:hover:bg-[#1f1f1f] transition-colors uppercase font-label-caps text-label-caps-sm text-[#1c1b1b] dark:text-[#f4f0ef]"
                   >
                     <span>Call</span>
                   </Link>

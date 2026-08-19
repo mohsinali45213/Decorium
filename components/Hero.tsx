@@ -43,7 +43,7 @@ export function Hero({ slides }: HeroProps) {
   const activeSlide = slides[currentSlide] || slides[0];
 
   return (
-    <section className="relative w-full h-[75dvh] min-h-[500px] md:h-[92dvh] md:min-h-[700px] flex items-end justify-center md:justify-end overflow-hidden px-navbar-px py-navbar-px">
+    <section className="relative w-full h-[75dvh] min-h-[500px] md:h-[92dvh] md:min-h-[700px] flex items-end justify-center md:justify-end overflow-hidden px-navbar-px py-navbar-px text-left">
       <style dangerouslySetInnerHTML={{__html: `
         .hero-slick-slider .slick-slider,
         .hero-slick-slider .slick-list,
@@ -69,9 +69,9 @@ export function Hero({ slides }: HeroProps) {
                   src={slide.image}
                 />
                 {/* Subtle Overlay */}
-                <div className="absolute inset-0 bg-[#fdf8f8]/10" />
+                <div className="absolute inset-0 bg-[#fdf8f8]/10 dark:bg-black/30" />
                 {/* Gradient Overlay for Mobile readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#fdf8f8]/80 via-transparent to-transparent md:hidden" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#fdf8f8]/80 dark:from-[#121212]/80 via-transparent to-transparent md:hidden" />
               </div>
             ))}
           </Slider>
@@ -86,15 +86,15 @@ export function Hero({ slides }: HeroProps) {
               src={activeSlide.image}
             />
             {/* Subtle Overlay */}
-            <div className="absolute inset-0 bg-[#fdf8f8]/10" />
+            <div className="absolute inset-0 bg-[#fdf8f8]/10 dark:bg-black/30" />
             {/* Gradient Overlay for Mobile readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#fdf8f8]/80 via-transparent to-transparent md:hidden" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#fdf8f8]/80 dark:from-[#121212]/80 via-transparent to-transparent md:hidden" />
           </div>
         )}
       </div>
 
       {/* Floating Card */}
-      <div className="relative z-10 w-full md:w-[480px] bg-[#f7f3f2]/90 backdrop-blur-md p-[clamp(24px,calc((48/1920)*100vw),48px)] rounded-lg border border-[#c4c7c7]/20 shadow-sm flex flex-col gap-4 md:gap-6 min-h-[320px] justify-between">
+      <div className="relative z-10 w-full md:w-[480px] bg-[#f7f3f2]/90 dark:bg-[#181818]/90 backdrop-blur-md p-[clamp(24px,calc((48/1920)*100vw),48px)] rounded-lg border border-[#c4c7c7]/20 dark:border-[#2e2e2e] shadow-sm flex flex-col gap-4 md:gap-6 min-h-[320px] justify-between transition-colors duration-300">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -102,32 +102,32 @@ export function Hero({ slides }: HeroProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-            className="flex flex-col gap-4 md:gap-6 flex-1 justify-between"
+            className="flex flex-col gap-4 md:gap-6 flex-1 justify-between text-left"
           >
             <div>
               {/* Slide Counter */}
               <div className="flex items-center justify-between md:block mb-4">
-                <div className="font-label-caps text-label-caps text-[#5d5f5f] uppercase">
-                  {activeSlide.number} <span className="mx-2 text-[#c4c7c7]">/</span> {slides.length < 10 ? `0${slides.length}` : slides.length}
+                <div className="font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] uppercase">
+                  {activeSlide.number} <span className="mx-2 text-[#c4c7c7] dark:text-[#444444]">/</span> {slides.length < 10 ? `0${slides.length}` : slides.length}
                 </div>
-                <div className="h-px bg-[#c4c7c7]/30 flex-1 ml-4 md:hidden"></div>
+                <div className="h-px bg-[#c4c7c7]/30 dark:bg-[#2e2e2e] flex-1 ml-4 md:hidden"></div>
               </div>
 
               {/* Headline */}
-              <h1 className="font-raleway text-headline-lg text-[#1c1b1b] uppercase md:normal-case tracking-tight mb-2 md:mb-4">
+              <h1 className="font-raleway text-headline-lg text-[#1c1b1b] dark:text-[#f4f0ef] uppercase md:normal-case tracking-tight mb-2 md:mb-4">
                 {activeSlide.title}
               </h1>
 
               {/* Description */}
-              <p className="font-body-md text-body-md text-[#5d5f5f] max-w-sm">
+              <p className="font-body-md text-body-md text-[#5d5f5f] dark:text-[#a0a0a0] max-w-sm">
                 {activeSlide.description}
               </p>
             </div>
 
             {/* Call to Action */}
-            <div className="mt-2 md:mt-4 pt-4 md:pt-0 border-t border-[#e2e2e2] md:border-0">
+            <div className="mt-2 md:mt-4 pt-4 md:pt-0 border-t border-[#e2e2e2] dark:border-[#262626] md:border-0">
               <Link
-                className="inline-flex items-center gap-2 font-label-caps text-label-caps text-[#1c1b1b] uppercase hover:text-[#5d5f5f] transition-colors group"
+                className="inline-flex items-center gap-2 font-label-caps text-label-caps text-[#1c1b1b] dark:text-[#f4f0ef] uppercase hover:text-[#5d5f5f] dark:hover:text-[#a0a0a0] transition-colors group"
                 href={activeSlide.linkHref || "/products"}
               >
                 <span>{activeSlide.linkLabel || "Explore"}</span>

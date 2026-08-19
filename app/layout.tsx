@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Hanken_Grotesk, Raleway } from "next/font/google";
 import "./globals.css";
 import { SiteNavbar } from "@/components/SiteNavbar";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
@@ -31,10 +32,31 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className={`${hankenGrotesk.variable} ${raleway.variable}`}>
-      <body className="min-h-screen bg-[#fdf8f8] font-hanken-grotesk text-[#1c1b1b] antialiased">
-        <SiteNavbar />
-        {children}
+    <html lang="en" suppressHydrationWarning className={`${hankenGrotesk.variable} ${raleway.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('decorium-theme');
+                  var isDark = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                  if (isDark) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="min-h-screen bg-[#fdf8f8] dark:bg-[#121212] font-hanken-grotesk text-[#1c1b1b] dark:text-[#f4f0ef] antialiased selection:bg-[#1c1b1b] selection:text-[#fdf8f8] dark:selection:bg-[#f4f0ef] dark:selection:text-[#121212]">
+        <ThemeProvider>
+          <SiteNavbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
