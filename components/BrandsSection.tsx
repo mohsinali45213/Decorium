@@ -131,7 +131,6 @@ export function BrandsSection() {
                   fill
                   sizes="40vw"
                   src={activeImage}
-                  priority
                 />
                 {/* Dark overlay & Centered "Explore Collections" button on hover */}
                 <div className="absolute inset-0 bg-black/25 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">

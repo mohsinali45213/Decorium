@@ -88,7 +88,7 @@ export function SiteNavbar() {
         {isOpen && (
           <motion.div
             id="primary-navigation"
-            className="fixed inset-0 z-10 flex min-h-dvh flex-col bg-[#fdf8f8]"
+            className="fixed inset-0 z-50 flex min-h-dvh flex-col bg-[#fdf8f8]"
             initial={{ clipPath: "inset(100% 0 0 0)" }}
             animate={{ clipPath: "inset(0 0 0 0)" }}
             exit={{ clipPath: "inset(100% 0 0 0)" }}
@@ -108,7 +108,7 @@ export function SiteNavbar() {
                   {links.map((link, index) => {
                     const active = pathname === link.href;
                     const selected = active || previewRoute === link.href;
-                    const menuItemClass = `inline-flex w-fit items-baseline gap-[18px] font-raleway text-[clamp(28px,calc((48/1920)*100vw),48px)] font-normal uppercase leading-[clamp(31px,calc((53/1920)*100vw),53px)] tracking-[-0.06em] transition duration-200 hover:translate-x-2 hover:text-[#1c1b1b] ${selected ? "border-b border-[#1c1b1b] text-[#1c1b1b]" : "text-[#5d5f5f]"}`;
+                    const menuItemClass = `h-bar-indicator inline-flex w-fit items-baseline gap-[18px] font-raleway text-[clamp(28px,calc((48/1920)*100vw),48px)] font-normal uppercase leading-[clamp(31px,calc((53/1920)*100vw),53px)] tracking-[-0.06em] ${selected ? "active-nav-bar text-[#1c1b1b]" : "text-[#5d5f5f]"}`;
                     return (
                       <motion.div key={link.href} initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.22 + index * 0.09, duration: 0.45 }}>
                         {link.href === "/products" ? (
@@ -176,6 +176,7 @@ export function SiteNavbar() {
                                 fill
                                 sizes="64px"
                                 src={category.image}
+                                priority
                               />
                             </div>
                             <div className="flex flex-col flex-grow justify-between h-16 py-0.5 min-w-0">
@@ -217,10 +218,11 @@ export function SiteNavbar() {
                   {links.map((link) => {
                     const active = pathname === link.href;
                     if (link.href === "/products") {
+                      const selected = previewRoute === "/products";
                       return (
                         <button
                           key={link.href}
-                          className="flex items-baseline gap-4 group transition duration-300 hover:translate-x-2 font-raleway text-left"
+                          className="flex items-baseline gap-4 group transition duration-300 hover:translate-x-2 font-raleway text-left w-full"
                           type="button"
                           onClick={() => setPreviewRoute("/products")}
                         >
@@ -229,7 +231,7 @@ export function SiteNavbar() {
                           </span>
                           <span
                             className={`text-[20px] font-normal uppercase tracking-[-0.02em] transition-all duration-300 flex items-center gap-1.5 ${
-                              previewRoute === "/products" ? "text-[#1c1b1b]" : "text-[#1c1b1b]/50"
+                              selected ? "text-[#1c1b1b]" : "text-[#1c1b1b]/50"
                             }`}
                           >
                             {link.label}
@@ -241,7 +243,7 @@ export function SiteNavbar() {
                     return (
                       <Link
                         key={link.href}
-                        className="flex items-baseline gap-4 group transition duration-300 hover:translate-x-2 font-raleway"
+                        className="flex items-baseline gap-4 group transition duration-300 hover:translate-x-2 font-raleway w-full"
                         href={link.href}
                         onClick={() => setIsOpen(false)}
                       >
@@ -302,6 +304,7 @@ export function SiteNavbar() {
                                   fill
                                   sizes="40px"
                                   src={category.image}
+                                  priority
                                 />
                               </div>
                               <div className="flex flex-col flex-grow justify-center min-h-10 min-w-0">

@@ -20,10 +20,13 @@ const raleway = Raleway({
 
 export const metadata: Metadata = {
   title: {
-    default: "Decorium",
+    default: "Decorium — Architectural Surfaces & Material Studio",
     template: "%s | Decorium",
   },
-  description: "Architectural surfaces and material collections.",
+  description: "Direct-quarry natural stones, monolithic porcelain surfaces, artisan bathware, and knurled hardware by Decorium.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

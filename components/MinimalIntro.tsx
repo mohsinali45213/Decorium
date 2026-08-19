@@ -13,7 +13,6 @@ export function MinimalIntro() {
           alt="Architectural Minimalist Background"
           className="object-cover opacity-30"
           fill
-          priority
           sizes="100vw"
           src={customBg}
         />

@@ -144,7 +144,6 @@ export function CollectionsSlider() {
                 fill
                 sizes="40vw"
                 src={currentCategory.image}
-                priority
               />
 
               {/* Next Slide Thumbnail (Overlaps the bottom-right border - Larger Size) */}

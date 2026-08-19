@@ -15,4 +15,136 @@
   --spacing-categories-px: clamp(32px, calc((64 / 1920) * 100vw), 64px);
   --spacing-categories-py: clamp(24px, calc((48 / 1920) * 100vw), 48px);
   --spacing-showcase-py: clamp(40px, calc((80 / 1920) * 100vw), 80px);
+
+  /* Custom theme colors from Stitch design system */
+  --color-surface-variant: #e5e2e1;
+  --color-on-surface: #1c1b1b;
+  --color-inverse-surface: #313030;
+  --color-on-error: #ffffff;
+  --color-surface-container: #f1edec;
+  --color-on-secondary-container: #606161;
+  --color-on-tertiary-container: #838483;
+  --color-primary-fixed-dim: #c8c6c5;
+  --color-on-secondary: #ffffff;
+  --color-surface-container-highest: #e5e2e1;
+  --color-surface-container-low: #f7f3f2;
+  --color-on-primary-container: #858383;
+  --color-tertiary-container: #1a1c1b;
+  --color-primary-fixed: #e5e2e1;
+  --color-inverse-on-surface: #f4f0ef;
+  --color-on-background: #1c1b1b;
+  --color-on-primary: #ffffff;
+  --color-on-secondary-fixed-variant: #454747;
+  --color-surface-container-high: #ebe7e6;
+  --color-primary-container: #1c1b1b;
+  --color-secondary: #5d5f5f;
+  --color-tertiary-fixed-dim: #c6c7c5;
+  --color-secondary-container: #dddddd;
+  --color-inverse-primary: #c8c6c5;
+  --color-background: #fdf8f8;
+  --color-on-tertiary-fixed: #1a1c1b;
+  --color-surface-tint: #5f5e5e;
+  --color-secondary-fixed: #e2e2e2;
+  --color-secondary-fixed-dim: #c6c6c6;
+  --color-outline-variant: #c4c7c7;
+  --color-outline: #747878;
+  --color-on-tertiary-fixed-variant: #454746;
+  --color-on-primary-fixed: #1c1b1b;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-primary-fixed-variant: #474646;
+  --color-error: #ba1a1a;
+  --color-tertiary-fixed: #e2e3e1;
+  --color-on-secondary-fixed: #1a1c1c;
+  --color-error-container: #ffdad6;
+  --color-on-tertiary: #ffffff;
+  --color-primary: #000000;
+  --color-surface-dim: #ddd9d8;
+  --color-surface: #fdf8f8;
+  --color-on-surface-variant: #444748;
+  --color-on-error-container: #93000a;
+  --color-tertiary: #000000;
+  --color-surface-bright: #fdf8f8;
+
+  /* Custom fonts */
+  --font-headline-md: var(--font-raleway);
+  --font-headline-lg: var(--font-raleway);
+  --font-body-md: var(--font-hanken-grotesk);
+  --font-body-lg: var(--font-hanken-grotesk);
+  --font-label-caps: var(--font-hanken-grotesk);
+  --font-nav-link: var(--font-hanken-grotesk);
+  --font-display-lg: var(--font-raleway);
+  --font-display-lg-mobile: var(--font-raleway);
+
+  /* Custom spacing metrics */
+  --spacing-gutter: 24px;
+  --spacing-container-max: 1440px;
+  --spacing-margin-desktop: 64px;
+  --spacing-margin-mobile: 24px;
+  --spacing-section-gap: 128px;
+}
+
+@utility text-headline-md {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 400;
+}
+@utility text-headline-lg {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 400;
+}
+@utility text-body-md {
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 400;
+}
+@utility text-body-lg {
+  font-size: 18px;
+  line-height: 32px;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+@utility text-label-caps {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+}
+@utility text-nav-link {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* Left vertical line indicator hover effect */
+.h-bar-indicator {
+  position: relative;
+  padding-left: 0;
+  transition: padding-left .3s ease, color .3s ease;
+}
+.h-bar-indicator::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  width: 3px;
+  height: 0;
+  background: #1c1b1b;
+  transform: translateY(-50%);
+  transition: height .3s ease;
+}
+.h-bar-indicator:hover {
+  padding-left: 12px;
+  color: #1c1b1b !important;
+}
+.h-bar-indicator:hover::before {
+  height: 100%;
+}
+.h-bar-indicator.active-nav-bar {
+  padding-left: 12px;
+  color: #1c1b1b !important;
+}
+.h-bar-indicator.active-nav-bar::before {
+  height: 100%;
 }
