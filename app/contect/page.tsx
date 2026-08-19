@@ -150,7 +150,7 @@ export default function ContectPage() {
                 href={mapDirectionsUrl}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 border border-[#1c1b1b] px-8 py-3.5 font-label-caps text-label-caps text-[#1c1b1b] uppercase hover:bg-[#1c1b1b] hover:text-[#fdf8f8] transition-all duration-300 rounded-md"
+                className="flex items-center gap-3 bg-transparent border border-[#1c1b1b] px-8 py-4 font-label-caps text-label-caps text-[#1c1b1b] uppercase hover:bg-[#1c1b1b] hover:text-white transition-all duration-300 rounded-md tracking-widest"
               >
                 <span>GET DIRECTIONS</span>
                 <Compass className="size-4" strokeWidth={1.75} />
@@ -257,7 +257,7 @@ export default function ContectPage() {
             href={mapDirectionsUrl} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="w-full py-4 border border-[#1c1b1b] text-[#1c1b1b] font-label-caps text-label-caps rounded hover:bg-[#1c1b1b] hover:text-[#fdf8f8] transition-colors flex items-center justify-center gap-2"
+            className="w-full py-4 bg-transparent border border-[#1c1b1b] text-[#1c1b1b] font-label-caps text-label-caps rounded hover:bg-[#1c1b1b] hover:text-white transition-colors flex items-center justify-center gap-2 tracking-widest"
           >
             <span>GET DIRECTIONS</span>
             <Compass className="size-4" strokeWidth={1.75} />
