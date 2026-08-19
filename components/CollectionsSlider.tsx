@@ -100,10 +100,10 @@ export function CollectionsSlider() {
       {/* Header and Controls */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-5 md:mb-10 gap-6">
         <div className="max-w-2xl">
-          <span className="text-[12px] font-semibold tracking-[0.2em] text-[#5d5f5f] uppercase font-hanken-grotesk block mb-3">
+          <span className="font-label-caps text-label-caps text-[#5d5f5f] uppercase block mb-3">
             Collections & Categories
           </span>
-          <h2 className="font-raleway text-[clamp(32px,calc((48/1920)*100vw),48px)] leading-[clamp(38px,calc((56/1920)*100vw),56px)] text-[#1c1b1b] uppercase font-light tracking-wide">
+          <h2 className="font-raleway text-headline-lg text-[#1c1b1b] uppercase tracking-wide">
             Browse Catalog
           </h2>
         </div>
@@ -118,7 +118,7 @@ export function CollectionsSlider() {
             <ArrowLeft size={18} strokeWidth={1.5} />
           </button>
 
-          <span className="font-label-caps text-[13px] font-semibold text-[#1c1b1b] tracking-[0.18em] min-w-[54px] text-center font-hanken-grotesk">
+          <span className="font-label-caps text-label-caps text-[#1c1b1b] min-w-[54px] text-center">
             0{activeIndex + 1} / 0{CATALOG_CATEGORIES.length}
           </span>
 
@@ -173,24 +173,24 @@ export function CollectionsSlider() {
             className="col-span-6 flex flex-col justify-center items-start text-left pl-8"
           >
             {/* Line 1: Index/slug */}
-            <span className="font-label-caps text-[12px] font-semibold text-[#5d5f5f] tracking-[0.2em] mb-4 block">
-              0{activeIndex + 1} / {currentCategory.slug.toUpperCase()}
+            <span className="font-label-caps text-label-caps text-[#5d5f5f] mb-4 block uppercase">
+              0{activeIndex + 1} / {currentCategory.slug}
             </span>
 
             {/* Line 2: Name */}
-            <h3 className="font-raleway text-[clamp(28px,calc((38/1920)*100vw),38px)] leading-tight text-[#1c1b1b] font-normal mb-5">
+            <h3 className="font-raleway text-headline-md text-[#1c1b1b] mb-5">
               {currentCategory.name}
             </h3>
 
             {/* Line 3: Description */}
-            <p className="font-hanken-grotesk text-[16px] leading-[26px] text-[#5d5f5f] mb-8 max-w-md">
+            <p className="font-body-md text-body-md text-[#5d5f5f] mb-8 max-w-md">
               {currentCategory.description}
             </p>
 
             {/* Line 4: Explore link */}
             <div>
               <Link
-                className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#1c1b1b] uppercase tracking-widest hover:text-[#5d5f5f] group font-hanken-grotesk relative"
+                className="inline-flex items-center gap-2 font-label-caps text-label-caps text-[#1c1b1b] uppercase hover:text-[#5d5f5f] group relative"
                 href="/products"
               >
                 <span className="relative pb-1 after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100">
@@ -222,17 +222,17 @@ export function CollectionsSlider() {
                   </div>
 
                   {/* Index and slug */}
-                  <span className="font-label-caps text-[11px] font-semibold text-[#5d5f5f] tracking-[0.2em] block uppercase font-hanken-grotesk mt-1">
+                  <span className="font-label-caps text-label-caps text-[#5d5f5f] block uppercase mt-1">
                     0{index + 1} / {category.slug}
                   </span>
 
                   {/* Name */}
-                  <h3 className="font-raleway text-[20px] leading-tight text-[#1c1b1b] font-normal group-hover:text-black">
+                  <h3 className="font-raleway text-headline-md text-[#1c1b1b] group-hover:text-black">
                     {category.name}
                   </h3>
 
                   {/* Description */}
-                  <p className="font-hanken-grotesk text-[14px] leading-[22px] text-[#5d5f5f] line-clamp-3">
+                  <p className="font-body-sm text-body-sm text-[#5d5f5f] line-clamp-3">
                     {category.description}
                   </p>
                 </div>
@@ -240,7 +240,7 @@ export function CollectionsSlider() {
                 {/* Explore button */}
                 <div className="pt-4 border-t border-[#c4c7c7]/50">
                   <Link
-                    className="inline-flex items-center gap-2 text-[12px] font-semibold text-[#1c1b1b] uppercase tracking-widest hover:text-[#5d5f5f] group font-hanken-grotesk"
+                    className="inline-flex items-center gap-2 font-label-caps text-label-caps text-[#1c1b1b] uppercase hover:text-[#5d5f5f] group"
                     href="/products"
                   >
                     <span>Explore</span>

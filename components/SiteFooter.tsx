@@ -20,7 +20,7 @@ export function SiteFooter() {
         
         {/* Primary Branding (Hidden on Mobile) */}
         <div className="hidden md:block mb-14 md:mb-16">
-          <h2 className="font-raleway text-[clamp(40px,calc((80/1920)*100vw),80px)] leading-none tracking-tighter text-black uppercase font-light">
+          <h2 className="font-raleway text-display-lg leading-none tracking-tighter text-black uppercase">
             DECORIUM
           </h2>
         </div>
@@ -31,21 +31,21 @@ export function SiteFooter() {
           {/* FIND US - Desktop Layout */}
           <div className="hidden md:flex col-span-1 border border-[#c4c7c7]/55 rounded-lg p-8 flex-col justify-between hover:bg-[#f7f3f2]/40 transition-colors duration-300">
             <div>
-              <h3 className="font-hanken-grotesk text-[11px] font-semibold tracking-[0.16em] uppercase mb-4 text-[#5d5f5f]">
+              <h3 className="font-label-caps text-label-caps-sm uppercase mb-4 text-[#5d5f5f]">
                 FIND US
               </h3>
-              <p className="font-hanken-grotesk text-[15px] leading-relaxed text-[#1c1b1b] mb-2">
+              <p className="font-body-md text-body-md text-[#1c1b1b] mb-2">
                 124 Architecture Blvd,<br />
                 Indiranagar, Bengaluru, India 560038
               </p>
-              <p className="font-hanken-grotesk text-[14px] text-[#5d5f5f]">
+              <p className="font-body-sm text-body-sm text-[#5d5f5f]">
                 Mon — Sat, 10:00 — 19:00
               </p>
             </div>
             
             <div className="mt-8">
               <a 
-                className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-widest text-[#1c1b1b] uppercase hover:text-[#5d5f5f] group font-hanken-grotesk" 
+                className="inline-flex items-center gap-2 font-label-caps text-label-caps text-[#1c1b1b] uppercase hover:text-[#5d5f5f] group" 
                 href="#"
               >
                 <span>GET DIRECTIONS</span>
@@ -56,16 +56,16 @@ export function SiteFooter() {
 
           {/* FIND US - Mobile Layout */}
           <div className="flex md:hidden flex-col gap-6 col-span-1">
-            <h3 className="font-hanken-grotesk text-[11px] font-semibold tracking-[0.16em] uppercase text-[#5d5f5f]">
+            <h3 className="font-label-caps text-label-caps-sm uppercase text-[#5d5f5f]">
               Find Us
             </h3>
             <div className="border border-[#c4c7c7]/55 rounded-lg p-6 bg-transparent">
-              <p className="font-hanken-grotesk text-[15px] leading-relaxed text-[#1c1b1b] mb-6">
+              <p className="font-body-md text-body-md text-[#1c1b1b] mb-6">
                 124 Architecture Blvd,<br />
                 Indiranagar, Bengaluru, India 560038
               </p>
               <a className="flex items-center justify-between group" href="#">
-                <span className="font-hanken-grotesk text-[12px] font-semibold tracking-widest text-[#1c1b1b] uppercase">Get Directions</span>
+                <span className="font-label-caps text-label-caps text-[#1c1b1b] uppercase">Get Directions</span>
                 <ArrowRight className="size-4 text-black group-hover:translate-x-1 transition-transform" strokeWidth={1.5} />
               </a>
             </div>
@@ -74,13 +74,13 @@ export function SiteFooter() {
           {/* LET'S TALK - Desktop Layout */}
           <div className="hidden md:flex col-span-1 border border-[#c4c7c7]/55 rounded-lg p-8 flex-col justify-between hover:bg-[#f7f3f2]/40 transition-colors duration-300">
             <div>
-              <h3 className="font-hanken-grotesk text-[11px] font-semibold tracking-[0.16em] uppercase mb-4 text-[#5d5f5f]">
+              <h3 className="font-label-caps text-label-caps-sm uppercase mb-4 text-[#5d5f5f]">
                 LET&apos;S TALK
               </h3>
               
               <div className="flex flex-col mt-8 space-y-1">
                 <a 
-                  className="inline-flex items-center justify-between font-hanken-grotesk text-[15px] py-3 border-b border-[#c4c7c7]/50 hover:border-[#1c1b1b] transition-colors group text-[#1c1b1b]" 
+                  className="inline-flex items-center justify-between font-body-md text-body-md py-3 border-b border-[#c4c7c7]/50 hover:border-[#1c1b1b] transition-colors group text-[#1c1b1b]" 
                   href="#"
                 >
                   <span className="flex items-center gap-3">
@@ -91,7 +91,7 @@ export function SiteFooter() {
                 </a>
                 
                 <a 
-                  className="inline-flex items-center justify-between font-hanken-grotesk text-[15px] py-3 border-b border-[#c4c7c7]/50 hover:border-[#1c1b1b] transition-colors group text-[#1c1b1b]" 
+                  className="inline-flex items-center justify-between font-body-md text-body-md py-3 border-b border-[#c4c7c7]/50 hover:border-[#1c1b1b] transition-colors group text-[#1c1b1b]" 
                   href="#"
                 >
                   <span className="flex items-center gap-3">
@@ -102,7 +102,7 @@ export function SiteFooter() {
                 </a>
                 
                 <a 
-                  className="inline-flex items-center justify-between font-hanken-grotesk text-[15px] py-3 border-b border-[#c4c7c7]/50 hover:border-[#1c1b1b] transition-colors group text-[#1c1b1b]" 
+                  className="inline-flex items-center justify-between font-body-md text-body-md py-3 border-b border-[#c4c7c7]/50 hover:border-[#1c1b1b] transition-colors group text-[#1c1b1b]" 
                   href="#"
                 >
                   <span className="flex items-center gap-3">
@@ -117,28 +117,28 @@ export function SiteFooter() {
 
           {/* LET'S TALK - Mobile Layout */}
           <div className="flex md:hidden flex-col gap-6 col-span-1">
-            <h3 className="font-hanken-grotesk text-[11px] font-semibold tracking-[0.16em] uppercase text-[#5d5f5f]">
+            <h3 className="font-label-caps text-label-caps-sm uppercase text-[#5d5f5f]">
               Let&apos;s Talk
             </h3>
             <div className="flex flex-col border-t border-[#c4c7c7]/55">
               <a className="flex items-center justify-between py-6 border-b border-[#c4c7c7]/55 group" href="#">
                 <div className="flex items-center gap-4">
                   <MessageCircle className="size-5 text-[#5d5f5f]" strokeWidth={1.5} />
-                  <span className="font-hanken-grotesk text-[16px] text-[#1c1b1b]">WhatsApp</span>
+                  <span className="font-body-md text-body-md text-[#1c1b1b]">WhatsApp</span>
                 </div>
                 <ArrowRight className="size-4 text-[#5d5f5f] transition-transform group-hover:translate-x-1 group-hover:text-black" strokeWidth={1.5} />
               </a>
               <a className="flex items-center justify-between py-6 border-b border-[#c4c7c7]/55 group" href="#">
                 <div className="flex items-center gap-4">
                   <Phone className="size-5 text-[#5d5f5f]" strokeWidth={1.5} />
-                  <span className="font-hanken-grotesk text-[16px] text-[#1c1b1b]">Call Us</span>
+                  <span className="font-body-md text-body-md text-[#1c1b1b]">Call Us</span>
                 </div>
                 <ArrowRight className="size-4 text-[#5d5f5f] transition-transform group-hover:translate-x-1 group-hover:text-black" strokeWidth={1.5} />
               </a>
               <a className="flex items-center justify-between py-6 border-b border-[#c4c7c7]/55 group" href="#">
                 <div className="flex items-center gap-4">
                   <Mail className="size-5 text-[#5d5f5f]" strokeWidth={1.5} />
-                  <span className="font-hanken-grotesk text-[16px] text-[#1c1b1b]">Email</span>
+                  <span className="font-body-md text-body-md text-[#1c1b1b]">Email</span>
                 </div>
                 <ArrowRight className="size-4 text-[#5d5f5f] transition-transform group-hover:translate-x-1 group-hover:text-black" strokeWidth={1.5} />
               </a>
@@ -152,7 +152,7 @@ export function SiteFooter() {
           {/* Mobile Accordion Toggle */}
           <button 
             onClick={() => setIsNavOpen(!isNavOpen)}
-            className="flex md:hidden w-full items-center justify-between py-1 text-[14px] font-semibold tracking-[0.15em] text-[#1c1b1b] uppercase font-hanken-grotesk cursor-pointer"
+            className="flex md:hidden w-full items-center justify-between py-1 font-label-caps text-label-caps text-[#1c1b1b] uppercase cursor-pointer"
           >
             <span>Navigation</span>
             <ChevronDown className={`size-4.5 text-[#1c1b1b] transition-transform duration-200 ${isNavOpen ? 'rotate-180' : ''}`} />
@@ -168,7 +168,7 @@ export function SiteFooter() {
               {FOOTER_NAV_LINKS.map((link, index) => (
                 <Link 
                   key={link.href} 
-                  className={`text-[12px] font-semibold tracking-[0.15em] text-[#1c1b1b] hover:text-[#5d5f5f] transition-colors uppercase font-hanken-grotesk py-3 md:py-0 ${
+                  className={`font-label-caps text-label-caps text-[#1c1b1b] hover:text-[#5d5f5f] transition-colors uppercase py-3 md:py-0 ${
                     index === FOOTER_NAV_LINKS.length - 1 
                       ? "border-none" 
                       : "border-b border-[#c4c7c7]/20 md:border-none"
@@ -184,23 +184,23 @@ export function SiteFooter() {
 
         {/* Primary Branding on Mobile (Centered immediately after navigation) */}
         <div className="md:hidden mb-8 flex justify-center">
-          <h2 className="font-raleway text-[48px] leading-none tracking-tighter text-black uppercase font-light">
+          <h2 className="font-raleway text-display-lg leading-none tracking-tighter text-black uppercase">
             DECORIUM
           </h2>
         </div>
 
         {/* Fine Print */}
         <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4">
-          <div className="font-hanken-grotesk text-[11px] font-semibold tracking-[0.12em] text-[#5d5f5f] uppercase">
+          <div className="font-label-caps text-label-caps-sm text-[#5d5f5f] uppercase">
             © 2026 DECORIUM ARCHITECTURAL STUDIO. ALL RIGHTS RESERVED.
           </div>
           
           <div className="flex gap-6 items-center">
-            <a className="font-hanken-grotesk text-[11px] font-semibold tracking-[0.12em] text-[#5d5f5f] hover:text-black transition-colors uppercase" href="#">
+            <a className="font-label-caps text-label-caps-sm text-[#5d5f5f] hover:text-black transition-colors uppercase" href="#">
               Privacy
             </a>
             <span className="md:hidden text-[#c4c7c7] text-xs">|</span>
-            <a className="font-hanken-grotesk text-[11px] font-semibold tracking-[0.12em] text-[#5d5f5f] hover:text-black transition-colors uppercase" href="#">
+            <a className="font-label-caps text-label-caps-sm text-[#5d5f5f] hover:text-black transition-colors uppercase" href="#">
               Terms
             </a>
           </div>

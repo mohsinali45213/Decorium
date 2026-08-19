@@ -77,7 +77,7 @@ export function SiteNavbar() {
           <button className="inline-flex size-10 items-center justify-center rounded-full border border-[#e5e2e1] text-[#1c1b1b]" type="button" aria-label="Search collections">
             <svg aria-hidden="true" className="size-[18px] fill-none stroke-current stroke-[1.75]" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.25" /><path d="m16 16 4.25 4.25" strokeLinecap="round" /></svg>
           </button>
-          <button className="inline-flex items-center gap-2.5 text-[1rem] font-semibold uppercase tracking-[0.16em] text-[#1c1b1b]" type="button" aria-expanded={isOpen} aria-controls="primary-navigation" onClick={() => setIsOpen(true)}>
+          <button className="inline-flex items-center gap-2.5 font-label-caps text-label-caps text-[#1c1b1b] uppercase" type="button" aria-expanded={isOpen} aria-controls="primary-navigation" onClick={() => setIsOpen(true)}>
             <span className="hidden md:block">Menu</span>
             <MenuIcon />
           </button>
@@ -108,18 +108,18 @@ export function SiteNavbar() {
                   {links.map((link, index) => {
                     const active = pathname === link.href;
                     const selected = active || previewRoute === link.href;
-                    const menuItemClass = `h-bar-indicator inline-flex w-fit items-baseline gap-[18px] font-raleway text-[clamp(28px,calc((48/1920)*100vw),48px)] font-normal uppercase leading-[clamp(31px,calc((53/1920)*100vw),53px)] tracking-[-0.06em] ${selected ? "active-nav-bar text-[#1c1b1b]" : "text-[#5d5f5f]"}`;
+                    const menuItemClass = `h-bar-indicator inline-flex w-fit items-baseline gap-[18px] font-raleway text-headline-lg uppercase ${selected ? "active-nav-bar text-[#1c1b1b]" : "text-[#5d5f5f]"}`;
                     return (
                       <motion.div key={link.href} initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.22 + index * 0.09, duration: 0.45 }}>
                         {link.href === "/products" ? (
                           <button className={`${menuItemClass} text-left`} type="button" onClick={() => setPreviewRoute("/products")} onMouseEnter={() => setPreviewRoute("/products")} onFocus={() => setPreviewRoute("/products")}>
-                            <small className="text-[0.65rem] font-semibold tracking-[0.16em]">{link.number}</small>
+                            <small className="font-label-caps text-label-caps-sm text-inherit">{link.number}</small>
                             {link.label}
                             <ArrowRight aria-hidden="true" className="ml-2 size-[0.8em] shrink-0 self-center" strokeWidth={1.4} />
                           </button>
                         ) : (
                           <Link className={menuItemClass} href={link.href} aria-current={active ? "page" : undefined} onMouseEnter={() => setPreviewRoute(link.href)} onFocus={() => setPreviewRoute(link.href)} onClick={() => setIsOpen(false)}>
-                            <small className="text-[0.65rem] font-semibold tracking-[0.16em]">{link.number}</small>
+                            <small className="font-label-caps text-label-caps-sm text-inherit">{link.number}</small>
                             {link.label}
                           </Link>
                         )}
@@ -133,8 +133,8 @@ export function SiteNavbar() {
                       <Phone aria-hidden="true" size={15} strokeWidth={1.7} />
                     </span>
                     <span className="flex flex-col gap-0.5">
-                      <span className="text-xs font-semibold uppercase tracking-[0.14em]">Call</span>
-                      <span className="text-[10px] uppercase tracking-[0.12em] text-[#5d5f5f]">Direct line</span>
+                      <span className="font-label-caps text-label-caps-sm text-[#1c1b1b]">Call</span>
+                      <span className="font-label-caps text-[9px] uppercase tracking-[0.12em] text-[#5d5f5f]">Direct line</span>
                     </span>
                   </Link>
                   <Link className="group inline-flex items-center gap-3 text-[#1c1b1b]" href="/contect" onClick={() => setIsOpen(false)}>
@@ -142,8 +142,8 @@ export function SiteNavbar() {
                       <MessageCircle aria-hidden="true" size={15} strokeWidth={1.7} />
                     </span>
                     <span className="flex flex-col gap-0.5">
-                      <span className="text-xs font-semibold uppercase tracking-[0.14em]">WhatsApp</span>
-                      <span className="text-[10px] uppercase tracking-[0.12em] text-[#5d5f5f]">Message us</span>
+                      <span className="font-label-caps text-label-caps-sm text-[#1c1b1b]">WhatsApp</span>
+                      <span className="font-label-caps text-[9px] uppercase tracking-[0.12em] text-[#5d5f5f]">Message us</span>
                     </span>
                   </Link>
                 </div>
@@ -154,10 +154,10 @@ export function SiteNavbar() {
                     <motion.div key="categories" className="flex h-full flex-col justify-center pl-4 pr-0 pt-4 pb-0 bg-[#fdf8f8]" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -14 }} transition={{ duration: 0.3 }}>
                       <div className="mb-7 flex items-end justify-between gap-4">
                         <div>
-                          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#5d5f5f]">Product index</p>
-                          <h2 className="font-raleway text-[clamp(24px,calc((32/1920)*100vw),32px)] font-normal leading-tight tracking-[-0.03em] text-[#1c1b1b]">Categories</h2>
+                          <p className="font-label-caps text-label-caps-sm text-[#5d5f5f] mb-2 uppercase">Product index</p>
+                          <h2 className="font-raleway text-headline-md text-[#1c1b1b] leading-tight">Categories</h2>
                         </div>
-                        <Link className="inline-flex items-center gap-2 rounded-lg bg-[#1c1b1b] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-white transition-opacity hover:opacity-80" href="/products" onClick={() => setIsOpen(false)}>
+                        <Link className="inline-flex items-center gap-2 rounded-lg bg-[#1c1b1b] px-3 py-2 font-label-caps text-label-caps-sm text-white transition-opacity hover:opacity-80 uppercase" href="/products" onClick={() => setIsOpen(false)}>
                           All categories <ArrowRight aria-hidden="true" size={14} strokeWidth={1.5} />
                         </Link>
                       </div>
@@ -180,7 +180,7 @@ export function SiteNavbar() {
                               />
                             </div>
                             <div className="flex flex-col flex-grow justify-between h-16 py-0.5 min-w-0">
-                              <small className="text-[0.65rem] font-semibold tracking-[0.12em] text-[#5d5f5f]">0{index + 1}</small>
+                              <small className="font-label-caps text-label-caps-sm text-[#5d5f5f]">0{index + 1}</small>
                               <span className="flex items-end justify-between gap-3 font-raleway text-sm font-normal leading-tight tracking-[-0.02em] text-[#1c1b1b]">
                                 <span className="truncate">{category.name}</span>
                                 <ArrowRight aria-hidden="true" className="size-4 shrink-0 transition-transform group-hover:translate-x-1" strokeWidth={1.4} />
@@ -201,7 +201,7 @@ export function SiteNavbar() {
                     >
                       <Image alt={previews[previewRoute].label} className="object-cover" fill sizes="50vw" src={previews[previewRoute].image} />
                       <div className="absolute inset-0 bg-black/20" />
-                      <p className="absolute bottom-8 left-8 text-xs font-semibold uppercase tracking-[0.16em] text-white">{previews[previewRoute].label}</p>
+                      <p className="font-label-caps text-label-caps-sm text-white absolute bottom-8 left-8 uppercase">{previews[previewRoute].label}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -211,7 +211,7 @@ export function SiteNavbar() {
             {/* Mobile Layout (under md) */}
             <div className="mx-auto flex md:hidden flex-col w-full flex-1 overflow-y-auto px-6 pb-6 justify-between">
               <div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#5d5f5f] mt-8 mb-6 font-hanken-grotesk">
+                <div className="font-label-caps text-label-caps text-[#5d5f5f] mt-8 mb-6 uppercase">
                   NAVIGATION
                 </div>
                 <nav className="flex flex-col gap-5">
@@ -226,11 +226,11 @@ export function SiteNavbar() {
                           type="button"
                           onClick={() => setPreviewRoute("/products")}
                         >
-                          <span className="text-[12px] font-semibold tracking-[0.15em] text-[#5d5f5f] w-6">
+                          <span className="font-label-caps text-label-caps text-[#5d5f5f] w-6">
                             {link.number}
                           </span>
                           <span
-                            className={`text-[20px] font-normal uppercase tracking-[-0.02em] transition-all duration-300 flex items-center gap-1.5 ${
+                            className={`text-headline-md uppercase transition-all duration-300 flex items-center gap-1.5 ${
                               selected ? "text-[#1c1b1b]" : "text-[#1c1b1b]/50"
                             }`}
                           >
@@ -247,11 +247,11 @@ export function SiteNavbar() {
                         href={link.href}
                         onClick={() => setIsOpen(false)}
                       >
-                        <span className="text-[12px] font-semibold tracking-[0.15em] text-[#5d5f5f] w-6">
+                        <span className="font-label-caps text-label-caps text-[#5d5f5f] w-6">
                           {link.number}
                         </span>
                         <span
-                          className={`text-[20px] font-normal uppercase tracking-[-0.02em] transition-all duration-300 ${
+                          className={`text-headline-md uppercase transition-all duration-300 ${
                             active ? "text-[#1c1b1b]" : "text-[#1c1b1b]/50"
                           }`}
                         >
@@ -278,11 +278,11 @@ export function SiteNavbar() {
                       >
                         <div className="mb-4 flex items-end justify-between gap-4">
                           <div>
-                            <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[#5d5f5f]">Product index</p>
-                            <h3 className="font-raleway text-base font-normal tracking-[-0.02em] text-[#1c1b1b]">Categories</h3>
+                            <p className="font-label-caps text-[9px] text-[#5d5f5f] uppercase mb-1">Product index</p>
+                            <h3 className="font-raleway text-body-lg font-normal text-[#1c1b1b] uppercase">Categories</h3>
                           </div>
                           <Link
-                            className="inline-flex items-center gap-1 rounded-md bg-[#1c1b1b] px-2 py-1 text-[8px] font-semibold uppercase tracking-[0.12em] text-white transition-opacity hover:opacity-80 font-hanken-grotesk"
+                            className="inline-flex items-center gap-1 rounded-md bg-[#1c1b1b] px-2 py-1 font-label-caps text-[9px] text-white transition-opacity hover:opacity-80 uppercase"
                             href="/products"
                             onClick={() => setIsOpen(false)}
                           >
@@ -308,9 +308,9 @@ export function SiteNavbar() {
                                 />
                               </div>
                               <div className="flex flex-col flex-grow justify-center min-h-10 min-w-0">
-                                <small className="text-[8px] font-semibold tracking-[0.12em] text-[#5d5f5f]">0{index + 1}</small>
-                                <span className="flex items-end justify-between gap-1 font-raleway text-[11px] font-normal leading-[14px] tracking-[-0.02em] text-[#1c1b1b]">
-                                  <span className="line-clamp-2">{category.name}</span>
+                                <small className="font-label-caps text-[8px] text-[#5d5f5f] uppercase">0{index + 1}</small>
+                                <span className="flex items-end justify-between gap-1 font-raleway text-body-sm font-normal leading-[14px] text-[#1c1b1b] min-w-0">
+                                  <span className="truncate">{category.name}</span>
                                   <ArrowRight aria-hidden="true" className="size-3 shrink-0 transition-transform group-hover:translate-x-0.5 self-end mb-0.5" strokeWidth={1.4} />
                                 </span>
                               </div>
@@ -345,14 +345,14 @@ export function SiteNavbar() {
                   <Link 
                     href="/contect" 
                     onClick={() => setIsOpen(false)}
-                    className="flex-1 flex items-center justify-center gap-2 py-3 border border-[#c4c7c7]/50 hover:bg-[#f7f3f2]/40 transition-colors uppercase font-hanken-grotesk text-[11px] font-semibold tracking-wider text-[#1c1b1b]"
+                    className="flex-grow flex items-center justify-center gap-2 py-3 border border-[#c4c7c7]/50 hover:bg-[#f7f3f2]/40 transition-colors uppercase font-label-caps text-label-caps-sm text-[#1c1b1b]"
                   >
                     <span>WhatsApp</span>
                   </Link>
                   <Link 
                     href="/contect" 
                     onClick={() => setIsOpen(false)}
-                    className="flex-1 flex items-center justify-center gap-2 py-3 border border-[#c4c7c7]/50 hover:bg-[#f7f3f2]/40 transition-colors uppercase font-hanken-grotesk text-[11px] font-semibold tracking-wider text-[#1c1b1b]"
+                    className="flex-grow flex items-center justify-center gap-2 py-3 border border-[#c4c7c7]/50 hover:bg-[#f7f3f2]/40 transition-colors uppercase font-label-caps text-label-caps-sm text-[#1c1b1b]"
                   >
                     <span>Call</span>
                   </Link>

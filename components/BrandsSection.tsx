@@ -55,10 +55,10 @@ export function BrandsSection() {
       
       {/* Header */}
       <div className="mb-5 md:mb-10">
-        <span className="font-hanken-grotesk text-[12px] font-semibold tracking-[0.2em] text-[#5d5f5f] uppercase block mb-3">
+        <span className="font-label-caps text-label-caps text-[#5d5f5f] uppercase block mb-3">
           BRAND & PARTNERS
         </span>
-        <h2 className="font-raleway text-[clamp(32px,calc((48/1920)*100vw),48px)] leading-[clamp(38px,calc((56/1920)*100vw),56px)] text-[#1c1b1b] uppercase font-light tracking-wide">
+        <h2 className="font-raleway text-headline-lg text-[#1c1b1b] uppercase tracking-wide">
           Explore Brands
         </h2>
       </div>
@@ -82,14 +82,14 @@ export function BrandsSection() {
               >
                 <div className="flex items-center gap-6">
                   {/* Slide number */}
-                  <span className={`font-hanken-grotesk text-[11px] font-semibold tracking-wider transition-colors duration-300 ${
+                  <span className={`font-label-caps text-label-caps-sm transition-colors duration-300 ${
                     isActive ? "text-[#1c1b1b]" : "text-[#5d5f5f]/40"
                   }`}>
                     0{index + 1}
                   </span>
                   
                   {/* Brand name */}
-                  <span className={`font-raleway text-[18px] tracking-[0.15em] uppercase transition-all duration-300 ${
+                  <span className={`font-raleway text-body-lg uppercase tracking-[0.15em] transition-all duration-300 ${
                     isActive 
                       ? "text-[#1c1b1b] font-normal translate-x-2" 
                       : "text-[#5d5f5f]/60 font-light group-hover:text-[#1c1b1b] group-hover:translate-x-1"
@@ -134,7 +134,7 @@ export function BrandsSection() {
                 />
                 {/* Dark overlay & Centered "Explore Collections" button on hover */}
                 <div className="absolute inset-0 bg-black/25 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
-                  <span className="px-6 py-3.5 bg-[#fdf8f8] text-[#1c1b1b] font-hanken-grotesk text-[12px] font-semibold uppercase tracking-widest rounded-md shadow-md flex items-center gap-2 transform translate-y-2 group-hover/img:translate-y-0 transition-all duration-300">
+                  <span className="px-6 py-3.5 bg-[#fdf8f8] text-[#1c1b1b] font-label-caps text-label-caps uppercase rounded-md shadow-md flex items-center gap-2 transform translate-y-2 group-hover/img:translate-y-0 transition-all duration-300">
                     Explore Collections
                     <ArrowUpRight className="size-4" strokeWidth={1.75} />
                   </span>
@@ -160,12 +160,12 @@ export function BrandsSection() {
               {/* Accordion Header */}
               <div className="flex justify-between items-center w-full">
                 <div className="flex items-center gap-4">
-                  <span className={`font-hanken-grotesk text-[10px] font-semibold tracking-wider transition-colors duration-300 ${
+                  <span className={`font-label-caps text-label-caps-sm transition-colors duration-300 ${
                     isActive ? "text-[#1c1b1b]" : "text-[#5d5f5f]/40"
                   }`}>
                     0{index + 1}
                   </span>
-                  <h3 className={`font-raleway text-[18px] tracking-[0.12em] uppercase transition-colors duration-300 ${
+                  <h3 className={`font-raleway text-body-lg uppercase tracking-[0.12em] transition-colors duration-300 ${
                     isActive ? "text-[#1c1b1b] font-normal" : "text-[#5d5f5f]/60 font-light"
                   }`}>
                     {brand.name}
@@ -200,7 +200,7 @@ export function BrandsSection() {
                       src={img}
                     />
                     <div className="absolute inset-0 bg-black/25 flex items-center justify-center z-10">
-                      <span className="px-4 py-2.5 bg-[#fdf8f8] text-[#1c1b1b] font-hanken-grotesk text-[11px] font-semibold uppercase tracking-widest rounded-md shadow-md flex items-center gap-1.5">
+                      <span className="px-4 py-2.5 bg-[#fdf8f8] text-[#1c1b1b] font-label-caps text-label-caps uppercase rounded-md shadow-md flex items-center gap-1.5">
                         Explore Collections
                         <ArrowUpRight className="size-3.5" strokeWidth={1.75} />
                       </span>

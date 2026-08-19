@@ -55,7 +55,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative w-full h-[75dvh] min-h-[500px] md:h-[92dvh] md:min-h-[700px] flex items-end justify-center md:justify-end overflow-hidden px-[clamp(24px,calc((64/1920)*100vw),64px)] py-[clamp(24px,calc((64/1920)*100vw),64px)]">
+    <section className="relative w-full h-[75dvh] min-h-[500px] md:h-[92dvh] md:min-h-[700px] flex items-end justify-center md:justify-end overflow-hidden px-navbar-px py-navbar-px">
       <style dangerouslySetInnerHTML={{__html: `
         .hero-slick-slider .slick-slider,
         .hero-slick-slider .slick-list,
@@ -102,19 +102,19 @@ export function Hero() {
             <div>
               {/* Slide Counter */}
               <div className="flex items-center justify-between md:block mb-4">
-                <div className="text-[12px] font-semibold text-[#5d5f5f] tracking-widest uppercase font-hanken-grotesk">
+                <div className="font-label-caps text-label-caps text-[#5d5f5f] uppercase">
                   {slides[currentSlide].number} <span className="mx-2 text-[#c4c7c7]">/</span> 04
                 </div>
                 <div className="h-px bg-[#c4c7c7]/30 flex-1 ml-4 md:hidden"></div>
               </div>
 
               {/* Headline */}
-              <h1 className="font-raleway text-[clamp(28px,calc((48/1920)*100vw),48px)] leading-[clamp(34px,calc((56/1920)*100vw),56px)] text-[#1c1b1b] font-normal uppercase md:normal-case tracking-tight mb-2 md:mb-4">
+              <h1 className="font-raleway text-headline-lg text-[#1c1b1b] uppercase md:normal-case tracking-tight mb-2 md:mb-4">
                 {slides[currentSlide].title}
               </h1>
 
               {/* Description */}
-              <p className="text-[clamp(14px,calc((18/1920)*100vw),18px)] leading-[clamp(22px,calc((32/1920)*100vw),32px)] text-[#5d5f5f] max-w-sm font-hanken-grotesk">
+              <p className="font-body-md text-body-md text-[#5d5f5f] max-w-sm">
                 {slides[currentSlide].description}
               </p>
             </div>
@@ -122,7 +122,7 @@ export function Hero() {
             {/* Call to Action */}
             <div className="mt-2 md:mt-4 pt-4 md:pt-0 border-t border-[#e2e2e2] md:border-0">
               <Link
-                className="inline-flex items-center gap-2 text-[clamp(12px,calc((14/1920)*100vw),14px)] font-semibold text-[#1c1b1b] uppercase tracking-widest hover:text-[#5d5f5f] transition-colors group font-hanken-grotesk"
+                className="inline-flex items-center gap-2 font-label-caps text-label-caps text-[#1c1b1b] uppercase hover:text-[#5d5f5f] transition-colors group"
                 href="/products"
               >
                 <span>Explore</span>

@@ -131,7 +131,7 @@ export default function ProductsPage() {
   };
 
   return (
-    <main className="max-w-container-max mx-auto px-gutter md:px-margin-desktop py-12 md:py-24 bg-background text-on-surface antialiased selection:bg-surface-variant selection:text-on-surface">
+    <main className="max-w-[1440px] mx-auto px-navbar-px pt-[110px] md:pt-[140px] pb-16 md:pb-24 bg-background text-on-surface antialiased selection:bg-surface-variant selection:text-on-surface">
       {/* Header & Search */}
       <header className="mb-16">
         <div className="font-label-caps text-label-caps text-on-surface-variant mb-4 uppercase">
@@ -141,7 +141,7 @@ export default function ProductsPage() {
         
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 border-b border-secondary/20 pb-8">
           <div>
-            <h1 className="font-headline-lg text-headline-lg text-primary mb-2">PRODUCTS</h1>
+            <h1 className="font-raleway text-headline-lg text-primary mb-2 uppercase">PRODUCTS</h1>
             <p className="font-body-md text-body-md text-on-surface-variant">
               Explore the complete Decorium catalog of surfaces, fittings, and bespoke furniture.
             </p>
@@ -173,7 +173,7 @@ export default function ProductsPage() {
             {(selectedCategories.length > 0 || selectedBrand || searchQuery || featuredOnly) && (
               <button
                 onClick={handleResetFilters}
-                className="font-label-caps text-[10px] text-secondary hover:text-primary underline uppercase transition-colors pb-0.5"
+                className="font-label-caps text-label-caps-sm text-secondary hover:text-primary underline uppercase transition-colors pb-0.5"
               >
                 Clear All
               </button>
@@ -183,7 +183,7 @@ export default function ProductsPage() {
           {/* Category Checkboxes */}
           <div className="mb-8">
             <h3 className="font-label-caps text-label-caps text-primary mb-4 uppercase">CATEGORY</h3>
-            <div className="space-y-3 font-body-md text-body-md text-on-surface-variant">
+            <div className="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
               <label className="flex items-center gap-3 cursor-pointer group">
                 <input
                   checked={selectedCategories.length === 0}
@@ -235,7 +235,7 @@ export default function ProductsPage() {
                   setCurrentPage(1);
                 }}
               />
-              <div className="flex justify-between mt-4 font-body-md text-body-md text-on-surface-variant">
+              <div className="flex justify-between mt-4 font-body-sm text-body-sm text-on-surface-variant">
                 <span>{isUSDOnly ? "$0" : "₹0"}</span>
                 <span className="font-semibold text-primary">
                   Max: {isUSDOnly ? `$${maxPrice.toLocaleString()}` : `₹${maxPrice.toLocaleString("en-IN")}`}
@@ -267,7 +267,7 @@ export default function ProductsPage() {
           {/* Selection Filter */}
           <div className="mb-8 border-t border-secondary/20 pt-8">
             <h3 className="font-label-caps text-label-caps text-primary mb-4 uppercase">SELECTION</h3>
-            <div className="space-y-3 font-body-md text-body-md text-on-surface-variant">
+            <div className="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
               <label className="flex items-center gap-3 cursor-pointer group">
                 <input
                   checked={featuredOnly}
@@ -339,13 +339,13 @@ export default function ProductsPage() {
                   </Link>
                   
                   {/* Product Text info */}
-                  <h4 className="font-headline-md text-body-lg text-primary mb-1 truncate uppercase">
+                  <h4 className="font-raleway text-body-lg text-primary mb-1 truncate uppercase">
                     {product.name}
                   </h4>
-                  <p className="font-label-caps text-[10px] text-on-surface-variant mb-2 uppercase tracking-widest">
+                  <p className="font-label-caps text-label-caps-sm text-on-surface-variant mb-2 uppercase">
                     {product.brand || product.categoryName}
                   </p>
-                  <p className="font-nav-link text-nav-link text-on-surface-variant mb-4">
+                  <p className="font-body-md text-body-md text-on-surface-variant mb-4">
                     {getFormattedPrice(product)}
                   </p>
                   <div className="flex items-center gap-2 mt-auto">
@@ -361,7 +361,7 @@ export default function ProductsPage() {
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-20 text-center border border-dashed border-secondary/30 rounded bg-white/40">
-              <span className="font-headline-md text-primary uppercase tracking-wider mb-2">No Products Found</span>
+              <span className="font-raleway text-headline-md text-primary uppercase mb-2">No Products Found</span>
               <p className="font-body-md text-on-surface-variant mb-6 max-w-sm">
                 No items match your active filters. Try adjusting your search query, price limit, or category checkboxes.
               </p>
@@ -376,7 +376,7 @@ export default function ProductsPage() {
 
           {/* Pagination Controls (Bracketed Page numbers match reference) */}
           {totalPages > 1 && (
-            <div className="mt-16 pt-8 border-t border-secondary/20 flex justify-center items-center gap-4 font-nav-link text-nav-link">
+            <div className="mt-16 pt-8 border-t border-secondary/20 flex justify-center items-center gap-4 font-label-caps text-label-caps">
               {Array.from({ length: totalPages }).map((_, index) => {
                 const pageNum = index + 1;
                 const isCurrent = pageNum === currentPage;
@@ -426,7 +426,7 @@ export default function ProductsPage() {
             {/* Categories */}
             <div className="mb-8">
               <h3 className="font-label-caps text-label-caps text-primary mb-4 uppercase">CATEGORY</h3>
-              <div className="space-y-3 font-body-md text-body-md text-on-surface-variant">
+              <div className="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input
                     checked={selectedCategories.length === 0}
@@ -477,7 +477,7 @@ export default function ProductsPage() {
                   setCurrentPage(1);
                 }}
               />
-              <div className="flex justify-between mt-3 font-body-md text-body-md text-on-surface-variant">
+              <div className="flex justify-between mt-3 font-body-sm text-body-sm text-on-surface-variant">
                 <span>{isUSDOnly ? "$0" : "₹0"}</span>
                 <span className="font-semibold text-primary">
                   Max: {isUSDOnly ? `$${maxPrice.toLocaleString()}` : `₹${maxPrice.toLocaleString("en-IN")}`}
@@ -508,7 +508,7 @@ export default function ProductsPage() {
             {/* Featured Only check */}
             <div className="mb-8 border-t border-secondary/20 pt-6">
               <h3 className="font-label-caps text-label-caps text-primary mb-4 uppercase">SELECTION</h3>
-              <div className="space-y-3 font-body-md text-body-md text-on-surface-variant">
+              <div className="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input
                     checked={featuredOnly}

@@ -83,31 +83,49 @@
   --spacing-section-gap: 128px;
 }
 
-@utility text-headline-md {
-  font-size: 32px;
-  line-height: 40px;
-  font-weight: 400;
+@utility text-display-lg {
+  font-size: clamp(40px, calc((80 / 1920) * 100vw), 80px);
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: -0.05em;
 }
 @utility text-headline-lg {
-  font-size: 48px;
-  line-height: 56px;
-  font-weight: 400;
+  font-size: clamp(32px, calc((48 / 1920) * 100vw), 48px);
+  line-height: clamp(38px, calc((56 / 1920) * 100vw), 56px);
+  font-weight: 300;
+  letter-spacing: 0.02em;
 }
-@utility text-body-md {
-  font-size: 16px;
-  line-height: 28px;
+@utility text-headline-md {
+  font-size: clamp(24px, calc((32 / 1920) * 100vw), 32px);
+  line-height: clamp(30px, calc((40 / 1920) * 100vw), 40px);
   font-weight: 400;
 }
 @utility text-body-lg {
-  font-size: 18px;
-  line-height: 32px;
+  font-size: clamp(16px, calc((18 / 1920) * 100vw), 18px);
+  line-height: clamp(28px, calc((32 / 1920) * 100vw), 32px);
   letter-spacing: 0.01em;
+  font-weight: 400;
+}
+@utility text-body-md {
+  font-size: clamp(14px, calc((16 / 1920) * 100vw), 16px);
+  line-height: clamp(22px, calc((28 / 1920) * 100vw), 28px);
+  font-weight: 400;
+}
+@utility text-body-sm {
+  font-size: clamp(13px, calc((14 / 1920) * 100vw), 14px);
+  line-height: clamp(20px, calc((22 / 1920) * 100vw), 22px);
   font-weight: 400;
 }
 @utility text-label-caps {
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.15em;
+  font-weight: 600;
+}
+@utility text-label-caps-sm {
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: 0.2em;
   font-weight: 600;
 }
 @utility text-nav-link {
