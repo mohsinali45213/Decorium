@@ -148,10 +148,10 @@ export function SiteNavbar() {
                   </Link>
                 </div>
               </nav>
-              <div className="relative overflow-hidden bg-[#f1edec] min-h-full">
+              <div className="relative overflow-hidden bg-[#fdf8f8] min-h-full pr-categories-px pb-categories-py flex flex-col justify-end">
                 <AnimatePresence mode="wait">
                   {previewRoute === "/products" ? (
-                    <motion.div key="categories" className="flex h-full flex-col justify-center px-categories-px py-categories-py" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -14 }} transition={{ duration: 0.3 }}>
+                    <motion.div key="categories" className="flex h-full flex-col justify-center pl-4 pr-0 pt-4 pb-0 bg-[#fdf8f8]" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -14 }} transition={{ duration: 0.3 }}>
                       <div className="mb-7 flex items-end justify-between gap-4">
                         <div>
                           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#5d5f5f]">Product index</p>
@@ -164,7 +164,7 @@ export function SiteNavbar() {
                       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                         {CATALOG_CATEGORIES.map((category, index) => (
                           <Link
-                            className="group flex gap-4 rounded-lg border border-[#c4c7c7] bg-[#fdf8f8] p-3 transition-colors hover:bg-white items-center"
+                            className="group flex gap-4 rounded-lg border border-[#c4c7c7]/50 bg-[#fdf8f8] p-3 transition-colors hover:bg-white items-center"
                             href="/products"
                             key={category.slug}
                             onClick={() => setIsOpen(false)}
@@ -190,10 +190,17 @@ export function SiteNavbar() {
                       </div>
                     </motion.div>
                   ) : (
-                    <motion.div key={previewRoute} className="absolute inset-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }}>
+                    <motion.div 
+                      key={previewRoute} 
+                      className="relative w-full h-full rounded-lg overflow-hidden border border-[#c4c7c7]/50 bg-[#f1edec]" 
+                      initial={{ opacity: 0 }} 
+                      animate={{ opacity: 1 }} 
+                      exit={{ opacity: 0 }} 
+                      transition={{ duration: 0.35 }}
+                    >
                       <Image alt={previews[previewRoute].label} className="object-cover" fill sizes="50vw" src={previews[previewRoute].image} />
                       <div className="absolute inset-0 bg-black/20" />
-                      <p className="absolute bottom-16 left-16 text-xs font-semibold uppercase tracking-[0.16em] text-white">{previews[previewRoute].label}</p>
+                      <p className="absolute bottom-8 left-8 text-xs font-semibold uppercase tracking-[0.16em] text-white">{previews[previewRoute].label}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -261,7 +268,7 @@ export function SiteNavbar() {
                     {previewRoute === "/products" ? (
                       <motion.div
                         key="categories-mobile"
-                        className="w-full bg-[#fdf8f8] rounded-lg border border-[#c4c7c7]/30 p-3.5 animate-in fade-in duration-300"
+                        className="w-full bg-[#fdf8f8] rounded-lg border border-[#c4c7c7]/30 p-3.5 shadow-sm animate-in fade-in duration-300"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
@@ -283,7 +290,7 @@ export function SiteNavbar() {
                         <div className="grid grid-cols-2 gap-2">
                           {CATALOG_CATEGORIES.map((category, index) => (
                             <Link
-                              className="group flex gap-2 rounded-md border border-[#c4c7c7] bg-[#fdf8f8] p-2 transition-colors hover:bg-white items-center"
+                              className="group flex gap-2 rounded-md border border-[#c4c7c7]/40 bg-[#fdf8f8] p-2 shadow-sm hover:shadow-md transition-all hover:bg-white items-center"
                               href="/products"
                               key={category.slug}
                               onClick={() => setIsOpen(false)}
@@ -311,7 +318,7 @@ export function SiteNavbar() {
                     ) : (
                       <motion.div
                         key="image-mobile"
-                        className="w-full aspect-[4/3] rounded-lg overflow-hidden border border-[#c4c7c7]/30 relative"
+                        className="w-full aspect-[4/3] rounded-lg overflow-hidden border border-[#c4c7c7]/30 shadow-sm relative"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -331,25 +338,22 @@ export function SiteNavbar() {
                 </div>
                 
                 {/* Bottom Action Section */}
-                <footer className="border-t border-[#c4c7c7] pt-6 flex justify-center items-center">
-                  <div className="flex items-center gap-6 font-hanken-grotesk">
-                    <Link
-                      className="text-[12px] font-semibold text-[#1c1b1b] uppercase tracking-widest hover:opacity-70 transition-opacity"
-                      href="/contect"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      WHATSAPP
-                    </Link>
-                    <div className="w-[1px] h-4 bg-[#c4c7c7]"></div>
-                    <Link
-                      className="text-[12px] font-semibold text-[#1c1b1b] uppercase tracking-widest hover:opacity-70 transition-opacity"
-                      href="/contect"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      CALL
-                    </Link>
-                  </div>
-                </footer>
+                <div className="border-t border-[#c4c7c7]/50 pt-5 flex w-full gap-3 mt-5 mb-5 shrink-0">
+                  <Link 
+                    href="/contect" 
+                    onClick={() => setIsOpen(false)}
+                    className="flex-1 flex items-center justify-center gap-2 py-3 border border-[#c4c7c7]/50 hover:bg-[#f7f3f2]/40 transition-colors uppercase font-hanken-grotesk text-[11px] font-semibold tracking-wider text-[#1c1b1b]"
+                  >
+                    <span>WhatsApp</span>
+                  </Link>
+                  <Link 
+                    href="/contect" 
+                    onClick={() => setIsOpen(false)}
+                    className="flex-1 flex items-center justify-center gap-2 py-3 border border-[#c4c7c7]/50 hover:bg-[#f7f3f2]/40 transition-colors uppercase font-hanken-grotesk text-[11px] font-semibold tracking-wider text-[#1c1b1b]"
+                  >
+                    <span>Call</span>
+                  </Link>
+                </div>
               </div>
             </div>
           </motion.div>

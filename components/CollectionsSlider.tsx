@@ -84,7 +84,7 @@ export function CollectionsSlider() {
   const nextCategory = CATALOG_CATEGORIES[(activeIndex + 1) % CATALOG_CATEGORIES.length];
 
   return (
-    <section className="bg-[#fdf8f8] py-showcase-py px-navbar-px max-w-[1440px] mx-auto border-t border-[#c4c7c7]/20 relative z-20">
+    <section className="bg-[#fdf8f8] py-showcase-py px-navbar-px max-w-[1440px] mx-auto border-t border-[#c4c7c7]/65 relative z-20">
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -118,7 +118,7 @@ export function CollectionsSlider() {
         <div className="flex gap-4 items-center self-start md:self-auto select-none">
           <button
             onClick={handlePrev}
-            className="flex size-11 items-center justify-center rounded-full border border-[#c4c7c7] text-[#1c1b1b] hover:bg-[#1c1b1b] hover:text-[#fdf8f8] hover:border-[#1c1b1b] cursor-pointer"
+            className="flex size-11 items-center justify-center rounded-full border border-[#8a8d8d] text-[#1c1b1b] hover:bg-[#1c1b1b] hover:text-[#fdf8f8] hover:border-[#1c1b1b] cursor-pointer"
             aria-label="Previous slide"
           >
             <ArrowLeft size={18} strokeWidth={1.5} />
@@ -130,7 +130,7 @@ export function CollectionsSlider() {
 
           <button
             onClick={handleNext}
-            className="flex size-11 items-center justify-center rounded-full border border-[#c4c7c7] text-[#1c1b1b] hover:bg-[#1c1b1b] hover:text-[#fdf8f8] hover:border-[#1c1b1b] cursor-pointer"
+            className="flex size-11 items-center justify-center rounded-full border border-[#8a8d8d] text-[#1c1b1b] hover:bg-[#1c1b1b] hover:text-[#fdf8f8] hover:border-[#1c1b1b] cursor-pointer"
             aria-label="Next slide"
           >
             <ArrowRight size={18} strokeWidth={1.5} />
@@ -143,7 +143,7 @@ export function CollectionsSlider() {
         <div className="grid grid-cols-12 gap-12 items-center">
           {/* Left Column: Main Image & Next Preview */}
           <div className="col-span-6 relative">
-            <div className="relative w-full aspect-[16/10] bg-[#f1edec] rounded-lg border border-[#c4c7c7]/30 shadow-sm">
+            <div className="relative w-full aspect-[16/10] bg-[#f1edec] rounded-lg border border-[#c4c7c7]/65">
               <Image
                 alt={currentCategory.name}
                 className="object-cover rounded-lg"
@@ -156,7 +156,7 @@ export function CollectionsSlider() {
               {/* Next Slide Thumbnail (Overlaps the bottom-right border - Larger Size) */}
               <button
                 onClick={handleNext}
-                className="absolute -bottom-8 -right-8 z-20 w-[160px] h-[105px] rounded-md overflow-hidden border-[3px] border-[#fdf8f8] shadow-lg group/btn cursor-pointer bg-[#f1edec]"
+                className="absolute -bottom-8 -right-8 z-20 w-[160px] h-[105px] rounded-md overflow-hidden border-[3px] border-[#fdf8f8] group/btn cursor-pointer bg-[#f1edec]"
                 title="Next Category"
               >
                 <Image
@@ -215,10 +215,10 @@ export function CollectionsSlider() {
         <Slider ref={mobileSliderRef} {...mobileSettings}>
           {CATALOG_CATEGORIES.map((category, index) => (
             <div key={category.slug} className="px-3 py-1 flex w-full">
-              <article className="group flex flex-col gap-5 bg-[#f7f3f2]/40 p-5 rounded-xl border border-[#c4c7c7]/20 w-full min-h-[440px] justify-between">
+              <article className="group flex flex-col gap-5 bg-[#f7f3f2]/40 p-5 rounded-xl border border-[#c4c7c7]/50 w-full min-h-[440px] justify-between">
                 <div className="flex flex-col gap-4">
                   {/* Category Image - Reduced size with 4/3 aspect ratio */}
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-[#c4c7c7]/20 bg-[#f1edec]">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-[#c4c7c7]/50 bg-[#f1edec]">
                     <Image
                       alt={category.name}
                       className="object-cover"
@@ -245,7 +245,7 @@ export function CollectionsSlider() {
                 </div>
 
                 {/* Explore button */}
-                <div className="pt-4 border-t border-[#c4c7c7]/20">
+                <div className="pt-4 border-t border-[#c4c7c7]/50">
                   <Link
                     className="inline-flex items-center gap-2 text-[12px] font-semibold text-[#1c1b1b] uppercase tracking-widest hover:text-[#5d5f5f] group font-hanken-grotesk"
                     href="/products"
