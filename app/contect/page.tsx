@@ -7,7 +7,7 @@ export default function ContectPage() {
   const mapDirectionsUrl = "https://maps.google.com/?q=Decorium+Studio+Indiranagar+Bengaluru";
 
   return (
-    <main className="flex-grow w-full bg-background text-on-surface antialiased relative pt-[110px] md:pt-[140px]">
+    <main className="flex-grow w-full bg-[#fdf8f8] text-[#1c1b1b] antialiased relative pt-[110px] md:pt-[140px]">
       
       {/* ========================================================================= */}
       {/* DESKTOP LAYOUT (md and up)                                                */}

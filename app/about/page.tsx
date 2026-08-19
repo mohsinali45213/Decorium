@@ -32,7 +32,7 @@ export default function AboutPage() {
             WHAT WE BELIEVE
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mt-8 group/container">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 group/container">
           {/* Column 1 */}
           <div className="flex flex-col text-left transition-all duration-500 group-hover/container:opacity-40 hover:!opacity-100 hover:-translate-y-1 cursor-default">
             <span className="font-label-caps text-label-caps-sm text-[#5d5f5f] uppercase tracking-widest mb-3 block">01 / Curation</span>
@@ -61,50 +61,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* Sourcing Story / Origin Section */}
-      <section className="bg-[#fdf8f8] py-16 md:py-24 px-navbar-px max-w-[1440px] mx-auto border-t border-[#c4c7c7]/65 relative z-20 text-left">
-        <div className="mb-12">
-          <span className="font-label-caps text-label-caps-sm text-[#5d5f5f] uppercase tracking-widest block mb-3">
-            MATERIAL ORIGIN
-          </span>
-          <h2 className="font-raleway text-headline-lg text-[#1c1b1b] uppercase font-light tracking-wide">
-            FROM QUARRY TO SPACE
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center mt-8">
-          {/* Left Column: Image Frame */}
-          <div className="col-span-1 md:col-span-6 aspect-[4/3] md:aspect-[16/11] relative overflow-hidden rounded-lg bg-[#f1edec] border border-[#c4c7c7]/30">
-            <Image
-              alt="Raw marble quarry and premium natural blocks"
-              className="object-cover"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85"
-            />
-          </div>
-
-          {/* Right Column: Text & Details */}
-          <div className="col-span-1 md:col-span-6 flex flex-col justify-center">
-            <p className="font-body-md text-body-md text-[#5d5f5f] leading-relaxed mb-8">
-              We travel directly to the historical quarries of Carrara, Tuscany, and beyond to hand-select blocks of extraordinary character. Each slab is sliced and polished using state-of-the-art precision technology, preserving the raw, organic poetry written in natural stone over millennia.
-            </p>
-
-            <div className="grid grid-cols-2 gap-8 border-t border-[#c4c7c7]/30 pt-8">
-              <div>
-                <span className="font-label-caps text-[9px] text-[#5d5f5f] uppercase tracking-widest mb-1.5 block">01 / Provenance</span>
-                <h4 className="font-raleway text-body-md font-normal text-[#1c1b1b] uppercase">Tuscany & Italy</h4>
-              </div>
-              <div>
-                <span className="font-label-caps text-[9px] text-[#5d5f5f] uppercase tracking-widest mb-1.5 block">02 / Slabs Sizing</span>
-                <h4 className="font-raleway text-body-md font-normal text-[#1c1b1b] uppercase">Up to 3200mm</h4>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Product Index / Our World Section */}
       <section className="bg-[#fdf8f8] py-16 md:py-24 px-navbar-px max-w-[1440px] mx-auto border-t border-[#c4c7c7]/65 relative z-20 text-left">
         <div className="mb-12">
@@ -115,7 +71,7 @@ export default function AboutPage() {
             OUR WORLD
           </h2>
         </div>
-        <div className="grid grid-cols-2 md:flex md:flex-row gap-4 md:gap-6 mt-8 w-full h-auto md:h-[500px]">
+        <div className="grid grid-cols-2 md:flex md:flex-row gap-4 md:gap-6 w-full h-auto md:h-[500px]">
           {/* Category 1 */}
           <Link href="/products" className="group relative rounded-lg overflow-hidden border border-[#c4c7c7]/30 transition-all duration-500 h-[200px] md:h-full md:flex-1 md:hover:flex-[2.5]">
             <Image
