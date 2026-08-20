@@ -380,8 +380,8 @@ export function AdminDataTable<T extends { _id: string; name: string }>({
                 onClick={() => setCurrentPage(page)}
                 className={`size-8 rounded-lg flex items-center justify-center transition-colors ${
                   currentPage === page
-                    ? "bg-[#1c1b1b] !text-white dark:!bg-[#f4f0ef] dark:!text-[#000000] font-semibold shadow-xs"
-                    : "hover:bg-[#f1edec] dark:hover:bg-[#252525] text-[#5d5f5f] dark:text-[#8e8e8e] dark:hover:text-[#f4f0ef]"
+                    ? "bg-[#1c1b1b] !text-white dark:!bg-[#f4f0ef] dark:!text-[#000000] font-semibold shadow-xs border border-[#1c1b1b] dark:border-[#f4f0ef]"
+                    : "border border-[#c4c7c7]/40 dark:border-[#2e2e2e] hover:bg-[#f1edec] dark:hover:bg-[#252525] hover:border-[#1c1b1b] dark:hover:border-[#f4f0ef] text-[#5d5f5f] dark:text-[#8e8e8e] dark:hover:text-[#f4f0ef]"
                 }`}
               >
                 {page}

@@ -18,50 +18,20 @@
 }
 
 /* ========================================================================= */
-/* GLOBAL DYNAMIC FONT COLOR ENGINE                                          */
-/* Overrides hardcoded text utilities to ensure 100% text color dynamism     */
+/* GLOBAL THEME FONT & COLOR BASE ENGINE                                     */
 /* ========================================================================= */
-
 body {
   color: var(--theme-font-color);
   transition: color var(--theme-transition-duration) var(--theme-transition-timing), background-color var(--theme-transition-duration) var(--theme-transition-timing);
 }
 
-/* Primary text & headings */
-h1, h2, h3, h4, h5, h6,
-.text-headline-lg,
-.text-headline-md,
-.text-display-lg,
-.font-wordmark,
-.text-primary,
-.text-on-surface {
+h1, h2, h3, h4, h5, h6 {
   color: var(--theme-font-color);
   transition: color var(--theme-transition-duration) var(--theme-transition-timing);
-}
-
-/* Subtitles & secondary text */
-.text-body-lg,
-.text-body-md,
-.text-body-sm {
-  color: var(--theme-font-color);
-  transition: color var(--theme-transition-duration) var(--theme-transition-timing);
-}
-
-/* Muted / Secondary labels and eyebrow tags */
-.text-secondary,
-.text-on-surface-variant {
-  color: var(--theme-font-muted);
-  transition: color var(--theme-transition-duration) var(--theme-transition-timing);
-}
-
-/* Preserve pure white text on image overlays and badges */
-.text-white,
-.text-white * {
-  color: #ffffff;
 }
 
 /* ========================================================================= */
-/* DEDICATED NAVBAR CATEGORY CARD HOVER ENGINE                               */
+/* NAVBAR CATEGORY CARD HOVER ENGINE                                         */
 /* ========================================================================= */
 .category-card {
   transition: var(--theme-transition);
@@ -75,28 +45,28 @@ h1, h2, h3, h4, h5, h6,
 
 /* Light Mode Hover: Dark Card Background + White Text & Icon */
 .category-card:hover {
-  background-color: #1c1b1b ;
-  border-color: #1c1b1b ;
+  background-color: #1c1b1b;
+  border-color: #1c1b1b;
 }
 
 .category-card:hover small,
 .category-card:hover span,
 .category-card:hover svg {
-  color: #ffffff ;
-  stroke: #ffffff ;
+  color: #ffffff;
+  stroke: #ffffff;
 }
 
 /* Dark Mode Hover: Light Card Background + Black Text & Icon */
 .dark .category-card:hover {
-  background-color: #f4f0ef ;
-  border-color: #f4f0ef ;
+  background-color: #f4f0ef;
+  border-color: #f4f0ef;
 }
 
 .dark .category-card:hover small,
 .dark .category-card:hover span,
 .dark .category-card:hover svg {
-  color: #000000 ;
-  stroke: #000000 ;
+  color: #000000;
+  stroke: #000000;
 }
 
 /* Hero Slick Slider Full Height */
@@ -105,9 +75,12 @@ h1, h2, h3, h4, h5, h6,
 .hero-slick-slider .slick-track,
 .hero-slick-slider .slick-slide,
 .hero-slick-slider .slick-slide > div {
-  height: 100% ;
+  height: 100%;
 }
 
+/* ========================================================================= */
+/* TAILWIND V4 THEME CONFIGURATION                                          */
+/* ========================================================================= */
 @theme {
   --default-transition-duration: var(--theme-transition-duration);
   --default-transition-timing-function: var(--theme-transition-timing);
@@ -115,83 +88,20 @@ h1, h2, h3, h4, h5, h6,
   --font-hanken-grotesk: var(--font-hanken-grotesk);
   --font-raleway: var(--font-raleway);
 
-  /* Custom fluid typography */
+  /* Fluid Typography & Spacing */
   --font-size-wordmark: clamp(23px, calc((32 / 1920) * 100vw), 32px);
   --font-size-menu-item: clamp(56px, calc((96 / 1920) * 100vw), 96px);
   --line-height-menu-item: clamp(62px, calc((106 / 1920) * 100vw), 106px);
 
-  /* Custom fluid spacing */
   --spacing-navbar-px: clamp(24px, calc((64 / 1920) * 100vw), 64px);
   --spacing-navbar-h: clamp(68px, calc((80 / 1920) * 100vw), 80px);
   --spacing-categories-px: clamp(32px, calc((64 / 1920) * 100vw), 64px);
   --spacing-categories-py: clamp(24px, calc((48 / 1920) * 100vw), 48px);
   --spacing-showcase-py: clamp(40px, calc((80 / 1920) * 100vw), 80px);
 
-  /* Custom theme colors from Stitch design system */
-  --color-surface-variant: #e5e2e1;
-  --color-on-surface: var(--theme-font-color);
-  --color-inverse-surface: #313030;
-  --color-on-error: #ffffff;
-  --color-surface-container: #f1edec;
-  --color-on-secondary-container: #606161;
-  --color-on-tertiary-container: #838483;
-  --color-primary-fixed-dim: #c8c6c5;
-  --color-on-secondary: #ffffff;
-  --color-surface-container-highest: #e5e2e1;
-  --color-surface-container-low: #f7f3f2;
-  --color-on-primary-container: #858383;
-  --color-tertiary-container: #1a1c1b;
-  --color-primary-fixed: #e5e2e1;
-  --color-inverse-on-surface: #f4f0ef;
-  --color-on-background: var(--theme-font-color);
-  --color-on-primary: #ffffff;
-  --color-on-secondary-fixed-variant: #454747;
-  --color-surface-container-high: #ebe7e6;
-  --color-primary-container: #1c1b1b;
-  --color-secondary: var(--theme-font-muted);
-  --color-tertiary-fixed-dim: #c6c7c5;
-  --color-secondary-container: #dddddd;
-  --color-inverse-primary: #c8c6c5;
-  --color-background: #fdf8f8;
-  --color-on-tertiary-fixed: #1a1c1b;
-  --color-surface-tint: #5f5e5e;
-  --color-secondary-fixed: #e2e2e2;
-  --color-secondary-fixed-dim: #c6c6c6;
-  --color-outline-variant: #c4c7c7;
-  --color-outline: #747878;
-  --color-on-tertiary-fixed-variant: #454746;
-  --color-on-primary-fixed: var(--theme-font-color);
-  --color-surface-container-lowest: #ffffff;
-  --color-on-primary-fixed-variant: #474646;
-  --color-error: #ba1a1a;
-  --color-tertiary-fixed: #e2e3e1;
-  --color-on-secondary-fixed: #1a1c1c;
-  --color-error-container: #ffdad6;
-  --color-on-tertiary: #ffffff;
-  --color-primary: var(--theme-font-color);
-  --color-surface-dim: #ddd9d8;
   --color-surface: #fdf8f8;
-  --color-on-surface-variant: var(--theme-font-muted);
-  --color-on-error-container: #93000a;
-  --color-tertiary: #000000;
-  --color-surface-bright: #fdf8f8;
-
-  /* Custom fonts */
-  --font-headline-md: var(--font-raleway);
-  --font-headline-lg: var(--font-raleway);
-  --font-body-md: var(--font-hanken-grotesk);
-  --font-body-lg: var(--font-hanken-grotesk);
-  --font-label-caps: var(--font-hanken-grotesk);
-  --font-nav-link: var(--font-hanken-grotesk);
-  --font-display-lg: var(--font-raleway);
-  --font-display-lg-mobile: var(--font-raleway);
-
-  /* Custom spacing metrics */
-  --spacing-gutter: 24px;
-  --spacing-container-max: 1440px;
-  --spacing-margin-desktop: 64px;
-  --spacing-margin-mobile: 24px;
-  --spacing-section-gap: 128px;
+  --color-on-surface: var(--theme-font-color);
+  --color-secondary: var(--theme-font-muted);
 }
 
 @utility text-display-lg {
@@ -239,11 +149,160 @@ h1, h2, h3, h4, h5, h6,
   letter-spacing: 0.2em;
   font-weight: 600;
 }
-@utility text-nav-link {
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: 0.05em;
-  font-weight: 500;
+
+/* ========================================================================= */
+/* UNIFIED LUXURY BUTTON HOVER & ICON SHIFT SYSTEM                          */
+/* ========================================================================= */
+.btn-luxury {
+  position: relative;
+  overflow: hidden;
+  transition: var(--theme-transition);
+}
+
+.btn-luxury span,
+.btn-luxury svg {
+  transition: var(--theme-transition);
+}
+
+.btn-luxury:hover {
+  transform: scale(1.02);
+}
+
+.btn-luxury:hover svg:last-child:not(:first-child),
+.btn-luxury:hover svg.btn-icon-right {
+  transform: translateX(4px);
+}
+
+.btn-luxury:hover svg:first-child:not(:last-child),
+.btn-luxury:hover svg.btn-icon-left {
+  transform: none;
+}
+
+/* Primary Filled Buttons */
+.btn-luxury-primary {
+  background-color: #1c1b1b;
+  color: #ffffff;
+  border: 1px solid #1c1b1b;
+}
+
+.btn-luxury-primary span,
+.btn-luxury-primary svg {
+  color: #ffffff;
+  stroke: #ffffff;
+}
+
+.dark .btn-luxury-primary {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ffffff;
+}
+
+.dark .btn-luxury-primary span,
+.dark .btn-luxury-primary svg {
+  color: #000000;
+  stroke: #000000;
+}
+
+.btn-luxury-primary:hover {
+  background-color: #3b3a3a;
+  border-color: #3b3a3a;
+}
+
+.dark .btn-luxury-primary:hover {
+  background-color: #e5e0df;
+  border-color: #e5e0df;
+}
+
+/* Outline Buttons */
+.btn-luxury-outline {
+  background-color: transparent;
+  color: #1c1b1b;
+  border: 1px solid #1c1b1b;
+}
+
+.btn-luxury-outline span,
+.btn-luxury-outline svg {
+  color: #1c1b1b;
+  stroke: #1c1b1b;
+}
+
+.dark .btn-luxury-outline {
+  background-color: transparent;
+  color: #f4f0ef;
+  border: 1px solid #f4f0ef;
+}
+
+.dark .btn-luxury-outline span,
+.dark .btn-luxury-outline svg {
+  color: #f4f0ef;
+  stroke: #f4f0ef;
+}
+
+.btn-luxury-outline:hover {
+  background-color: #1c1b1b;
+  color: #ffffff;
+}
+
+.btn-luxury-outline:hover span,
+.btn-luxury-outline:hover svg {
+  color: #ffffff;
+  stroke: #ffffff;
+}
+
+.dark .btn-luxury-outline:hover {
+  background-color: #f4f0ef;
+  color: #000000;
+}
+
+.dark .btn-luxury-outline:hover span,
+.dark .btn-luxury-outline:hover svg {
+  color: #000000;
+  stroke: #000000;
+}
+
+/* Icon Buttons */
+.btn-luxury-icon {
+  transition: var(--theme-transition);
+  color: #1c1b1b;
+}
+
+.btn-luxury-icon svg {
+  color: #1c1b1b;
+  stroke: #1c1b1b;
+  transition: var(--theme-transition);
+}
+
+.dark .btn-luxury-icon {
+  color: #f4f0ef;
+}
+
+.dark .btn-luxury-icon svg {
+  color: #f4f0ef;
+  stroke: #f4f0ef;
+}
+
+.btn-luxury-icon:hover {
+  transform: scale(1.05);
+  background-color: #1c1b1b;
+  border-color: #1c1b1b;
+  color: #ffffff;
+}
+
+.btn-luxury-icon:hover svg {
+  color: #ffffff;
+  stroke: #ffffff;
+}
+
+.dark .btn-luxury-icon:hover {
+  transform: scale(1.05);
+  background-color: #f4f0ef;
+  border-color: #f4f0ef;
+  color: #000000;
+}
+
+.dark .btn-luxury-icon:hover svg {
+  color: #000000;
+  stroke: #000000;
 }
 
 /* Left vertical line indicator hover effect */
@@ -265,255 +324,40 @@ h1, h2, h3, h4, h5, h6,
 }
 .h-bar-indicator:hover {
   padding-left: 12px;
-  color: var(--theme-font-color) ;
+  color: var(--theme-font-color);
 }
 .h-bar-indicator:hover::before {
   height: 100%;
 }
 .h-bar-indicator.active-nav-bar {
   padding-left: 12px;
-  color: var(--theme-font-color) ;
+  color: var(--theme-font-color);
 }
 .h-bar-indicator.active-nav-bar::before {
   height: 100%;
 }
 
-/* Dynamic button hover accent */
-.btn-accent-hover {
-  transition: var(--theme-transition);
-}
-
-.btn-accent-hover:hover {
-  background-color: var(--theme-font-color) ;
-  border-color: var(--theme-font-color) ;
-  color: #ffffff ;
-}
-
-.dark .btn-accent-hover:hover {
-  background-color: var(--theme-font-color) ;
-  border-color: var(--theme-font-color) ;
-  color: #121212 ;
-}
-
-/* ========================================================================= */
-/* UNIFIED LUXURY BUTTON HOVER & ICON SHIFT SYSTEM                          */
-/* ========================================================================= */
-
-.btn-luxury {
-  position: relative;
-  overflow: hidden;
-  transition: var(--theme-transition);
-}
-
-.btn-luxury span {
-  transition: var(--theme-transition);
-}
-
-.btn-luxury svg {
-  transition: var(--theme-transition);
-}
-
-.btn-luxury:hover {
-  transform: scale(1.02);
-}
-
-/* Move icon right on hover ONLY for right-side icons */
-.btn-luxury:hover svg:last-child:not(:first-child),
-.btn-luxury:hover svg.btn-icon-right {
-  transform: translateX(4px);
-}
-
-/* Left icons (icon first then text) NEVER move on hover */
-.btn-luxury:hover svg:first-child:not(:last-child),
-.btn-luxury:hover svg.btn-icon-left {
-  transform: none ;
-}
-
-.btn-luxury:active {
-  transform: none;
-}
-
-/* Primary Filled Buttons */
-.btn-luxury-primary {
-  background-color: #1c1b1b ;
-  color: #ffffff ;
-  border: 1px solid #1c1b1b ;
-}
-
-.btn-luxury-primary span,
-.btn-luxury-primary svg {
-  color: #ffffff ;
-  stroke: #ffffff ;
-}
-
-.dark .btn-luxury-primary {
-  background-color: #ffffff ;
-  color: #000000 ;
-  border: 1px solid #ffffff ;
-}
-
-.dark .btn-luxury-primary span,
-.dark .btn-luxury-primary svg {
-  color: #000000 ;
-  stroke: #000000 ;
-}
-
-.btn-luxury-primary:hover {
-  background-color: #3b3a3a ;
-  border-color: #3b3a3a ;
-  color: #ffffff ;
-  box-shadow: none ;
-}
-
-.btn-luxury-primary:hover span,
-.btn-luxury-primary:hover svg {
-  color: #ffffff ;
-  stroke: #ffffff ;
-}
-
-.dark .btn-luxury-primary:hover {
-  background-color: #e5e0df ;
-  border-color: #e5e0df ;
-  color: #000000 ;
-  box-shadow: none ;
-}
-
-.dark .btn-luxury-primary:hover span,
-.dark .btn-luxury-primary:hover svg {
-  color: #000000 ;
-  stroke: #000000 ;
-}
-
-/* Outline Buttons */
-.btn-luxury-outline {
-  background-color: transparent ;
-  color: #1c1b1b ;
-  border: 1px solid #1c1b1b ;
-}
-
-.btn-luxury-outline span,
-.btn-luxury-outline svg {
-  color: #1c1b1b ;
-  stroke: #1c1b1b ;
-}
-
-.dark .btn-luxury-outline {
-  background-color: transparent ;
-  color: #f4f0ef ;
-  border: 1px solid #f4f0ef ;
-}
-
-.dark .btn-luxury-outline span,
-.dark .btn-luxury-outline svg {
-  color: #f4f0ef ;
-  stroke: #f4f0ef ;
-}
-
-.btn-luxury-outline:hover {
-  background-color: #1c1b1b ;
-  color: #ffffff ;
-  box-shadow: none ;
-}
-
-.btn-luxury-outline:hover span,
-.btn-luxury-outline:hover svg {
-  color: #ffffff ;
-  stroke: #ffffff ;
-}
-
-.dark .btn-luxury-outline:hover {
-  background-color: #f4f0ef ;
-  color: #121212 ;
-  box-shadow: none ;
-}
-
-.dark .btn-luxury-outline:hover span,
-.dark .btn-luxury-outline:hover svg {
-  color: #121212 ;
-  stroke: #121212 ;
-}
-
-/* Icon & Circular Buttons */
-.btn-luxury-icon {
-  transition: var(--theme-transition);
-  color: #1c1b1b ;
-}
-
-.btn-luxury-icon svg {
-  color: #1c1b1b ;
-  stroke: #1c1b1b ;
-  transition: var(--theme-transition);
-}
-
-.dark .btn-luxury-icon {
-  color: #f4f0ef ;
-}
-
-.dark .btn-luxury-icon svg {
-  color: #f4f0ef ;
-  stroke: #f4f0ef ;
-}
-
-.btn-luxury-icon:hover {
-  transform: scale(1.05);
-  background-color: #1c1b1b ;
-  border-color: #1c1b1b ;
-  color: #ffffff ;
-  box-shadow: none ;
-}
-
-.btn-luxury-icon:hover svg {
-  color: #ffffff ;
-  stroke: #ffffff ;
-}
-
-.dark .btn-luxury-icon:hover {
-  transform: scale(1.05);
-  background-color: #f4f0ef ;
-  border-color: #f4f0ef ;
-  color: #121212 ;
-  box-shadow: none ;
-}
-
-.dark .btn-luxury-icon:hover svg {
-  color: #121212 ;
-  stroke: #121212 ;
-  transform: none ;
-}
-
-/* Dynamic link hover accent */
-.link-accent-hover {
-  transition: var(--theme-transition);
-}
-
-.link-accent-hover:hover {
-  color: var(--theme-font-color) ;
-}
-
-/* ========================================================================= */
-/* FLOATING ACTION BUTTON BASE STYLES                                        */
-/* ========================================================================= */
-
+/* Floating Action Button Reverse Theme */
 .btn-floating-reverse {
-  background-color: #1c1b1b ;
-  border-color: #1c1b1b ;
-  color: #ffffff ;
+  background-color: #1c1b1b;
+  border-color: #1c1b1b;
+  color: #ffffff;
 }
 
 .btn-floating-reverse span,
 .btn-floating-reverse svg {
-  color: #ffffff ;
-  stroke: #ffffff ;
+  color: #ffffff;
+  stroke: #ffffff;
 }
 
 .dark .btn-floating-reverse {
-  background-color: #ffffff ;
-  border-color: #ffffff ;
-  color: #121212 ;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #121212;
 }
 
 .dark .btn-floating-reverse span,
 .dark .btn-floating-reverse svg {
-  color: #121212 ;
-  stroke: #121212 ;
+  color: #121212;
+  stroke: #121212;
 }

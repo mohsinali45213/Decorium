@@ -1,16 +1,23 @@
+"use client";
+
 import type { ReactNode } from "react";
 import { AdminSidebar } from "@/components/AdminSidebar";
 import { AdminNavbar } from "@/components/AdminNavbar";
+import { AdminSidebarProvider, useAdminSidebar } from "@/components/admin/AdminSidebarContext";
 
-export default function AdminLayout({ children }: { children: ReactNode }) {
+function AdminLayoutContent({ children }: { children: ReactNode }) {
+  const { isCollapsed } = useAdminSidebar();
+
   return (
     <div className="min-h-screen w-full bg-[#fdf8f8] dark:bg-[#121212] text-[#1c1b1b] dark:text-[#f4f0ef] antialiased transition-colors duration-300 ease-in-out font-hanken-grotesk select-none flex">
       
       {/* Reusable Fixed Left Admin Sidebar Navigation */}
       <AdminSidebar />
 
-      {/* Main Content Area */}
-      <div className="pl-64 flex-1 flex flex-col min-h-screen">
+      {/* Main Content Area: Smooth Padding Transition */}
+      <div className={`flex-1 flex flex-col min-h-screen transition-[padding] duration-300 ease-in-out ${
+        isCollapsed ? "pl-16" : "pl-64"
+      }`}>
         
         {/* Reusable Sticky Top Admin Navbar Header */}
         <AdminNavbar />
@@ -22,5 +29,13 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 
       </div>
     </div>
+  );
+}
+
+export default function AdminLayout({ children }: { children: ReactNode }) {
+  return (
+    <AdminSidebarProvider>
+      <AdminLayoutContent>{children}</AdminLayoutContent>
+    </AdminSidebarProvider>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowUpRight, ArrowRight, Compass } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -148,16 +148,14 @@ export default function ContectPage() {
               />
             </div>
             
-            <div className="flex justify-between items-end gap-6 flex-wrap mt-4">
+            <div className="flex justify-center items-center w-full mt-6">
               <Button
                 href={mapDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="outline"
                 size="lg"
-                icon={Compass}
-                iconPosition="right"
-                className="tracking-widest"
+                className="tracking-widest px-12 py-4"
               >
                 GET DIRECTIONS
               </Button>
@@ -259,18 +257,18 @@ export default function ContectPage() {
             />
           </div>
 
-          <Button
-            href={mapDirectionsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="outline"
-            size="lg"
-            icon={Compass}
-            iconPosition="right"
-            className="w-full tracking-widest"
-          >
-            GET DIRECTIONS
-          </Button>
+          <div className="flex justify-center items-center w-full">
+            <Button
+              href={mapDirectionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="outline"
+              size="lg"
+              className="w-full tracking-widest text-center justify-center"
+            >
+              GET DIRECTIONS
+            </Button>
+          </div>
         </section>
       </div>
 
