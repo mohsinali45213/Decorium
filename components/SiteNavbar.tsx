@@ -308,9 +308,6 @@ export function SiteNavbar() {
                           type="button"
                           onClick={() => setPreviewRoute("/products")}
                         >
-                          <span className="font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] w-6">
-                            {link.number}
-                          </span>
                           <span
                             className={`text-headline-md uppercase transition-all duration-300 flex items-center gap-1.5 ${
                               selected ? "text-[#1c1b1b] dark:text-[#f4f0ef]" : "text-[#1c1b1b]/50 dark:text-[#f4f0ef]/50"
