@@ -297,6 +297,25 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
 
   // ── Furniture ───────────────────────────────────────
   {
+    _id: 'prod-f-0',
+    name: 'Travertine Dining Table',
+    slug: 'travertine-dining-table',
+    categorySlug: 'furniture',
+    categoryName: 'Bespoke Architectural Furniture',
+    subCategorySlug: 'marble-dining',
+    subCategoryName: 'Marble Dining Tables',
+    brand: 'Natural Travertine',
+    coverImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCDzGddr0qqC3EXNyp0HZB25tJS0nKe8qzUwBUD_8eB3-aAciGXAEoRgm7bUbLq8RNUFPb5bX5QLjYyKZIICYYg8pUSu1kWftV4O-t62sdddHryY7Wg-zF8tklxzDiZ66VF4-lEPZH00xQqleLTGd9vfNmarlLnEim8kOHTTCOHJd2W5i06nsdtEy9vAmHqbovFtA6FTGyOy764JNX1YmMM6XWMg2-FkuBoUfFenVgWpIk-U68yrKcI',
+    spec: 'Natural Travertine',
+    origin: 'Italy',
+    isFeatured: true,
+    isActive: true,
+    description: 'A sculptural dining table crafted from solid natural travertine. Its design combines the organic, porous character of the stone with a refined, modern silhouette. The monolithic pedestal base provides substantial visual weight, while the honed top offers a smooth, tactile surface for gathering.',
+    variants: [
+      { sku: 'TRAV-TAB-220', size: '220 x 100 x 75 cm', finish: 'Honed Natural', price: 125000, showPriceOnWebsite: true, unit: 'piece' },
+    ],
+  },
+  {
     _id: 'prod-f-1',
     name: 'Monolithic Travertine 8-Seater Dining Table',
     slug: 'monolithic-travertine-8-seater-dining-table',

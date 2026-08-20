@@ -34,14 +34,14 @@ export function FloatingActions() {
       className="fixed bottom-6 right-6 z-40 flex flex-col gap-3 items-center"
     >
       <AnimatePresence>
-        {/* Scroll to Top Button (Appears on scroll with Framer Motion) */}
+        {/* Scroll to Top Button (Appears smoothly on scroll) */}
         {showScrollTop && (
           <motion.div
             key="scroll-top-btn"
-            initial={{ opacity: 0, scale: 0.5, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.5, y: 10 }}
-            transition={{ duration: 0.25 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.2 }}
           >
             <Button
               variant="icon"
@@ -63,7 +63,6 @@ export function FloatingActions() {
         aria-label="Call concierge"
         icon={Phone}
         className="size-11 rounded-full btn-floating-reverse shadow-lg"
-        style={{ animationDelay: "0.4s" }}
       />
 
       {/* WhatsApp Floating Button */}
@@ -76,7 +75,6 @@ export function FloatingActions() {
         aria-label="Chat on WhatsApp"
         icon={MessageCircle}
         className="size-11 rounded-full btn-floating-reverse shadow-lg"
-        style={{ animationDelay: "0s" }}
       />
     </aside>
   );

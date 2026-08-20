@@ -276,16 +276,19 @@ small {
 .btn-luxury {
   position: relative;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform;
+  transition: background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.btn-luxury span {
+  transition: color 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
 .btn-luxury svg {
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s cubic-bezier(0.25, 1, 0.5, 1), stroke 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
 .btn-luxury:hover {
-  transform: translateY(-2px);
+  transform: none;
 }
 
 .btn-luxury:hover svg {
@@ -293,10 +296,9 @@ small {
 }
 
 .btn-luxury:active {
-  transform: translateY(0);
+  transform: none;
 }
 
-/* Primary Filled Buttons */
 /* Primary Filled Buttons */
 .btn-luxury-primary {
   background-color: #1c1b1b !important;
@@ -326,7 +328,7 @@ small {
   background-color: #3b3a3a !important;
   border-color: #3b3a3a !important;
   color: #ffffff !important;
-  box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.25);
+  box-shadow: none !important;
 }
 
 .btn-luxury-primary:hover span,
@@ -339,7 +341,7 @@ small {
   background-color: #e5e0df !important;
   border-color: #e5e0df !important;
   color: #000000 !important;
-  box-shadow: 0 6px 20px -4px rgba(255, 255, 255, 0.2);
+  box-shadow: none !important;
 }
 
 .dark .btn-luxury-primary:hover span,
@@ -376,7 +378,7 @@ small {
 .btn-luxury-outline:hover {
   background-color: #1c1b1b !important;
   color: #ffffff !important;
-  box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.2);
+  box-shadow: none !important;
 }
 
 .btn-luxury-outline:hover span,
@@ -388,7 +390,7 @@ small {
 .dark .btn-luxury-outline:hover {
   background-color: #f4f0ef !important;
   color: #121212 !important;
-  box-shadow: 0 6px 20px -4px rgba(255, 255, 255, 0.2);
+  box-shadow: none !important;
 }
 
 .dark .btn-luxury-outline:hover span,
@@ -399,14 +401,14 @@ small {
 
 /* Icon & Circular Buttons */
 .btn-luxury-icon {
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
   color: #1c1b1b !important;
 }
 
 .btn-luxury-icon svg {
   color: #1c1b1b !important;
   stroke: #1c1b1b !important;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s cubic-bezier(0.25, 1, 0.5, 1), stroke 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
 .dark .btn-luxury-icon {
@@ -419,28 +421,31 @@ small {
 }
 
 .btn-luxury-icon:hover {
-  transform: scale(1.08);
+  transform: none !important;
   background-color: #1c1b1b !important;
   border-color: #1c1b1b !important;
   color: #ffffff !important;
+  box-shadow: none !important;
 }
 
 .btn-luxury-icon:hover svg {
   color: #ffffff !important;
   stroke: #ffffff !important;
-  transform: scale(1.1);
+  transform: none !important;
 }
 
 .dark .btn-luxury-icon:hover {
+  transform: none !important;
   background-color: #f4f0ef !important;
   border-color: #f4f0ef !important;
   color: #121212 !important;
+  box-shadow: none !important;
 }
 
 .dark .btn-luxury-icon:hover svg {
   color: #121212 !important;
   stroke: #121212 !important;
-  transform: scale(1.1);
+  transform: none !important;
 }
 
 /* Dynamic link hover accent */
@@ -457,7 +462,6 @@ small {
 /* ========================================================================= */
 
 .btn-floating-reverse {
-  position: relative !important;
   background-color: #1c1b1b !important;
   border-color: #1c1b1b !important;
   color: #ffffff !important;
@@ -467,8 +471,6 @@ small {
 .btn-floating-reverse svg {
   color: #ffffff !important;
   stroke: #ffffff !important;
-  position: relative !important;
-  z-index: 10 !important;
 }
 
 .dark .btn-floating-reverse {
@@ -481,66 +483,4 @@ small {
 .dark .btn-floating-reverse svg {
   color: #121212 !important;
   stroke: #121212 !important;
-}
-
-/* ::before pseudo-element: Expanding Sonar Ripple Wave */
-.btn-floating-reverse::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 9999px;
-  border: 2px solid #1c1b1b;
-  opacity: 0;
-  animation: float-sonar-wave 2.8s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.dark .btn-floating-reverse::before {
-  border-color: #ffffff;
-}
-
-/* ::after pseudo-element: Soft Glowing Aura Pulse */
-.btn-floating-reverse::after {
-  content: "";
-  position: absolute;
-  inset: -6px;
-  border-radius: 9999px;
-  background: radial-gradient(circle, rgba(28, 27, 27, 0.35) 0%, rgba(28, 27, 27, 0) 70%);
-  opacity: 0;
-  animation: float-aura-pulse 2.8s infinite ease-in-out;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.dark .btn-floating-reverse::after {
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
-}
-
-/* Keyframes for ::before sonar wave expansion */
-@keyframes float-sonar-wave {
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  75% {
-    transform: scale(1.65);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1.65);
-    opacity: 0;
-  }
-}
-
-/* Keyframes for ::after aura glow breathing */
-@keyframes float-aura-pulse {
-  0%, 100% {
-    transform: scale(0.9);
-    opacity: 0.2;
-  }
-  50% {
-    transform: scale(1.25);
-    opacity: 0.7;
-  }
 }
