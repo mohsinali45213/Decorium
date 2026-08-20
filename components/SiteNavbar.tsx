@@ -1,10 +1,10 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, MessageCircle, Phone, X } from "lucide-react";
+import { ArrowRight, MessageCircle, Phone, Search, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { CATALOG_CATEGORIES } from "@/lib/catalogData";
@@ -81,14 +81,30 @@ function ScrollLock() {
 
 export function SiteNavbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [siteSearchQuery, setSiteSearchQuery] = useState("");
   const [previewRoute, setPreviewRoute] = useState<MenuRoute>("/");
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     if (isOpen) {
       setPreviewRoute(links.find((link) => link.href === pathname)?.href ?? "/");
     }
   }, [isOpen, pathname]);
+
+  const handleSearchSubmit = (e?: React.FormEvent) => {
+    e?.preventDefault();
+    if (siteSearchQuery.trim()) {
+      router.push(`/products?search=${encodeURIComponent(siteSearchQuery.trim())}`);
+      setIsSearchOpen(false);
+    }
+  };
+
+  // Hide site navbar on admin portal routes
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   const wordmarkClass = "font-raleway text-[clamp(1.45rem,2.4vw,2rem)] font-normal leading-none tracking-[-0.075em] text-[#1c1b1b] dark:text-[#f4f0ef]";
 
@@ -102,8 +118,13 @@ export function SiteNavbar() {
         <div className="flex items-center gap-3 md:gap-5">
           <ThemeToggle />
 
-          <Button variant="icon" size="icon" aria-label="Search collections">
-            <svg aria-hidden="true" className="size-[18px] fill-none stroke-current stroke-[1.75]" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.25" /><path d="m16 16 4.25 4.25" strokeLinecap="round" /></svg>
+          <Button
+            variant="icon"
+            size="icon"
+            aria-label="Search collections"
+            onClick={() => setIsSearchOpen(true)}
+          >
+            <Search className="size-[18px]" strokeWidth={1.75} />
           </Button>
           
           <button className="font-raleway inline-flex items-center gap-2.5 text-[1rem] text-[#1c1b1b] dark:text-[#f4f0ef] uppercase hover:opacity-80 transition-opacity cursor-pointer" type="button" aria-expanded={isOpen} aria-controls="primary-navigation" onClick={() => setIsOpen(true)}>
@@ -112,6 +133,38 @@ export function SiteNavbar() {
           </button>
         </div>
       </div>
+
+      {/* Interactive Search Overlay Modal */}
+      <AnimatePresence>
+        {isSearchOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-x-0 top-0 z-[60] bg-[#fdf8f8]/95 dark:bg-[#121212]/95 border-b border-[#c4c7c7]/40 dark:border-[#2e2e2e] backdrop-blur-md px-6 py-6 shadow-2xl"
+          >
+            <form onSubmit={handleSearchSubmit} className="max-w-[1440px] mx-auto flex items-center gap-4">
+              <Search className="size-5 text-[#5d5f5f] dark:text-[#8e8e8e]" strokeWidth={1.75} />
+              <input
+                type="text"
+                autoFocus
+                value={siteSearchQuery}
+                onChange={(e) => setSiteSearchQuery(e.target.value)}
+                placeholder="Search products, materials, surfaces, collections... (Press Enter)"
+                className="flex-1 bg-transparent text-[#1c1b1b] dark:text-[#f4f0ef] placeholder-[#5d5f5f] dark:placeholder-[#8e8e8e] font-raleway text-body-lg text-headline-sm focus:outline-none uppercase tracking-wide"
+              />
+              <Button
+                variant="icon"
+                size="icon"
+                type="button"
+                aria-label="Close search"
+                onClick={() => setIsSearchOpen(false)}
+                icon={X}
+              />
+            </form>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {isOpen && (
@@ -195,7 +248,7 @@ export function SiteNavbar() {
                       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                         {CATALOG_CATEGORIES.map((category, index) => (
                           <Link
-                            className="group flex gap-4 rounded-lg border border-[#c4c7c7]/50 dark:border-[#2e2e2e] bg-[#fdf8f8] dark:bg-[#181818] p-3 transition-all duration-300 hover:-translate-y-1 hover:bg-[#1c1b1b] dark:hover:bg-[#f4f0ef] hover:border-[#1c1b1b] dark:hover:border-[#f4f0ef] hover:shadow-lg items-center"
+                            className="category-card group flex gap-4 rounded-lg border border-[#c4c7c7]/50 dark:border-[#2e2e2e] bg-[#fdf8f8] dark:bg-[#181818] p-3 transition-all duration-300 hover:-translate-y-1 items-center"
                             href="/products"
                             key={category.slug}
                             onClick={() => setIsOpen(false)}
@@ -211,10 +264,10 @@ export function SiteNavbar() {
                               />
                             </div>
                             <div className="flex flex-col flex-grow justify-between h-16 py-0.5 min-w-0">
-                              <small className="font-label-caps text-label-caps-sm text-[#5d5f5f] dark:text-[#8e8e8e] group-hover:text-white/70 dark:group-hover:text-[#121212]/70 transition-colors">0{index + 1}</small>
-                              <span className="flex items-end justify-between gap-3 font-raleway text-sm font-normal leading-tight tracking-[-0.02em] text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:text-white dark:group-hover:text-[#121212] transition-colors">
+                              <small className="font-label-caps text-label-caps-sm text-[#5d5f5f] dark:text-[#8e8e8e] group-hover:!text-white/80 dark:group-hover:!text-black/70 transition-colors">0{index + 1}</small>
+                              <span className="flex items-end justify-between gap-3 font-raleway text-sm font-normal leading-tight tracking-[-0.02em] text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:!text-white dark:group-hover:!text-black transition-colors">
                                 <span className="truncate">{category.name}</span>
-                                <ArrowRight aria-hidden="true" className="size-4 shrink-0 transition-transform group-hover:translate-x-1 text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:text-white dark:group-hover:text-[#121212]" strokeWidth={1.4} />
+                                <ArrowRight aria-hidden="true" className="size-4 shrink-0 transition-transform group-hover:translate-x-1 text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:!text-white dark:group-hover:!text-black" strokeWidth={1.4} />
                               </span>
                             </div>
                           </Link>
@@ -228,7 +281,7 @@ export function SiteNavbar() {
                       initial={{ opacity: 0 }} 
                       animate={{ opacity: 1 }} 
                       exit={{ opacity: 0 }} 
-                      transition={{ duration: 0.35 }}
+                      transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
                     >
                       <Image alt={previews[previewRoute].label} className="object-cover" fill sizes="50vw" src={previews[previewRoute].image} />
                       <div className="absolute inset-0 bg-black/20" />
@@ -305,7 +358,7 @@ export function SiteNavbar() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.25 }}
+                        transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
                       >
                         <div className="mb-4 flex items-end justify-between gap-4">
                           <div>
@@ -325,7 +378,7 @@ export function SiteNavbar() {
                         <div className="grid grid-cols-2 gap-2">
                           {CATALOG_CATEGORIES.map((category, index) => (
                             <Link
-                              className="group flex gap-2 rounded-md border border-[#c4c7c7]/40 dark:border-[#2e2e2e] bg-[#fdf8f8] dark:bg-[#1c1c1c] p-2 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1c1b1b] dark:hover:bg-[#f4f0ef] hover:border-[#1c1b1b] dark:hover:border-[#f4f0ef] hover:shadow-md items-center"
+                              className="category-card group flex gap-2 rounded-md border border-[#c4c7c7]/40 dark:border-[#2e2e2e] bg-[#fdf8f8] dark:bg-[#1c1c1c] p-2 shadow-sm transition-all duration-300 hover:-translate-y-0.5 items-center"
                               href="/products"
                               key={category.slug}
                               onClick={() => setIsOpen(false)}
@@ -341,10 +394,10 @@ export function SiteNavbar() {
                                 />
                               </div>
                               <div className="flex flex-col flex-grow justify-center min-h-10 min-w-0">
-                                <small className="font-label-caps text-[8px] text-[#5d5f5f] dark:text-[#8e8e8e] group-hover:text-white/70 dark:group-hover:text-[#121212]/70 transition-colors">0{index + 1}</small>
-                                <span className="flex items-end justify-between gap-1 font-raleway text-body-sm font-normal leading-[14px] text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:text-white dark:group-hover:text-[#121212] transition-colors min-w-0">
+                                <small className="font-label-caps text-[8px] text-[#5d5f5f] dark:text-[#8e8e8e] group-hover:!text-white/80 dark:group-hover:!text-black/70 transition-colors">0{index + 1}</small>
+                                <span className="flex items-end justify-between gap-1 font-raleway text-body-sm font-normal leading-[14px] text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:!text-white dark:group-hover:!text-black transition-colors min-w-0">
                                   <span className="truncate">{category.name}</span>
-                                  <ArrowRight aria-hidden="true" className="size-3 shrink-0 transition-transform group-hover:translate-x-0.5 text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:text-white dark:group-hover:text-[#121212] self-end mb-0.5" strokeWidth={1.4} />
+                                  <ArrowRight aria-hidden="true" className="size-3 shrink-0 transition-transform group-hover:translate-x-0.5 text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:!text-white dark:group-hover:!text-black self-end mb-0.5" strokeWidth={1.4} />
                                 </span>
                               </div>
                             </Link>

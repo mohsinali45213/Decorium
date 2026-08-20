@@ -5,7 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, Phone, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
+import { usePathname } from "next/navigation";
+
 export function FloatingActions() {
+  const pathname = usePathname();
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -27,6 +30,10 @@ export function FloatingActions() {
       behavior: "smooth",
     });
   };
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   return (
     <aside

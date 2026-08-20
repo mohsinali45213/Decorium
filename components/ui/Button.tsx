@@ -65,14 +65,16 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
     const content = (
       <>
         {RenderIcon && iconPosition === "left" && (
-          <RenderIcon className="size-4 shrink-0" strokeWidth={1.75} />
+          <RenderIcon className="size-4 shrink-0 btn-icon-left" strokeWidth={1.75} />
         )}
         {children && <span>{children}</span>}
         {RenderIcon && iconPosition === "right" && (
-          <RenderIcon className="size-4 shrink-0" strokeWidth={1.75} />
+          <RenderIcon className="size-4 shrink-0 btn-icon-right" strokeWidth={1.75} />
         )}
       </>
     );
+
+    const { onClick, ...restProps } = props;
 
     if (href) {
       return (
@@ -80,8 +82,10 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
           href={href}
           target={target}
           rel={rel}
+          onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
           className={combinedClassName}
           ref={ref as React.Ref<HTMLAnchorElement>}
+          {...(restProps as unknown as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
         >
           {content}
         </Link>

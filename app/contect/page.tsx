@@ -188,7 +188,7 @@ export default function ContectPage() {
           <div className="w-full aspect-[16/10] relative bg-[#f1edec] dark:bg-[#1f1f1f]">
             <Image 
               alt="High-end minimalist showroom interior" 
-              className="object-cover grayscale opacity-90 mix-blend-multiply dark:mix-blend-normal" 
+              className="object-cover opacity-90 transition-opacity duration-300" 
               fill
               sizes="100vw"
               src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85" 

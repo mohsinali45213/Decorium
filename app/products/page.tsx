@@ -1,15 +1,25 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Search, X, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { CATALOG_PRODUCTS, CATALOG_CATEGORIES, CatalogProduct } from "@/lib/catalogData";
 
-export default function ProductsPage() {
+function ProductsContent() {
+  const searchParams = useSearchParams();
+  const initialSearchParam = searchParams?.get("search") || "";
+
   // Filter States
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(initialSearchParam);
+
+  useEffect(() => {
+    if (initialSearchParam) {
+      setSearchQuery(initialSearchParam);
+    }
+  }, [initialSearchParam]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [maxPrice, setMaxPrice] = useState<number>(300000);
   const [selectedBrand, setSelectedBrand] = useState<string>("");
@@ -555,5 +565,13 @@ export default function ProductsPage() {
         </div>
       )}
     </main>
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#fdf8f8] dark:bg-[#121212]" />}>
+      <ProductsContent />
+    </Suspense>
   );
 }

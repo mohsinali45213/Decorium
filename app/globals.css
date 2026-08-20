@@ -6,6 +6,9 @@
   --theme-font-color: #1c1b1b;
   --theme-font-muted: #5d5f5f;
   --theme-accent: #1c1b1b;
+  --theme-transition-duration: 300ms;
+  --theme-transition-timing: cubic-bezier(0.25, 1, 0.5, 1);
+  --theme-transition: all 300ms cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .dark {
@@ -21,59 +24,79 @@
 
 body {
   color: var(--theme-font-color);
-  transition: color 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--theme-transition-duration) var(--theme-transition-timing), background-color var(--theme-transition-duration) var(--theme-transition-timing);
 }
 
 /* Primary text & headings */
 h1, h2, h3, h4, h5, h6,
-.font-raleway,
 .text-headline-lg,
 .text-headline-md,
 .text-display-lg,
 .font-wordmark,
-.text-\[\#1c1b1b\],
-.text-\[\#1a1a1a\],
-.text-\[\#201e1d\],
-.text-\[\#f4f0ef\],
-.text-black,
 .text-primary,
-.text-on-surface,
-.dark .text-\[\#f4f0ef\],
-.dark .text-white:not(.text-white) {
+.text-on-surface {
   color: var(--theme-font-color);
-  transition: color 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--theme-transition-duration) var(--theme-transition-timing);
 }
 
-/* Subtitles, descriptions, paragraphs and secondary text */
-p, span, a, button, input, select, textarea,
+/* Subtitles & secondary text */
 .text-body-lg,
 .text-body-md,
 .text-body-sm {
   color: var(--theme-font-color);
-  transition: color 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--theme-transition-duration) var(--theme-transition-timing);
 }
 
 /* Muted / Secondary labels and eyebrow tags */
-.text-\[\#5d5f5f\],
-.text-\[\#8e8e8e\],
-.text-\[\#a0a0a0\],
-.text-\[\#666666\],
 .text-secondary,
-.text-on-surface-variant,
-.font-label-caps,
-.text-label-caps,
-.text-label-caps-sm,
-small {
+.text-on-surface-variant {
   color: var(--theme-font-muted);
-  transition: color 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--theme-transition-duration) var(--theme-transition-timing);
 }
 
 /* Preserve pure white text on image overlays and badges */
 .text-white,
-.text-white *,
-.text-white\/70,
-.text-white\/80 {
-  color: #ffffff !important;
+.text-white * {
+  color: #ffffff;
+}
+
+/* ========================================================================= */
+/* DEDICATED NAVBAR CATEGORY CARD HOVER ENGINE                               */
+/* ========================================================================= */
+.category-card {
+  transition: var(--theme-transition);
+}
+
+.category-card small,
+.category-card span,
+.category-card svg {
+  transition: var(--theme-transition);
+}
+
+/* Light Mode Hover: Dark Card Background + White Text & Icon */
+.category-card:hover {
+  background-color: #1c1b1b ;
+  border-color: #1c1b1b ;
+}
+
+.category-card:hover small,
+.category-card:hover span,
+.category-card:hover svg {
+  color: #ffffff ;
+  stroke: #ffffff ;
+}
+
+/* Dark Mode Hover: Light Card Background + Black Text & Icon */
+.dark .category-card:hover {
+  background-color: #f4f0ef ;
+  border-color: #f4f0ef ;
+}
+
+.dark .category-card:hover small,
+.dark .category-card:hover span,
+.dark .category-card:hover svg {
+  color: #000000 ;
+  stroke: #000000 ;
 }
 
 /* Hero Slick Slider Full Height */
@@ -82,10 +105,13 @@ small {
 .hero-slick-slider .slick-track,
 .hero-slick-slider .slick-slide,
 .hero-slick-slider .slick-slide > div {
-  height: 100% !important;
+  height: 100% ;
 }
 
 @theme {
+  --default-transition-duration: var(--theme-transition-duration);
+  --default-transition-timing-function: var(--theme-transition-timing);
+
   --font-hanken-grotesk: var(--font-hanken-grotesk);
   --font-raleway: var(--font-raleway);
 
@@ -224,7 +250,7 @@ small {
 .h-bar-indicator {
   position: relative;
   padding-left: 0;
-  transition: padding-left .3s ease, color 1s ease;
+  transition: var(--theme-transition);
 }
 .h-bar-indicator::before {
   content: '';
@@ -235,18 +261,18 @@ small {
   height: 0;
   background: var(--theme-font-color);
   transform: translateY(-50%);
-  transition: height .3s ease, background-color 1s ease;
+  transition: var(--theme-transition);
 }
 .h-bar-indicator:hover {
   padding-left: 12px;
-  color: var(--theme-font-color) !important;
+  color: var(--theme-font-color) ;
 }
 .h-bar-indicator:hover::before {
   height: 100%;
 }
 .h-bar-indicator.active-nav-bar {
   padding-left: 12px;
-  color: var(--theme-font-color) !important;
+  color: var(--theme-font-color) ;
 }
 .h-bar-indicator.active-nav-bar::before {
   height: 100%;
@@ -254,19 +280,19 @@ small {
 
 /* Dynamic button hover accent */
 .btn-accent-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--theme-transition);
 }
 
 .btn-accent-hover:hover {
-  background-color: var(--theme-font-color) !important;
-  border-color: var(--theme-font-color) !important;
-  color: #ffffff !important;
+  background-color: var(--theme-font-color) ;
+  border-color: var(--theme-font-color) ;
+  color: #ffffff ;
 }
 
 .dark .btn-accent-hover:hover {
-  background-color: var(--theme-font-color) !important;
-  border-color: var(--theme-font-color) !important;
-  color: #121212 !important;
+  background-color: var(--theme-font-color) ;
+  border-color: var(--theme-font-color) ;
+  color: #121212 ;
 }
 
 /* ========================================================================= */
@@ -276,23 +302,31 @@ small {
 .btn-luxury {
   position: relative;
   overflow: hidden;
-  transition: background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  transition: var(--theme-transition);
 }
 
 .btn-luxury span {
-  transition: color 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  transition: var(--theme-transition);
 }
 
 .btn-luxury svg {
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s cubic-bezier(0.25, 1, 0.5, 1), stroke 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  transition: var(--theme-transition);
 }
 
 .btn-luxury:hover {
-  transform: none;
+  transform: scale(1.02);
 }
 
-.btn-luxury:hover svg {
+/* Move icon right on hover ONLY for right-side icons */
+.btn-luxury:hover svg:last-child:not(:first-child),
+.btn-luxury:hover svg.btn-icon-right {
   transform: translateX(4px);
+}
+
+/* Left icons (icon first then text) NEVER move on hover */
+.btn-luxury:hover svg:first-child:not(:last-child),
+.btn-luxury:hover svg.btn-icon-left {
+  transform: none ;
 }
 
 .btn-luxury:active {
@@ -301,160 +335,159 @@ small {
 
 /* Primary Filled Buttons */
 .btn-luxury-primary {
-  background-color: #1c1b1b !important;
-  color: #ffffff !important;
-  border: 1px solid #1c1b1b !important;
+  background-color: #1c1b1b ;
+  color: #ffffff ;
+  border: 1px solid #1c1b1b ;
 }
 
 .btn-luxury-primary span,
 .btn-luxury-primary svg {
-  color: #ffffff !important;
-  stroke: #ffffff !important;
+  color: #ffffff ;
+  stroke: #ffffff ;
 }
 
 .dark .btn-luxury-primary {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  border: 1px solid #ffffff !important;
+  background-color: #ffffff ;
+  color: #000000 ;
+  border: 1px solid #ffffff ;
 }
 
 .dark .btn-luxury-primary span,
 .dark .btn-luxury-primary svg {
-  color: #000000 !important;
-  stroke: #000000 !important;
+  color: #000000 ;
+  stroke: #000000 ;
 }
 
 .btn-luxury-primary:hover {
-  background-color: #3b3a3a !important;
-  border-color: #3b3a3a !important;
-  color: #ffffff !important;
-  box-shadow: none !important;
+  background-color: #3b3a3a ;
+  border-color: #3b3a3a ;
+  color: #ffffff ;
+  box-shadow: none ;
 }
 
 .btn-luxury-primary:hover span,
 .btn-luxury-primary:hover svg {
-  color: #ffffff !important;
-  stroke: #ffffff !important;
+  color: #ffffff ;
+  stroke: #ffffff ;
 }
 
 .dark .btn-luxury-primary:hover {
-  background-color: #e5e0df !important;
-  border-color: #e5e0df !important;
-  color: #000000 !important;
-  box-shadow: none !important;
+  background-color: #e5e0df ;
+  border-color: #e5e0df ;
+  color: #000000 ;
+  box-shadow: none ;
 }
 
 .dark .btn-luxury-primary:hover span,
 .dark .btn-luxury-primary:hover svg {
-  color: #000000 !important;
-  stroke: #000000 !important;
+  color: #000000 ;
+  stroke: #000000 ;
 }
 
 /* Outline Buttons */
 .btn-luxury-outline {
-  background-color: transparent !important;
-  color: #1c1b1b !important;
-  border: 1px solid #1c1b1b !important;
+  background-color: transparent ;
+  color: #1c1b1b ;
+  border: 1px solid #1c1b1b ;
 }
 
 .btn-luxury-outline span,
 .btn-luxury-outline svg {
-  color: #1c1b1b !important;
-  stroke: #1c1b1b !important;
+  color: #1c1b1b ;
+  stroke: #1c1b1b ;
 }
 
 .dark .btn-luxury-outline {
-  background-color: transparent !important;
-  color: #f4f0ef !important;
-  border: 1px solid #f4f0ef !important;
+  background-color: transparent ;
+  color: #f4f0ef ;
+  border: 1px solid #f4f0ef ;
 }
 
 .dark .btn-luxury-outline span,
 .dark .btn-luxury-outline svg {
-  color: #f4f0ef !important;
-  stroke: #f4f0ef !important;
+  color: #f4f0ef ;
+  stroke: #f4f0ef ;
 }
 
 .btn-luxury-outline:hover {
-  background-color: #1c1b1b !important;
-  color: #ffffff !important;
-  box-shadow: none !important;
+  background-color: #1c1b1b ;
+  color: #ffffff ;
+  box-shadow: none ;
 }
 
 .btn-luxury-outline:hover span,
 .btn-luxury-outline:hover svg {
-  color: #ffffff !important;
-  stroke: #ffffff !important;
+  color: #ffffff ;
+  stroke: #ffffff ;
 }
 
 .dark .btn-luxury-outline:hover {
-  background-color: #f4f0ef !important;
-  color: #121212 !important;
-  box-shadow: none !important;
+  background-color: #f4f0ef ;
+  color: #121212 ;
+  box-shadow: none ;
 }
 
 .dark .btn-luxury-outline:hover span,
 .dark .btn-luxury-outline:hover svg {
-  color: #121212 !important;
-  stroke: #121212 !important;
+  color: #121212 ;
+  stroke: #121212 ;
 }
 
 /* Icon & Circular Buttons */
 .btn-luxury-icon {
-  transition: background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
-  color: #1c1b1b !important;
+  transition: var(--theme-transition);
+  color: #1c1b1b ;
 }
 
 .btn-luxury-icon svg {
-  color: #1c1b1b !important;
-  stroke: #1c1b1b !important;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s cubic-bezier(0.25, 1, 0.5, 1), stroke 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  color: #1c1b1b ;
+  stroke: #1c1b1b ;
+  transition: var(--theme-transition);
 }
 
 .dark .btn-luxury-icon {
-  color: #f4f0ef !important;
+  color: #f4f0ef ;
 }
 
 .dark .btn-luxury-icon svg {
-  color: #f4f0ef !important;
-  stroke: #f4f0ef !important;
+  color: #f4f0ef ;
+  stroke: #f4f0ef ;
 }
 
 .btn-luxury-icon:hover {
-  transform: none !important;
-  background-color: #1c1b1b !important;
-  border-color: #1c1b1b !important;
-  color: #ffffff !important;
-  box-shadow: none !important;
+  transform: scale(1.05);
+  background-color: #1c1b1b ;
+  border-color: #1c1b1b ;
+  color: #ffffff ;
+  box-shadow: none ;
 }
 
 .btn-luxury-icon:hover svg {
-  color: #ffffff !important;
-  stroke: #ffffff !important;
-  transform: none !important;
+  color: #ffffff ;
+  stroke: #ffffff ;
 }
 
 .dark .btn-luxury-icon:hover {
-  transform: none !important;
-  background-color: #f4f0ef !important;
-  border-color: #f4f0ef !important;
-  color: #121212 !important;
-  box-shadow: none !important;
+  transform: scale(1.05);
+  background-color: #f4f0ef ;
+  border-color: #f4f0ef ;
+  color: #121212 ;
+  box-shadow: none ;
 }
 
 .dark .btn-luxury-icon:hover svg {
-  color: #121212 !important;
-  stroke: #121212 !important;
-  transform: none !important;
+  color: #121212 ;
+  stroke: #121212 ;
+  transform: none ;
 }
 
 /* Dynamic link hover accent */
 .link-accent-hover {
-  transition: color 0.3s ease;
+  transition: var(--theme-transition);
 }
 
 .link-accent-hover:hover {
-  color: var(--theme-font-color) !important;
+  color: var(--theme-font-color) ;
 }
 
 /* ========================================================================= */
@@ -462,25 +495,25 @@ small {
 /* ========================================================================= */
 
 .btn-floating-reverse {
-  background-color: #1c1b1b !important;
-  border-color: #1c1b1b !important;
-  color: #ffffff !important;
+  background-color: #1c1b1b ;
+  border-color: #1c1b1b ;
+  color: #ffffff ;
 }
 
 .btn-floating-reverse span,
 .btn-floating-reverse svg {
-  color: #ffffff !important;
-  stroke: #ffffff !important;
+  color: #ffffff ;
+  stroke: #ffffff ;
 }
 
 .dark .btn-floating-reverse {
-  background-color: #ffffff !important;
-  border-color: #ffffff !important;
-  color: #121212 !important;
+  background-color: #ffffff ;
+  border-color: #ffffff ;
+  color: #121212 ;
 }
 
 .dark .btn-floating-reverse span,
 .dark .btn-floating-reverse svg {
-  color: #121212 !important;
-  stroke: #121212 !important;
+  color: #121212 ;
+  stroke: #121212 ;
 }
