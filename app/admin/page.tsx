@@ -51,12 +51,9 @@ export default function AdminDashboardPage() {
     <>
       {/* Hero Greeting */}
       <section className="border-b border-[#c4c7c7]/30 dark:border-[#2e2e2e] pb-6 sm:pb-8">
-        <h2 className="font-raleway text-headline-md sm:text-headline-lg text-[#1c1b1b] dark:text-[#f4f0ef] font-light tracking-tight mb-2 uppercase">
+        <h2 className="font-raleway text-headline-md sm:text-headline-lg text-[#1c1b1b] dark:text-[#f4f0ef] font-light tracking-tight uppercase">
           GOOD MORNING
         </h2>
-        <p className="font-body-md text-body-sm sm:text-body-lg text-[#5d5f5f] dark:text-[#8e8e8e] max-w-2xl">
-          Welcome back. Here&apos;s what&apos;s happening today across your catalog and showroom.
-        </p>
       </section>
 
       {/* Overview Grid */}

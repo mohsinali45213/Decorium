@@ -125,11 +125,11 @@ export function OurWorldAccordion() {
       {/* ========================================================================= */}
       {/* 02. MOBILE RESPONSIVE CARDS (under md)                                    */}
       {/* ========================================================================= */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden w-full">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:hidden w-full">
         {CATEGORIES.map((category, index) => (
           <div
             key={category.id}
-            className="relative h-[240px] rounded-xl overflow-hidden border border-[#c4c7c7]/40 dark:border-[#262626] bg-[#1a1a1a] cursor-pointer group select-none"
+            className="relative h-[190px] sm:h-[240px] rounded-xl overflow-hidden border border-[#c4c7c7]/40 dark:border-[#262626] bg-[#1a1a1a] cursor-pointer group select-none"
           >
             <Link href={category.href} className="block w-full h-full relative">
               {/* Background Image */}
@@ -137,7 +137,7 @@ export function OurWorldAccordion() {
                 alt={category.title}
                 className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 fill
-                sizes="100vw"
+                sizes="(max-width: 768px) 50vw, 25vw"
                 src={category.image}
                 priority={index < 2}
               />
@@ -146,25 +146,25 @@ export function OurWorldAccordion() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/35" />
 
               {/* Top Discipline Tag */}
-              <div className="absolute top-4 left-4 z-20">
-                <span className="px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 font-label-caps text-[9px] text-white tracking-widest uppercase inline-block">
+              <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20">
+                <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 font-label-caps text-[8px] sm:text-[9px] text-white tracking-widest uppercase inline-block">
                   {category.tag}
                 </span>
               </div>
 
               {/* Bottom Content Bar */}
-              <div className="absolute bottom-4 left-4 right-4 z-20 flex items-end justify-between gap-3 text-white">
-                <div className="min-w-0 flex-1 overflow-hidden pr-2">
-                  <h3 className="font-raleway text-body-lg font-normal uppercase tracking-wide text-white truncate">
+              <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 z-20 flex items-end justify-between gap-1.5 sm:gap-3 text-white">
+                <div className="min-w-0 flex-1 overflow-hidden pr-1">
+                  <h3 className="font-raleway text-body-md sm:text-body-lg font-normal uppercase tracking-wide text-white truncate">
                     {category.title}
                   </h3>
-                  <p className="font-body-sm text-xs text-white/80 truncate mt-0.5">
+                  <p className="font-body-sm text-[11px] sm:text-xs text-white/80 truncate mt-0.5">
                     {category.subtitle}
                   </p>
                 </div>
 
-                <div className="size-8 rounded-full bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center text-white shrink-0">
-                  <ArrowRight className="size-3.5 text-white" strokeWidth={1.75} />
+                <div className="size-7 sm:size-8 rounded-full bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center text-white shrink-0">
+                  <ArrowRight className="size-3 sm:size-3.5 text-white" strokeWidth={1.75} />
                 </div>
               </div>
             </Link>

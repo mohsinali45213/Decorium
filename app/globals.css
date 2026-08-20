@@ -17,10 +17,8 @@
   --theme-accent: #f4f0ef;
 }
 
-/* ========================================================================= */
-/* GLOBAL THEME FONT & COLOR BASE ENGINE                                     */
-/* ========================================================================= */
 body {
+  font-family: var(--font-hanken-grotesk), var(--font-raleway);
   color: var(--theme-font-color);
   transition: color var(--theme-transition-duration) var(--theme-transition-timing), background-color var(--theme-transition-duration) var(--theme-transition-timing);
 }
@@ -85,6 +83,7 @@ h1, h2, h3, h4, h5, h6 {
   --default-transition-duration: var(--theme-transition-duration);
   --default-transition-timing-function: var(--theme-transition-timing);
 
+  --font-sans: var(--font-hanken-grotesk), var(--font-raleway);
   --font-hanken-grotesk: var(--font-hanken-grotesk);
   --font-raleway: var(--font-raleway);
 

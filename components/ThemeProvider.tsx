@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useLayoutEffect, useState, type ReactNode } from "react";
 
 type Theme = "light" | "dark" | "system";
 
@@ -13,20 +13,21 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("system");
-  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
+  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
+
+  useIsomorphicLayoutEffect(() => {
     const saved = localStorage.getItem("decorium-theme") as Theme | null;
     if (saved) {
       setThemeState(saved);
     }
-    setMounted(true);
   }, []);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const root = document.documentElement;
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -39,10 +40,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       }
 
       if (isDark) {
-        root.classList.add("dark");
+        if (!root.classList.contains("dark")) {
+          root.classList.add("dark");
+        }
         setResolvedTheme("dark");
       } else {
-        root.classList.remove("dark");
+        if (root.classList.contains("dark")) {
+          root.classList.remove("dark");
+        }
         setResolvedTheme("light");
       }
     };

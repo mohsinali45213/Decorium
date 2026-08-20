@@ -9,8 +9,11 @@ import {
   Trash2,
   Edit2,
   Copy,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { LuxuryDropdown } from "@/components/ui/LuxuryDropdown";
+import { Pagination } from "@/components/ui/Pagination";
 
 export interface ColumnDef<T> {
   key: string;
@@ -104,9 +107,6 @@ export function AdminDataTable<T extends { _id: string }>({
     );
   };
 
-  const currentRangeStart = filteredData.length === 0 ? 0 : (currentPage - 1) * itemsPerPage + 1;
-  const currentRangeEnd = Math.min(currentPage * itemsPerPage, filteredData.length);
-
   return (
     <div className="flex flex-col gap-6 sm:gap-8 text-left w-full">
       
@@ -116,9 +116,6 @@ export function AdminDataTable<T extends { _id: string }>({
           <h1 className="font-raleway text-headline-md sm:text-headline-lg font-light uppercase tracking-wide text-[#1c1b1b] dark:text-[#f4f0ef]">
             {title}
           </h1>
-          <p className="font-body-md text-body-sm sm:text-body-md text-[#5d5f5f] dark:text-[#8e8e8e] max-w-2xl mt-1.5 sm:mt-2">
-            {subtitle}
-          </p>
         </div>
 
         {/* Action Button */}
@@ -149,9 +146,9 @@ export function AdminDataTable<T extends { _id: string }>({
       </section>
 
       {/* 02. CONTROLS BAR (SEARCH & SORT) */}
-      <section className="grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-4">
+      <section className="grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-4 items-center">
         {/* Search Input */}
-        <div className="sm:col-span-7 md:col-span-8 lg:col-span-9 relative">
+        <div className="sm:col-span-6 md:col-span-6 lg:col-span-7 relative flex items-center">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-[#5d5f5f] dark:text-[#8e8e8e]" />
           <input
             type="text"
@@ -161,22 +158,34 @@ export function AdminDataTable<T extends { _id: string }>({
               setCurrentPage(1);
             }}
             placeholder={searchPlaceholder}
-            className="w-full pl-10 pr-4 py-2.5 sm:py-3 bg-[#f7f3f2]/60 dark:bg-[#181818] border border-[#c4c7c7]/30 dark:border-[#2e2e2e] rounded-xl text-[#1c1b1b] dark:text-[#f4f0ef] placeholder-[#5d5f5f] dark:placeholder-[#8e8e8e] font-body-sm text-xs sm:text-sm focus:outline-none focus:border-[#1c1b1b] dark:focus:border-[#f4f0ef] transition-colors"
+            className="w-full h-11 pl-10 pr-9 bg-[#f7f3f2]/60 dark:bg-[#181818] border border-[#c4c7c7]/40 dark:border-[#2e2e2e] rounded-xl text-[#1c1b1b] dark:text-[#f4f0ef] placeholder-[#5d5f5f] dark:placeholder-[#8e8e8e] font-body-sm text-xs sm:text-sm focus:outline-none focus:border-[#1c1b1b] dark:focus:border-[#f4f0ef] transition-colors"
           />
+          {searchQuery && (
+            <button
+              type="button"
+              onClick={() => setSearchQuery("")}
+              aria-label="Clear search"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#5d5f5f] dark:text-[#8e8e8e] hover:text-[#1c1b1b] dark:hover:text-[#f4f0ef] p-1 cursor-pointer transition-colors"
+            >
+              <X className="size-3.5" />
+            </button>
+          )}
         </div>
 
         {/* Sort Select Dropdown */}
-        <div className="sm:col-span-5 md:col-span-4 lg:col-span-3 relative">
-          <select
+        <div className="sm:col-span-6 md:col-span-6 lg:col-span-5 relative flex items-center">
+          <LuxuryDropdown
+            options={[
+              { value: "NEWEST", label: "SORT BY: NEWEST" },
+              { value: "NAME_ASC", label: "SORT BY: NAME (A-Z)" },
+              { value: "NAME_DESC", label: "SORT BY: NAME (Z-A)" },
+            ]}
             value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value as "NEWEST" | "NAME_ASC" | "NAME_DESC")}
-            className="w-full pl-4 pr-10 py-2.5 sm:py-3 bg-[#f7f3f2]/60 dark:bg-[#181818] border border-[#c4c7c7]/30 dark:border-[#2e2e2e] rounded-xl text-[#1c1b1b] dark:text-[#f4f0ef] font-label-caps text-[10px] sm:text-xs uppercase tracking-wider focus:outline-none focus:border-[#1c1b1b] dark:focus:border-[#f4f0ef] appearance-none cursor-pointer"
-          >
-            <option value="NEWEST">SORT BY: NEWEST</option>
-            <option value="NAME_ASC">SORT BY: NAME (A-Z)</option>
-            <option value="NAME_DESC">SORT BY: NAME (Z-A)</option>
-          </select>
-          <ChevronDown className="size-4 text-[#5d5f5f] dark:text-[#8e8e8e] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            onChange={(val) => setSortOrder(val as "NEWEST" | "NAME_ASC" | "NAME_DESC")}
+            widthClassName="w-full"
+            buttonClassName="h-11 rounded-xl bg-[#f7f3f2]/60 dark:bg-[#181818] border-[#c4c7c7]/40 dark:border-[#2e2e2e]"
+            align="left"
+          />
         </div>
       </section>
 
@@ -390,47 +399,16 @@ export function AdminDataTable<T extends { _id: string }>({
         </table>
       </section>
 
-      {/* 05. PAGINATION FOOTER */}
-      <section className="flex flex-col sm:flex-row justify-between items-center gap-4 py-2 text-[#5d5f5f] dark:text-[#8e8e8e]">
-        <div className="font-body-md text-xs sm:text-sm">
-          Showing <span className="font-semibold text-[#1c1b1b] dark:text-[#f4f0ef]">{currentRangeStart}–{currentRangeEnd}</span> of{" "}
-          <span className="font-semibold text-[#1c1b1b] dark:text-[#f4f0ef]">{filteredData.length}</span> items
-        </div>
-
-        <div className="flex items-center gap-3">
-          <button
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            className="p-2 rounded-lg border border-[#c4c7c7]/30 dark:border-[#2e2e2e] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#f1edec] dark:hover:bg-[#252525] text-[#1c1b1b] dark:text-[#f4f0ef] transition-colors"
-          >
-            <ChevronDown className="size-4 rotate-90" />
-          </button>
-
-          <div className="flex items-center gap-1 font-label-caps text-label-caps">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <button
-                key={page}
-                onClick={() => setCurrentPage(page)}
-                className={`size-8 rounded-lg flex items-center justify-center transition-colors ${
-                  currentPage === page
-                    ? "bg-[#1c1b1b] !text-white dark:!bg-[#f4f0ef] dark:!text-[#000000] font-semibold shadow-xs border border-[#1c1b1b] dark:border-[#f4f0ef]"
-                    : "border border-[#c4c7c7]/40 dark:border-[#2e2e2e] hover:bg-[#f1edec] dark:hover:bg-[#252525] hover:border-[#1c1b1b] dark:hover:border-[#f4f0ef] text-[#5d5f5f] dark:text-[#8e8e8e] dark:hover:text-[#f4f0ef]"
-                }`}
-              >
-                {page}
-              </button>
-            ))}
-          </div>
-
-          <button
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-            className="p-2 rounded-lg border border-[#c4c7c7]/30 dark:border-[#2e2e2e] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#f1edec] dark:hover:bg-[#252525] text-[#1c1b1b] dark:text-[#f4f0ef] transition-colors"
-          >
-            <ChevronDown className="size-4 -rotate-90" />
-          </button>
-        </div>
-      </section>
+      {/* 05. REUSABLE CENTERED PAGINATION FOOTER */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        totalItems={filteredData.length}
+        itemsPerPage={itemsPerPage}
+        onPageChange={setCurrentPage}
+        itemLabel="ITEMS"
+        className="border-t-0 p-4"
+      />
 
     </div>
   );

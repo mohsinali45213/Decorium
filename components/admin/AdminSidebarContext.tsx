@@ -24,21 +24,17 @@ const AdminSidebarContext = createContext<AdminSidebarContextType>({
 
 export function AdminSidebarProvider({ children }: { children: ReactNode }) {
   const [isMounted, setIsMounted] = useState<boolean>(false);
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(() => {
-    if (typeof window !== "undefined") {
-      try {
-        const saved = localStorage.getItem("decorium-admin-sidebar-collapsed");
-        if (saved !== null) {
-          return saved === "true";
-        }
-      } catch {}
-    }
-    return false;
-  });
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const [isMobileOpen, setIsMobileOpen] = useState<boolean>(false);
 
   useEffect(() => {
     setIsMounted(true);
+    try {
+      const saved = localStorage.getItem("decorium-admin-sidebar-collapsed");
+      if (saved !== null) {
+        setIsCollapsed(saved === "true");
+      }
+    } catch {}
   }, []);
 
   const toggleSidebar = () => {

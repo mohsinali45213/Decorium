@@ -58,9 +58,6 @@ export default function AdminSettingsPage() {
           <h1 className="font-raleway text-headline-lg font-light uppercase tracking-wide text-[#1c1b1b] dark:text-[#f4f0ef]">
             SETTINGS
           </h1>
-          <p className="font-body-md text-body-md text-[#5d5f5f] dark:text-[#8e8e8e] max-w-xl mt-2">
-            Configure global studio parameters, catalog currency options, notification alerts, and security credentials.
-          </p>
         </div>
 
         {/* Save Button */}
