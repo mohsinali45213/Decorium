@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -15,7 +14,9 @@ export interface HeroSlide {
   number: string;
   title: string;
   description: string;
-  image: any;
+  image?: any;
+  desktopImage?: any;
+  mobileImage?: any;
   linkHref?: string;
   linkLabel?: string;
 }
@@ -36,7 +37,7 @@ export function Hero({ slides }: HeroProps) {
     autoplay: true,
     autoplaySpeed: 5000,
     arrows: false,
-    beforeChange: (oldIndex: number, newIndex: number) => {
+    beforeChange: (_oldIndex: number, newIndex: number) => {
       setCurrentSlide(newIndex);
     },
   };
@@ -45,37 +46,72 @@ export function Hero({ slides }: HeroProps) {
 
   return (
     <section suppressHydrationWarning className="relative w-full h-[75dvh] min-h-[500px] md:h-[92dvh] md:min-h-[700px] flex items-end justify-center md:justify-end overflow-hidden px-navbar-px py-navbar-px text-left">
-      {/* Background Images */}
+      {/* Background Images with Device-Specific Support */}
       <div className="absolute inset-0 w-full h-full z-0 hero-slick-slider">
         {isSlider ? (
           <Slider {...settings} className="h-full w-full">
-            {slides.map((slide, index) => (
-              <div key={index} className="relative w-full h-[75dvh] min-h-[500px] md:h-[92dvh] md:min-h-[700px]">
-                <Image
-                  alt={slide.title}
-                  className="object-cover"
-                  fill
-                  priority={index === 0}
-                  sizes="100vw"
-                  src={slide.image}
-                />
-                {/* Subtle Overlay */}
-                <div className="absolute inset-0 bg-[#fdf8f8]/10 dark:bg-black/30" />
-                {/* Gradient Overlay for Mobile readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#fdf8f8]/80 dark:from-[#121212]/80 via-transparent to-transparent md:hidden" />
-              </div>
-            ))}
+            {slides.map((slide, index) => {
+              const desktopSrc = slide.desktopImage || slide.image;
+              const mobileSrc = slide.mobileImage || slide.desktopImage || slide.image;
+
+              return (
+                <div key={index} className="relative w-full h-[75dvh] min-h-[500px] md:h-[92dvh] md:min-h-[700px]">
+                  {/* Desktop Image (md and up) */}
+                  <div className="hidden md:block absolute inset-0 w-full h-full">
+                    <Image
+                      alt={slide.title}
+                      className="object-cover"
+                      fill
+                      priority={index === 0}
+                      sizes="100vw"
+                      src={desktopSrc}
+                    />
+                  </div>
+
+                  {/* Mobile Image (under md) */}
+                  <div className="block md:hidden absolute inset-0 w-full h-full">
+                    <Image
+                      alt={slide.title}
+                      className="object-cover"
+                      fill
+                      priority={index === 0}
+                      sizes="100vw"
+                      src={mobileSrc}
+                    />
+                  </div>
+
+                  {/* Subtle Overlay */}
+                  <div className="absolute inset-0 bg-[#fdf8f8]/10 dark:bg-black/30" />
+                  {/* Gradient Overlay for Mobile readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#fdf8f8]/80 dark:from-[#121212]/80 via-transparent to-transparent md:hidden" />
+                </div>
+              );
+            })}
           </Slider>
         ) : (
           <div className="relative w-full h-full">
-            <Image
-              alt={activeSlide.title}
-              className="object-cover"
-              fill
-              priority
-              sizes="100vw"
-              src={activeSlide.image}
-            />
+            {/* Desktop Image */}
+            <div className="hidden md:block absolute inset-0 w-full h-full">
+              <Image
+                alt={activeSlide.title}
+                className="object-cover"
+                fill
+                priority
+                sizes="100vw"
+                src={activeSlide.desktopImage || activeSlide.image}
+              />
+            </div>
+            {/* Mobile Image */}
+            <div className="block md:hidden absolute inset-0 w-full h-full">
+              <Image
+                alt={activeSlide.title}
+                className="object-cover"
+                fill
+                priority
+                sizes="100vw"
+                src={activeSlide.mobileImage || activeSlide.desktopImage || activeSlide.image}
+              />
+            </div>
             {/* Subtle Overlay */}
             <div className="absolute inset-0 bg-[#fdf8f8]/10 dark:bg-black/30" />
             {/* Gradient Overlay for Mobile readability */}
@@ -96,15 +132,13 @@ export function Hero({ slides }: HeroProps) {
             className="flex flex-col gap-4 md:gap-6 flex-1 justify-between text-left"
           >
             <div>
-              {/* Slide Counter */}
+              {/* Slide / Page Counter */}
               <div className="flex items-center justify-between md:block mb-4">
-                <div className="font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] uppercase">
-                  {activeSlide.number} <span className="mx-2 text-[#c4c7c7] dark:text-[#444444]">/</span> {slides.length < 10 ? `0${slides.length}` : slides.length}
+                <div className="font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] uppercase tracking-widest">
+                  {String(currentSlide + 1).padStart(2, "0")} <span className="mx-2 text-[#c4c7c7] dark:text-[#444444]">/</span> {String(slides.length).padStart(2, "0")}
                 </div>
                 <div className="h-px bg-[#c4c7c7]/30 dark:bg-[#2e2e2e] flex-1 ml-4 md:hidden"></div>
               </div>
-
-              {/* Headline */}
               <h1 className="font-raleway text-headline-lg text-[#1c1b1b] dark:text-[#f4f0ef] uppercase md:normal-case tracking-tight mb-2 md:mb-4">
                 {activeSlide.title}
               </h1>

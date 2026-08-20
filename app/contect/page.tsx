@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export default function ContectPage() {
@@ -19,9 +20,7 @@ export default function ContectPage() {
         {/* Contact Intro Section */}
         <section className="flex flex-col gap-8 text-left">
           <div className="max-w-3xl">
-            <span className="font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] uppercase block mb-3">
-              CONTACT
-            </span>
+            <Breadcrumbs items={[{ label: "HOME", href: "/" }, { label: "CONTACT" }]} className="mb-4" />
             <h1 className="font-raleway text-headline-lg text-[#1c1b1b] dark:text-[#f4f0ef] uppercase tracking-wide">
               LET&apos;S TALK.
             </h1>
@@ -50,7 +49,7 @@ export default function ContectPage() {
                 className="object-cover" 
                 fill
                 sizes="40vw"
-                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85" 
+                src="/images/desktop/pexels-artbovich-8082311.jpg" 
                 priority
               />
             </div>
@@ -170,9 +169,7 @@ export default function ContectPage() {
       <div className="block md:hidden flex flex-col bg-[#fdf8f8] dark:bg-[#121212] w-full transition-colors duration-300">
         {/* Editorial Header */}
         <section className="px-navbar-px pb-8 border-b border-[#c4c7c7]/30 dark:border-[#262626] text-left">
-          <span className="font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] uppercase block mb-3">
-            CONTACT
-          </span>
+          <Breadcrumbs items={[{ label: "HOME", href: "/" }, { label: "CONTACT" }]} className="mb-4" />
           <h1 className="font-raleway text-headline-lg text-[#1c1b1b] dark:text-[#f4f0ef] mb-4">
             LET&apos;S TALK
           </h1>
@@ -189,7 +186,7 @@ export default function ContectPage() {
               className="object-cover opacity-90 transition-opacity duration-300" 
               fill
               sizes="100vw"
-              src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85" 
+              src="/images/mobile/pexels-misbaa-eri-426041722-37252312.jpg" 
             />
           </div>
           <div className="px-navbar-px py-6 text-left">

@@ -49,7 +49,7 @@ export const CATALOG_CATEGORIES: CatalogCategory[] = [
     name: 'Italian Natural Marble',
     slug: 'marble',
     description: 'Direct quarry-imported natural blocks and bookmatched slabs from Carrara, Brescia, and Tuscany, curated for seamless architectural statements.',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/desktop/pexels-artbovich-7166636.jpg',
     specimenCount: 24,
     subCategories: [
       { _id: 'sub-m-bookmatch', name: 'Bookmatch Slabs', slug: 'bookmatch-slabs', count: 8 },
@@ -64,7 +64,7 @@ export const CATALOG_CATEGORIES: CatalogCategory[] = [
     name: 'Continuous Porcelain Slabs',
     slug: 'tiles',
     description: 'Ultra-large 3200×1600mm monolithic porcelain surfaces engineered with continuous veining and zero-joint precision.',
-    image: 'https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/desktop/pexels-artbovich-7534232.jpg',
     specimenCount: 38,
     subCategories: [
       { _id: 'sub-t-3200', name: '3200mm Continuous Slabs', slug: '3200mm-slabs', count: 14 },
@@ -79,7 +79,7 @@ export const CATALOG_CATEGORIES: CatalogCategory[] = [
     name: 'Artisan Bathware & Tapware',
     slug: 'sanitaryware',
     description: 'Architectural freestanding baths, sculpted stone basins, and physical vapor deposition (PVD) tapware in brushed champagne and graphite.',
-    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/desktop/pexels-artbovich-8082311.jpg',
     specimenCount: 31,
     subCategories: [
       { _id: 'sub-s-tubs', name: 'Freestanding Baths', slug: 'freestanding-tubs', count: 7 },
@@ -94,7 +94,7 @@ export const CATALOG_CATEGORIES: CatalogCategory[] = [
     name: 'Bespoke Architectural Furniture',
     slug: 'furniture',
     description: 'Custom stone-carved tables, bouclé lounge chairs, and precision-milled timber credenzas tailored to luxury residential master plans.',
-    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/desktop/pexels-jack-davis-86003658-11408618.jpg',
     specimenCount: 19,
     subCategories: [
       { _id: 'sub-f-dining', name: 'Marble Dining Tables', slug: 'marble-dining', count: 6 },
@@ -108,7 +108,7 @@ export const CATALOG_CATEGORIES: CatalogCategory[] = [
     name: 'Mineral Plasters & Limewash',
     slug: 'paint',
     description: 'Natural mineral plasters, breathable Italian limewash, and monolithic microcements creating textured tactile warmth on architectural walls.',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/desktop/pexels-yankrukov-5793642.jpg',
     specimenCount: 16,
     subCategories: [
       { _id: 'sub-p-limewash', name: 'Breathable Limewash', slug: 'limewash', count: 5 },
@@ -122,7 +122,7 @@ export const CATALOG_CATEGORIES: CatalogCategory[] = [
     name: 'Precision Hardware & Electricals',
     slug: 'hardware',
     description: 'Solid knurled brass door furniture, magnetic locksets, flush plate electrical toggles, and architectural trimless downlighting.',
-    image: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/mobile/pexels-olenkabohovyk-5686479.jpg',
     specimenCount: 22,
     subCategories: [
       { _id: 'sub-h-handles', name: 'Solid Knurled Lever Sets', slug: 'knurled-handles', count: 8 },
@@ -144,7 +144,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     subCategorySlug: 'bookmatch-slabs',
     subCategoryName: 'Bookmatch Slabs',
     brand: 'Carrara Exclusive',
-    coverImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85',
+    coverImage: '/images/desktop/pexels-artbovich-7166636.jpg',
     spec: '3200 × 1600 × 20mm · Polished Finish',
     origin: 'Carrara, Italy',
     isFeatured: true,
@@ -164,7 +164,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     subCategorySlug: 'statuario',
     subCategoryName: 'White Statuario',
     brand: 'Apuan Quarries',
-    coverImage: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1000&q=85',
+    coverImage: '/images/desktop/pexels-artbovich-7534232.jpg',
     spec: '3000 × 1800 × 20mm · Mirror Polish',
     origin: 'Mount Altissimo, Italy',
     isFeatured: true,
@@ -183,7 +183,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     subCategorySlug: 'travertine',
     subCategoryName: 'Roman Travertine',
     brand: 'Tivoli Stone Co.',
-    coverImage: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=85',
+    coverImage: '/images/desktop/pexels-artbovich-8082311.jpg',
     spec: '2800 × 1500 × 20mm · Open Pore Honed',
     origin: 'Tivoli, Italy',
     isFeatured: false,
@@ -202,7 +202,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     subCategorySlug: 'onyx',
     subCategoryName: 'Backlit Exotic Onyx',
     brand: 'Exotic Gems',
-    coverImage: 'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=1000&q=85',
+    coverImage: '/images/desktop/pexels-jack-davis-86003658-11408618.jpg',
     spec: '2400 × 1400 × 16mm · Translucent Slabs',
     origin: 'Yazd Range',
     isFeatured: true,
@@ -223,7 +223,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     subCategorySlug: '3200mm-slabs',
     subCategoryName: '3200mm Continuous Slabs',
     brand: 'Laminam Italia',
-    coverImage: 'https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=1000&q=85',
+    coverImage: '/images/desktop/pexels-yankrukov-5793642.jpg',
     spec: '3200 × 1600 × 12mm · Zero Joint Edge',
     origin: 'Sassuolo, Italy',
     isFeatured: true,
@@ -242,7 +242,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     subCategorySlug: 'terrazzo',
     subCategoryName: 'Venetian Terrazzo',
     brand: 'Marazzi Arch',
-    coverImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1000&q=85',
+    coverImage: '/images/mobile/pexels-ahmetcotur-29702287.jpg',
     spec: '1200 × 1200 × 9mm · Micro-Beveled',
     origin: 'Modena, Italy',
     isFeatured: false,
@@ -263,7 +263,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     subCategorySlug: 'freestanding-tubs',
     subCategoryName: 'Freestanding Baths',
     brand: 'Antonio Lupi Design',
-    coverImage: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1000&q=85',
+    coverImage: '/images/mobile/pexels-artbovich-6920611.jpg',
     spec: '1750 × 800 × 550mm · Cristalmood Matte',
     origin: 'Tuscany, Italy',
     isFeatured: true,
@@ -283,7 +283,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     subCategorySlug: 'pvd-faucets',
     subCategoryName: 'PVD Brushed Tapware',
     brand: 'Gessi Architectural',
-    coverImage: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1000&q=85',
+    coverImage: '/images/mobile/pexels-artdjartem-119108916-38800609.jpg',
     spec: 'Solid DZR Brass · PVD Titanium Coating',
     origin: 'Serravalle Sesia, Italy',
     isFeatured: false,
@@ -305,7 +305,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     subCategorySlug: 'marble-dining',
     subCategoryName: 'Marble Dining Tables',
     brand: 'Natural Travertine',
-    coverImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCDzGddr0qqC3EXNyp0HZB25tJS0nKe8qzUwBUD_8eB3-aAciGXAEoRgm7bUbLq8RNUFPb5bX5QLjYyKZIICYYg8pUSu1kWftV4O-t62sdddHryY7Wg-zF8tklxzDiZ66VF4-lEPZH00xQqleLTGd9vfNmarlLnEim8kOHTTCOHJd2W5i06nsdtEy9vAmHqbovFtA6FTGyOy764JNX1YmMM6XWMg2-FkuBoUfFenVgWpIk-U68yrKcI',
+    coverImage: '/images/desktop/pexels-artbovich-8082311.jpg',
     spec: 'Natural Travertine',
     origin: 'Italy',
     isFeatured: true,
@@ -324,7 +324,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     subCategorySlug: 'marble-dining',
     subCategoryName: 'Marble Dining Tables',
     brand: 'Decorium Atelier',
-    coverImage: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=85',
+    coverImage: '/images/mobile/pexels-misbaa-eri-426041722-37252312.jpg',
     spec: '2600 × 1100 × 750mm · Solid Filled Travertine',
     origin: 'Siddhpur Atelier Handcrafted',
     isFeatured: true,
@@ -345,7 +345,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     subCategorySlug: 'limewash',
     subCategoryName: 'Breathable Limewash',
     brand: 'Colorificio Veneziano',
-    coverImage: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=85',
+    coverImage: '/images/mobile/pexels-olenkabohovyk-5686479.jpg',
     spec: 'Zero VOC Slaked Lime · Natural Earth Pigments',
     origin: 'Veneto, Italy',
     isFeatured: true,
@@ -366,12 +366,12 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     subCategorySlug: 'knurled-handles',
     subCategoryName: 'Solid Knurled Lever Sets',
     brand: 'Buster & Punch London',
-    coverImage: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=1000&q=85',
+    coverImage: '/images/mobile/pexels-sylwester-ficek-154797634-34369007.jpg',
     spec: 'Grade 304 Solid Brass · Diamond Knurl Pattern',
-    origin: 'London Design',
+    origin: 'London, UK',
     isFeatured: true,
     isActive: true,
-    description: 'Industrial elegance with signature diamond cross-knurl grip and concealed rose fixings.',
+    description: 'Monolithic heavy-cast brass lever handles with diamond cross-knurled grip and sprung concealed rose.',
     variants: [
       { sku: 'HNDL-KNR-BRS', finish: 'Smoked Bronze', price: 14500, showPriceOnWebsite: true, unit: 'set' },
       { sku: 'HNDL-KNR-BLK', finish: 'Anodized Matte Black', price: 13500, showPriceOnWebsite: true, unit: 'set' },
@@ -387,6 +387,7 @@ export interface CatalogBrand {
   origin?: string;
   category?: string;
   logo?: string;
+  image?: string;
   isActive: boolean;
 }
 
@@ -398,7 +399,7 @@ export const CATALOG_BRANDS: CatalogBrand[] = [
     categorySlug: 'tiles',
     origin: 'Fiorano Modenese, Italy',
     category: 'Continuous Porcelain Surfaces',
-    logo: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=200&q=80', // sample / replaceable with custom brand mark
+    logo: '/images/desktop/pexels-artbovich-7166636.jpg',
     isActive: true,
   },
   {
@@ -408,6 +409,7 @@ export const CATALOG_BRANDS: CatalogBrand[] = [
     categorySlug: 'sanitaryware',
     origin: 'Stabbia, Tuscany',
     category: 'Architectural Bath Suites',
+    logo: '/images/desktop/pexels-artbovich-7534232.jpg',
     isActive: true,
   },
   {
@@ -417,6 +419,7 @@ export const CATALOG_BRANDS: CatalogBrand[] = [
     categorySlug: 'sanitaryware',
     origin: 'Serravalle Sesia, Italy',
     category: 'PVD Tapware & Wellness',
+    logo: '/images/desktop/pexels-artbovich-8082311.jpg',
     isActive: true,
   },
   {
@@ -426,6 +429,7 @@ export const CATALOG_BRANDS: CatalogBrand[] = [
     categorySlug: 'marble',
     origin: 'Querceta, Lucca, Italy',
     category: 'Precision Textured Natural Stone',
+    logo: '/images/desktop/pexels-jack-davis-86003658-11408618.jpg',
     isActive: true,
   },
   {
@@ -435,6 +439,7 @@ export const CATALOG_BRANDS: CatalogBrand[] = [
     categorySlug: 'tiles',
     origin: 'Sassuolo, Italy',
     category: 'Monolithic Technical Ceramics',
+    logo: '/images/desktop/pexels-yankrukov-5793642.jpg',
     isActive: true,
   },
   {
@@ -444,6 +449,7 @@ export const CATALOG_BRANDS: CatalogBrand[] = [
     categorySlug: 'hardware',
     origin: 'London, UK',
     category: 'Solid Knurled Hardware',
+    logo: '/images/mobile/pexels-olenkabohovyk-5686479.jpg',
     isActive: true,
   },
   {
@@ -453,7 +459,7 @@ export const CATALOG_BRANDS: CatalogBrand[] = [
     categorySlug: 'marble',
     origin: 'Vicenza, Italy',
     category: 'Quarried Natural Marble Blocks',
+    logo: '/images/mobile/pexels-sylwester-ficek-154797634-34369007.jpg',
     isActive: true,
   },
 ];
-

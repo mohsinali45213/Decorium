@@ -2,20 +2,34 @@
 
 import { ArrowDown } from "lucide-react";
 import Image from "next/image";
-import customBg from "@/public/images/hero-bg-custom.jpg";
 
 export function MinimalIntro() {
   return (
     <section className="relative w-full h-[100dvh] flex flex-col justify-center items-center overflow-hidden px-navbar-px text-center bg-[#fdf8f8] dark:bg-[#121212] transition-colors duration-300">
-      {/* Background Image Layer */}
+      {/* Device-Specific Background Image Layer */}
       <div className="absolute inset-0 z-0 w-full h-full">
-        <Image
-          alt="Architectural Minimalist Background"
-          className="object-cover opacity-30 dark:opacity-15"
-          fill
-          sizes="100vw"
-          src={customBg}
-        />
+        {/* Desktop Image */}
+        <div className="hidden md:block absolute inset-0 w-full h-full">
+          <Image
+            alt="Architectural Minimalist Desktop Background"
+            className="object-cover opacity-30 dark:opacity-15"
+            fill
+            sizes="100vw"
+            src="/images/desktop/pexels-yankrukov-5793642.jpg"
+          />
+        </div>
+
+        {/* Mobile Image */}
+        <div className="block md:hidden absolute inset-0 w-full h-full">
+          <Image
+            alt="Architectural Minimalist Mobile Background"
+            className="object-cover opacity-30 dark:opacity-15"
+            fill
+            sizes="100vw"
+            src="/images/mobile/pexels-sylwester-ficek-154797634-34369007.jpg"
+          />
+        </div>
+
         <div className="absolute inset-0 bg-gradient-to-b from-[#fdf8f8]/50 dark:from-[#121212]/50 via-transparent to-[#fdf8f8]/80 dark:to-[#121212]/80" />
       </div>
 

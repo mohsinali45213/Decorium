@@ -8,13 +8,13 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { CATALOG_BRANDS } from "@/lib/catalogData";
 
 const BRAND_IMAGES: Record<string, string> = {
-  "brand-laminam": "https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=800&q=80",
-  "brand-antoniolupi": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=800&q=80",
-  "brand-gessi": "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80",
-  "brand-salvatori": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80",
-  "brand-marazzi": "https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&w=800&q=80",
-  "brand-buster-punch": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80",
-  "brand-margraf": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+  "brand-laminam": "/images/desktop/pexels-artbovich-7166636.jpg",
+  "brand-antoniolupi": "/images/desktop/pexels-artbovich-7534232.jpg",
+  "brand-gessi": "/images/desktop/pexels-artbovich-8082311.jpg",
+  "brand-salvatori": "/images/desktop/pexels-jack-davis-86003658-11408618.jpg",
+  "brand-marazzi": "/images/desktop/pexels-yankrukov-5793642.jpg",
+  "brand-buster-punch": "/images/mobile/pexels-olenkabohovyk-5686479.jpg",
+  "brand-margraf": "/images/mobile/pexels-sylwester-ficek-154797634-34369007.jpg"
 };
 
 export function BrandsSection() {
@@ -81,13 +81,6 @@ export function BrandsSection() {
                 className="group py-3.5 border-b border-[#c4c7c7]/30 dark:border-[#262626] flex items-center justify-between cursor-pointer transition-all duration-300"
               >
                 <div className="flex items-center gap-6">
-                  {/* Slide number */}
-                  <span className={`font-label-caps text-label-caps-sm transition-colors duration-300 ${
-                    isActive ? "text-[#1c1b1b] dark:text-[#f4f0ef]" : "text-[#5d5f5f]/40 dark:text-[#8e8e8e]/40"
-                  }`}>
-                    0{index + 1}
-                  </span>
-                  
                   {/* Brand name */}
                   <span className={`font-raleway text-body-lg uppercase tracking-[0.15em] transition-all duration-300 ${
                     isActive 
@@ -160,11 +153,6 @@ export function BrandsSection() {
               {/* Accordion Header */}
               <div className="flex justify-between items-center w-full">
                 <div className="flex items-center gap-4">
-                  <span className={`font-label-caps text-label-caps-sm transition-colors duration-300 ${
-                    isActive ? "text-[#1c1b1b] dark:text-[#f4f0ef]" : "text-[#5d5f5f]/40 dark:text-[#8e8e8e]/40"
-                  }`}>
-                    0{index + 1}
-                  </span>
                   <h3 className={`font-raleway text-body-lg uppercase tracking-[0.12em] transition-colors duration-300 ${
                     isActive ? "text-[#1c1b1b] dark:text-[#f4f0ef] font-normal" : "text-[#5d5f5f]/60 dark:text-[#8e8e8e]/60 font-light"
                   }`}>

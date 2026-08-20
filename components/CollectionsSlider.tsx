@@ -221,7 +221,7 @@ export function CollectionsSlider() {
 
                   {/* Index and slug */}
                   <span className="font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] block uppercase mt-1">
-                    0{index + 1} / {category.slug}
+                    /{category.slug}
                   </span>
 
                   {/* Name */}

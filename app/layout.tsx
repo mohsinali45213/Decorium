@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Hanken_Grotesk, Raleway } from "next/font/google";
 import "./globals.css";
 import { SiteNavbar } from "@/components/SiteNavbar";
@@ -35,8 +36,9 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html lang="en" suppressHydrationWarning className={`${hankenGrotesk.variable} ${raleway.variable}`}>
       <head>
-        <script
+        <Script
           id="theme-initializer"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {

@@ -7,6 +7,7 @@ import Slider from "react-slick";
 import { notFound } from "next/navigation";
 import { MessageCircle, Phone, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CATALOG_PRODUCTS } from "@/lib/catalogData";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -32,9 +33,9 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   // Gallery image collection (Primary image + curated detail views)
   const galleryImages = [
     product.coverImage,
-    "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85",
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
-    "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=85",
+    "/images/desktop/pexels-artbovich-7166636.jpg",
+    "/images/desktop/pexels-artbovich-7534232.jpg",
+    "/images/desktop/pexels-artbovich-8082311.jpg",
   ];
 
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -87,15 +88,13 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
       <div className="max-w-[1440px] mx-auto px-6 md:px-16 pt-8 md:pt-12 pb-24">
         
         {/* Back Link */}
-        <div className="mb-8">
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-2 font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] hover:text-[#1c1b1b] dark:hover:text-[#f4f0ef] transition-colors uppercase"
-          >
-            <ArrowLeft className="size-4" />
-            Back to Catalog
-          </Link>
-        </div>
+        <Breadcrumbs
+          items={[
+            { label: "HOME", href: "/" },
+            { label: "PRODUCTS", href: "/products" }
+          ]}
+          className="mb-8"
+        />
 
         {/* Product Split Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
@@ -159,7 +158,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
             {/* Category & Title */}
             <div className="mb-8">
               <span className="font-label-caps text-label-caps uppercase text-[#5d5f5f] dark:text-[#8e8e8e] tracking-widest block mb-2">
-                01 / {product.categoryName || "FURNITURE"}
+                {product.categoryName || "FURNITURE"}
               </span>
               <h1 className="font-raleway text-headline-lg text-[#1c1b1b] dark:text-[#f4f0ef] font-light uppercase tracking-wide leading-tight mb-2">
                 {product.name}

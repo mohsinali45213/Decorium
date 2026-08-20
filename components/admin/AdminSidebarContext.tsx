@@ -6,25 +6,39 @@ interface AdminSidebarContextType {
   isCollapsed: boolean;
   setIsCollapsed: (collapsed: boolean | ((prev: boolean) => boolean)) => void;
   toggleSidebar: () => void;
+  isMobileOpen: boolean;
+  setIsMobileOpen: (open: boolean | ((prev: boolean) => boolean)) => void;
+  toggleMobileSidebar: () => void;
+  isMounted: boolean;
 }
 
 const AdminSidebarContext = createContext<AdminSidebarContextType>({
   isCollapsed: false,
   setIsCollapsed: () => {},
   toggleSidebar: () => {},
+  isMobileOpen: false,
+  setIsMobileOpen: () => {},
+  toggleMobileSidebar: () => {},
+  isMounted: false,
 });
 
 export function AdminSidebarProvider({ children }: { children: ReactNode }) {
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem("decorium-admin-sidebar-collapsed");
+        if (saved !== null) {
+          return saved === "true";
+        }
+      } catch {}
+    }
+    return false;
+  });
+  const [isMobileOpen, setIsMobileOpen] = useState<boolean>(false);
 
-  // Restore saved collapse preference from localStorage
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem("decorium-admin-sidebar-collapsed");
-      if (saved === "true") {
-        setIsCollapsed(true);
-      }
-    } catch {}
+    setIsMounted(true);
   }, []);
 
   const toggleSidebar = () => {
@@ -37,8 +51,22 @@ export function AdminSidebarProvider({ children }: { children: ReactNode }) {
     });
   };
 
+  const toggleMobileSidebar = () => {
+    setIsMobileOpen((prev) => !prev);
+  };
+
   return (
-    <AdminSidebarContext.Provider value={{ isCollapsed, setIsCollapsed, toggleSidebar }}>
+    <AdminSidebarContext.Provider
+      value={{
+        isCollapsed,
+        setIsCollapsed,
+        toggleSidebar,
+        isMobileOpen,
+        setIsMobileOpen,
+        toggleMobileSidebar,
+        isMounted,
+      }}
+    >
       {children}
     </AdminSidebarContext.Provider>
   );

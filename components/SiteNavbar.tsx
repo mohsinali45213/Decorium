@@ -8,10 +8,10 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { CATALOG_CATEGORIES } from "@/lib/catalogData";
-import aboutPreview from "@/public/images/about.jpg";
-import contactPreview from "@/public/images/contact.jpg";
-import homePreview from "@/public/images/home.jpg";
-import featuredSpace from "@/public/images/featured-interior-space.jpg";
+const homePreview = "/images/desktop/pexels-artbovich-7166636.jpg";
+const aboutPreview = "/images/desktop/pexels-artbovich-8082311.jpg";
+const contactPreview = "/images/desktop/pexels-jack-davis-86003658-11408618.jpg";
+const featuredSpace = "/images/mobile/pexels-olenkabohovyk-5686479.jpg";
 import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
@@ -204,13 +204,11 @@ export function SiteNavbar() {
                       <motion.div key={link.href} initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.22 + index * 0.09, duration: 0.45 }}>
                         {link.href === "/products" ? (
                           <button className={`${menuItemClass} text-left`} type="button" onClick={() => setPreviewRoute("/products")} onMouseEnter={() => setPreviewRoute("/products")} onFocus={() => setPreviewRoute("/products")}>
-                            <small className="font-label-caps text-label-caps-sm text-inherit">{link.number}</small>
                             {link.label}
                             <ArrowRight aria-hidden="true" className="ml-2 size-[0.8em] shrink-0 self-center" strokeWidth={1.4} />
                           </button>
                         ) : (
                           <Link className={menuItemClass} href={link.href} aria-current={active ? "page" : undefined} onMouseEnter={() => setPreviewRoute(link.href)} onFocus={() => setPreviewRoute(link.href)} onClick={() => setIsOpen(false)}>
-                            <small className="font-label-caps text-label-caps-sm text-inherit">{link.number}</small>
                             {link.label}
                           </Link>
                         )}
@@ -264,9 +262,8 @@ export function SiteNavbar() {
                                 priority
                               />
                             </div>
-                            <div className="flex flex-col flex-grow justify-between h-16 py-0.5 min-w-0">
-                              <small className="font-label-caps text-label-caps-sm text-[#5d5f5f] dark:text-[#8e8e8e] group-hover:!text-white/80 dark:group-hover:!text-black/70 transition-colors">0{index + 1}</small>
-                              <span className="flex items-end justify-between gap-3 font-raleway text-sm font-normal leading-tight tracking-[-0.02em] text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:!text-white dark:group-hover:!text-black transition-colors">
+                            <div className="flex flex-col flex-grow justify-center h-16 py-0.5 min-w-0">
+                              <span className="flex items-center justify-between gap-3 font-raleway text-sm font-normal leading-tight tracking-[-0.02em] text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:!text-white dark:group-hover:!text-black transition-colors">
                                 <span className="truncate">{category.name}</span>
                                 <ArrowRight aria-hidden="true" className="size-4 shrink-0 transition-transform group-hover:translate-x-1 text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:!text-white dark:group-hover:!text-black" strokeWidth={1.4} />
                               </span>
@@ -332,9 +329,6 @@ export function SiteNavbar() {
                         href={link.href}
                         onClick={() => setIsOpen(false)}
                       >
-                        <span className="font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] w-6">
-                          {link.number}
-                        </span>
                         <span
                           className={`text-headline-md uppercase transition-all duration-300 ${
                             active ? "text-[#1c1b1b] dark:text-[#f4f0ef]" : "text-[#1c1b1b]/50 dark:text-[#f4f0ef]/50"
@@ -395,7 +389,6 @@ export function SiteNavbar() {
                                 />
                               </div>
                               <div className="flex flex-col flex-grow justify-center min-h-10 min-w-0">
-                                <small className="font-label-caps text-[8px] text-[#5d5f5f] dark:text-[#8e8e8e] group-hover:!text-white/80 dark:group-hover:!text-black/70 transition-colors">0{index + 1}</small>
                                 <span className="flex items-end justify-between gap-1 font-raleway text-body-sm font-normal leading-[14px] text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:!text-white dark:group-hover:!text-black transition-colors min-w-0">
                                   <span className="truncate">{category.name}</span>
                                   <ArrowRight aria-hidden="true" className="size-3 shrink-0 transition-transform group-hover:translate-x-0.5 text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:!text-white dark:group-hover:!text-black self-end mb-0.5" strokeWidth={1.4} />

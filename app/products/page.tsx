@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Search, X, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CATALOG_PRODUCTS, CATALOG_CATEGORIES, CatalogProduct } from "@/lib/catalogData";
 
 function ProductsContent() {
@@ -145,10 +146,7 @@ function ProductsContent() {
     <main className="max-w-[1440px] mx-auto px-navbar-px pt-[110px] md:pt-[140px] pb-16 md:pb-24 bg-[#fdf8f8] dark:bg-[#121212] text-[#1c1b1b] dark:text-[#f4f0ef] antialiased transition-colors duration-300">
       {/* Header & Search */}
       <header className="mb-16 text-left">
-        <div className="font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] mb-4 uppercase">
-          <Link className="hover:text-black dark:hover:text-white transition-colors" href="/">HOME</Link> /{" "}
-          <span className="text-black dark:text-white">PRODUCTS</span>
-        </div>
+        <Breadcrumbs items={[{ label: "HOME", href: "/" }, { label: "PRODUCTS" }]} className="mb-4" />
         
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 border-b border-[#c4c7c7]/40 dark:border-[#262626] pb-8">
           <div>

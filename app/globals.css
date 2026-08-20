@@ -366,3 +366,55 @@ h1, h2, h3, h4, h5, h6 {
   color: #121212;
   stroke: #121212;
 }
+
+/* ========================================================================= */
+/* LUXURY CUSTOM SCROLLBAR ENGINE                                            */
+/* ========================================================================= */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4c7c7;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background-color 300ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1c1b1b;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Dark Mode Scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+  background: #3e3e3e;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #f4f0ef;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Firefox Support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c4c7c7 transparent;
+}
+
+.dark * {
+  scrollbar-color: #3e3e3e transparent;
+}

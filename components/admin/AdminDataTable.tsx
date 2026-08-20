@@ -1,234 +1,135 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import {
   Search,
-  Plus,
-  SlidersHorizontal,
   ChevronDown,
-  ChevronLeft,
-  ChevronRight,
   MoreVertical,
-  Edit2,
+  Plus,
   Trash2,
+  Edit2,
   Copy,
-  Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export interface ColumnDef<T> {
   key: string;
   header: string;
-  className?: string;
   render: (item: T, index: number) => React.ReactNode;
+  className?: string;
 }
 
-export interface AdminDataTableProps<T extends { _id: string; name: string }> {
+export interface AdminDataTableProps<T extends { _id: string }> {
   title: string;
-  subtitle?: string;
+  subtitle: string;
   searchPlaceholder?: string;
-  addItemLabel: string;
+  addItemLabel?: string;
+  columns: ColumnDef<T>[];
+  data: T[];
+  categoriesFilter?: Array<{ value: string; label: string }>;
+  itemsPerPage?: number;
   onAddItem?: () => void;
   onEditItem?: (item: T) => void;
   onDeleteItem?: (item: T) => void;
-  columns: ColumnDef<T>[];
-  data: T[];
-  categoriesFilter?: { label: string; value: string }[];
-  itemsPerPage?: number;
 }
 
-export function AdminDataTable<T extends { _id: string; name: string }>({
+export function AdminDataTable<T extends { _id: string }>({
   title,
   subtitle,
-  searchPlaceholder = "Search items...",
-  addItemLabel,
+  searchPlaceholder = "Search items by title, code, or status...",
+  addItemLabel = "Add Item",
+  columns,
+  data,
+  itemsPerPage = 8,
   onAddItem,
   onEditItem,
   onDeleteItem,
-  columns,
-  data,
-  categoriesFilter = [],
-  itemsPerPage = 5,
 }: AdminDataTableProps<T>) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
-  const [sortBy, setSortBy] = useState<"NEWEST" | "NAME_ASC" | "NAME_DESC">("NEWEST");
+  const [sortOrder, setSortOrder] = useState<"NEWEST" | "NAME_ASC" | "NAME_DESC">("NEWEST");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
-  const [showFiltersDrawer, setShowFiltersDrawer] = useState(false);
 
-  // Filter Data
+  // Filter & Sort Engine
   const filteredData = useMemo(() => {
-    return data.filter((item) => {
-      // 1. Search Query
-      if (searchQuery.trim()) {
-        const query = searchQuery.toLowerCase();
-        const matchesName = item.name.toLowerCase().includes(query);
-        const matchesOther = JSON.stringify(item).toLowerCase().includes(query);
-        if (!matchesName && !matchesOther) return false;
-      }
-      // 2. Category Filter
-      if (selectedCategory !== "ALL") {
-        const categoryMatch = (item as unknown as Record<string, unknown>).categorySlug === selectedCategory ||
-          (item as unknown as Record<string, unknown>).category === selectedCategory;
-        if (!categoryMatch) return false;
-      }
-      return true;
-    }).sort((a, b) => {
-      if (sortBy === "NAME_ASC") return a.name.localeCompare(b.name);
-      if (sortBy === "NAME_DESC") return b.name.localeCompare(a.name);
-      return 0; // Default NEWEST
-    });
-  }, [data, searchQuery, selectedCategory, sortBy]);
+    return data
+      .filter((item) => {
+        if (!searchQuery.trim()) return true;
+        const q = searchQuery.toLowerCase();
+        return Object.values(item).some((val) =>
+          String(val).toLowerCase().includes(q)
+        );
+      })
+      .sort((a, b) => {
+        if (sortOrder === "NAME_ASC") {
+          const nameA = String((a as Record<string, unknown>).name || (a as Record<string, unknown>).title || "").toLowerCase();
+          const nameB = String((b as Record<string, unknown>).name || (b as Record<string, unknown>).title || "").toLowerCase();
+          return nameA.localeCompare(nameB);
+        }
+        if (sortOrder === "NAME_DESC") {
+          const nameA = String((a as Record<string, unknown>).name || (a as Record<string, unknown>).title || "").toLowerCase();
+          const nameB = String((b as Record<string, unknown>).name || (b as Record<string, unknown>).title || "").toLowerCase();
+          return nameB.localeCompare(nameA);
+        }
+        return 0; // Default order
+      });
+  }, [data, searchQuery, sortOrder]);
 
-  // Pagination Math
+  // Pagination Engine
   const totalPages = Math.ceil(filteredData.length / itemsPerPage) || 1;
-  const currentRangeStart = filteredData.length === 0 ? 0 : (currentPage - 1) * itemsPerPage + 1;
-  const currentRangeEnd = Math.min(currentPage * itemsPerPage, filteredData.length);
   const paginatedData = useMemo(() => {
     const start = (currentPage - 1) * itemsPerPage;
     return filteredData.slice(start, start + itemsPerPage);
   }, [filteredData, currentPage, itemsPerPage]);
 
-  // Checkbox Selection Logic
-  const allSelected = paginatedData.length > 0 && paginatedData.every((item) => selectedIds.includes(item._id));
+  // Selection Handlers
+  const allSelected =
+    paginatedData.length > 0 &&
+    paginatedData.every((item) => selectedIds.includes(item._id));
+
   const toggleSelectAll = () => {
     if (allSelected) {
-      setSelectedIds((prev) => prev.filter((id) => !paginatedData.some((p) => p._id === id)));
+      const pageIds = paginatedData.map((item) => item._id);
+      setSelectedIds((prev) => prev.filter((id) => !pageIds.includes(id)));
     } else {
-      const currentPageIds = paginatedData.map((p) => p._id);
-      setSelectedIds((prev) => Array.from(new Set([...prev, ...currentPageIds])));
+      const pageIds = paginatedData.map((item) => item._id);
+      setSelectedIds((prev) => Array.from(new Set([...prev, ...pageIds])));
     }
   };
 
   const toggleSelectRow = (id: string) => {
-    setSelectedIds((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]));
+    setSelectedIds((prev) =>
+      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
+    );
   };
 
+  const currentRangeStart = filteredData.length === 0 ? 0 : (currentPage - 1) * itemsPerPage + 1;
+  const currentRangeEnd = Math.min(currentPage * itemsPerPage, filteredData.length);
+
   return (
-    <div className="w-full flex flex-col gap-8 text-left animate-fadeIn">
+    <div className="flex flex-col gap-6 sm:gap-8 text-left w-full">
       
-      {/* 01. PAGE HEADER */}
-      <section className="flex flex-col gap-2 border-b border-[#c4c7c7]/30 dark:border-[#2e2e2e] pb-6">
-        <h1 className="font-raleway text-[42px] sm:text-[48px] font-light uppercase tracking-tight text-[#1c1b1b] dark:text-[#f4f0ef]">
-          {title}
-        </h1>
-        {subtitle && (
-          <p className="font-body-lg text-body-lg text-[#5d5f5f] dark:text-[#8e8e8e] max-w-2xl">
+      {/* 01. HEADER SECTION */}
+      <section className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 sm:pb-6 border-b border-[#c4c7c7]/30 dark:border-[#2e2e2e]">
+        <div>
+          <h1 className="font-raleway text-headline-md sm:text-headline-lg font-light uppercase tracking-wide text-[#1c1b1b] dark:text-[#f4f0ef]">
+            {title}
+          </h1>
+          <p className="font-body-md text-body-sm sm:text-body-md text-[#5d5f5f] dark:text-[#8e8e8e] max-w-2xl mt-1.5 sm:mt-2">
             {subtitle}
           </p>
-        )}
-      </section>
-
-      {/* 02. SEARCH & TOOLS TOOLBAR */}
-      <section className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 pb-4 border-b border-[#c4c7c7]/40 dark:border-[#2e2e2e]">
-        
-        {/* Search Bar Input */}
-        <div className="w-full sm:w-1/2 max-w-md relative group">
-          <Search className="size-4 absolute left-4 top-1/2 -translate-y-1/2 text-[#5d5f5f] dark:text-[#8e8e8e] group-focus-within:text-[#1c1b1b] dark:group-focus-within:text-[#f4f0ef] transition-colors" strokeWidth={1.75} />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              setCurrentPage(1);
-            }}
-            placeholder={searchPlaceholder}
-            className="w-full pl-11 pr-4 py-3 bg-[#f7f3f2]/40 dark:bg-[#181818] border border-[#c4c7c7]/40 dark:border-[#2e2e2e] rounded-lg font-body-md text-body-md text-[#1c1b1b] dark:text-[#f4f0ef] focus:outline-none focus:border-[#1c1b1b] dark:focus:border-[#f4f0ef] transition-colors placeholder:text-[#5d5f5f] dark:placeholder:text-[#8e8e8e]"
-          />
         </div>
 
-        {/* Toolbar Buttons: Filter & Sort */}
-        <div className="flex items-center gap-3 self-end sm:self-auto">
-          {categoriesFilter.length > 0 && (
-            <div className="relative">
-              <button
-                onClick={() => setShowFiltersDrawer(!showFiltersDrawer)}
-                className="flex items-center gap-2 px-4 py-3 border border-[#c4c7c7]/40 dark:border-[#2e2e2e] rounded-lg hover:border-[#1c1b1b] dark:hover:border-[#f4f0ef] transition-colors bg-[#f7f3f2]/40 dark:bg-[#181818] cursor-pointer"
-              >
-                <SlidersHorizontal className="size-4 text-[#5d5f5f] dark:text-[#8e8e8e]" strokeWidth={1.75} />
-                <span className="font-label-caps text-label-caps uppercase text-[#1c1b1b] dark:text-[#f4f0ef]">
-                  {selectedCategory === "ALL" ? "FILTERS" : `FILTER: ${selectedCategory}`}
-                </span>
-              </button>
-
-              {showFiltersDrawer && (
-                <div className="absolute right-0 mt-2 w-56 bg-[#fdf8f8] dark:bg-[#181818] border border-[#c4c7c7]/40 dark:border-[#2e2e2e] rounded-xl shadow-xl p-2 z-50 animate-fadeIn font-label-caps text-label-caps uppercase text-xs space-y-1">
-                  <button
-                    onClick={() => {
-                      setSelectedCategory("ALL");
-                      setShowFiltersDrawer(false);
-                    }}
-                    className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
-                      selectedCategory === "ALL"
-                        ? "bg-[#1c1b1b] text-white dark:bg-[#f4f0ef] dark:text-[#121212] font-semibold"
-                        : "hover:bg-[#f1edec] dark:hover:bg-[#252525] text-[#1c1b1b] dark:text-[#f4f0ef]"
-                    }`}
-                  >
-                    All Categories
-                  </button>
-                  {categoriesFilter.map((cat) => (
-                    <button
-                      key={cat.value}
-                      onClick={() => {
-                        setSelectedCategory(cat.value);
-                        setShowFiltersDrawer(false);
-                      }}
-                      className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
-                        selectedCategory === cat.value
-                          ? "bg-[#1c1b1b] text-white dark:bg-[#f4f0ef] dark:text-[#121212] font-semibold"
-                          : "hover:bg-[#f1edec] dark:hover:bg-[#252525] text-[#1c1b1b] dark:text-[#f4f0ef]"
-                      }`}
-                    >
-                      {cat.label}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Sort Dropdown */}
-          <div className="relative">
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as "NEWEST" | "NAME_ASC" | "NAME_DESC")}
-              className="appearance-none flex items-center gap-2 pl-4 pr-8 py-3 bg-[#f7f3f2]/40 dark:bg-[#181818] border border-[#c4c7c7]/40 dark:border-[#2e2e2e] rounded-lg hover:border-[#1c1b1b] dark:hover:border-[#f4f0ef] transition-colors font-label-caps text-label-caps uppercase text-[#1c1b1b] dark:text-[#f4f0ef] cursor-pointer focus:outline-none"
-            >
-              <option value="NEWEST">SORT BY: NEWEST</option>
-              <option value="NAME_ASC">SORT BY: NAME (A-Z)</option>
-              <option value="NAME_DESC">SORT BY: NAME (Z-A)</option>
-            </select>
-            <ChevronDown className="size-4 text-[#5d5f5f] dark:text-[#8e8e8e] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-          </div>
-        </div>
-
-      </section>
-
-      {/* 03. STATS & ACTION BAR */}
-      <section className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div className="font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] uppercase tracking-widest">
-          {filteredData.length} {filteredData.length === 1 ? "ITEM" : "ITEMS"} FOUND
-          {selectedIds.length > 0 && (
-            <span className="ml-3 text-emerald-600 dark:text-emerald-400 font-semibold">
-              ({selectedIds.length} SELECTED)
-            </span>
-          )}
-        </div>
-
+        {/* Action Button */}
         <div className="flex items-center gap-3">
           {selectedIds.length > 0 && (
             <Button
               variant="outline"
               size="md"
               icon={Trash2}
-              onClick={() => {
-                setSelectedIds([]);
-              }}
-              className="rounded-lg border-red-600 text-red-600 dark:border-red-400 dark:text-red-400"
+              onClick={() => setSelectedIds([])}
+              className="rounded-lg border-red-600 text-red-600 dark:border-red-400 dark:text-red-400 text-xs py-2.5 px-4"
             >
               DELETE ({selectedIds.length})
             </Button>
@@ -240,17 +141,151 @@ export function AdminDataTable<T extends { _id: string; name: string }>({
             icon={Plus}
             iconPosition="left"
             onClick={onAddItem}
-            className="rounded-lg px-6 py-3 tracking-widest uppercase"
+            className="rounded-lg px-4 sm:px-6 py-2.5 sm:py-3 tracking-widest uppercase text-xs sm:text-label-caps"
           >
             {addItemLabel}
           </Button>
         </div>
       </section>
 
-      {/* 04. DATA TABLE CANVAS */}
-      <section className="w-full overflow-x-auto border border-[#c4c7c7]/30 dark:border-[#2e2e2e] rounded-xl bg-[#fdf8f8] dark:bg-[#121212] shadow-xs">
+      {/* 02. CONTROLS BAR (SEARCH & SORT) */}
+      <section className="grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-4">
+        {/* Search Input */}
+        <div className="sm:col-span-7 md:col-span-8 lg:col-span-9 relative">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-[#5d5f5f] dark:text-[#8e8e8e]" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setCurrentPage(1);
+            }}
+            placeholder={searchPlaceholder}
+            className="w-full pl-10 pr-4 py-2.5 sm:py-3 bg-[#f7f3f2]/60 dark:bg-[#181818] border border-[#c4c7c7]/30 dark:border-[#2e2e2e] rounded-xl text-[#1c1b1b] dark:text-[#f4f0ef] placeholder-[#5d5f5f] dark:placeholder-[#8e8e8e] font-body-sm text-xs sm:text-sm focus:outline-none focus:border-[#1c1b1b] dark:focus:border-[#f4f0ef] transition-colors"
+          />
+        </div>
+
+        {/* Sort Select Dropdown */}
+        <div className="sm:col-span-5 md:col-span-4 lg:col-span-3 relative">
+          <select
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value as "NEWEST" | "NAME_ASC" | "NAME_DESC")}
+            className="w-full pl-4 pr-10 py-2.5 sm:py-3 bg-[#f7f3f2]/60 dark:bg-[#181818] border border-[#c4c7c7]/30 dark:border-[#2e2e2e] rounded-xl text-[#1c1b1b] dark:text-[#f4f0ef] font-label-caps text-[10px] sm:text-xs uppercase tracking-wider focus:outline-none focus:border-[#1c1b1b] dark:focus:border-[#f4f0ef] appearance-none cursor-pointer"
+          >
+            <option value="NEWEST">SORT BY: NEWEST</option>
+            <option value="NAME_ASC">SORT BY: NAME (A-Z)</option>
+            <option value="NAME_DESC">SORT BY: NAME (Z-A)</option>
+          </select>
+          <ChevronDown className="size-4 text-[#5d5f5f] dark:text-[#8e8e8e] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+        </div>
+      </section>
+
+      {/* 03. ELEGANT MOBILE CARD VIEW (Under md screens) */}
+      <section className="block md:hidden space-y-4">
+        {paginatedData.length === 0 ? (
+          <div className="p-8 text-center border border-[#c4c7c7]/30 dark:border-[#2e2e2e] rounded-xl bg-[#fdf8f8] dark:bg-[#121212] text-[#5d5f5f] dark:text-[#8e8e8e] font-body-sm">
+            No items found matching your filters.
+          </div>
+        ) : (
+          paginatedData.map((item, idx) => {
+            const isSelected = selectedIds.includes(item._id);
+            return (
+              <div
+                key={item._id}
+                className={`p-4.5 rounded-xl border transition-all duration-300 relative space-y-3.5 ${
+                  isSelected
+                    ? "bg-[#f1edec] dark:bg-[#222222] border-[#1c1b1b] dark:border-[#f4f0ef] shadow-xs"
+                    : "bg-[#fdf8f8] dark:bg-[#181818] border-[#c4c7c7]/30 dark:border-[#2e2e2e]"
+                }`}
+              >
+                {/* Mobile Card Top Utility Bar */}
+                <div className="flex items-center justify-between gap-3 pb-3 border-b border-[#c4c7c7]/20 dark:border-[#2e2e2e]">
+                  <div className="flex items-center gap-3">
+                    <input
+                      type="checkbox"
+                      checked={isSelected}
+                      onChange={() => toggleSelectRow(item._id)}
+                      className="size-4 rounded-sm border-[#c4c7c7] dark:border-[#2e2e2e] text-[#1c1b1b] dark:text-[#f4f0ef] focus:ring-0 cursor-pointer"
+                    />
+                    <span className="font-label-caps text-[9px] text-[#5d5f5f] dark:text-[#8e8e8e] uppercase tracking-wider">
+                      SPECIMEN #{idx + 1 + (currentPage - 1) * itemsPerPage}
+                    </span>
+                  </div>
+
+                  {/* Actions Dropdown */}
+                  <div className="relative">
+                    <button
+                      onClick={() => setActiveMenuId(activeMenuId === item._id ? null : item._id)}
+                      className="p-1.5 text-[#5d5f5f] dark:text-[#8e8e8e] hover:text-[#1c1b1b] dark:hover:text-[#f4f0ef] rounded-lg cursor-pointer transition-colors"
+                    >
+                      <MoreVertical className="size-4" />
+                    </button>
+
+                    {activeMenuId === item._id && (
+                      <div className="absolute right-0 mt-1 w-44 bg-[#fdf8f8] dark:bg-[#181818] border border-[#c4c7c7]/40 dark:border-[#2e2e2e] rounded-xl shadow-xl p-2 z-50 font-label-caps text-[10px] uppercase space-y-1">
+                        <button
+                          onClick={() => {
+                            onEditItem?.(item);
+                            setActiveMenuId(null);
+                          }}
+                          className="w-full flex items-center gap-2 px-3 py-2 hover:bg-[#f1edec] dark:hover:bg-[#252525] rounded-lg text-[#1c1b1b] dark:text-[#f4f0ef]"
+                        >
+                          <Edit2 className="size-3.5" />
+                          <span>Edit Item</span>
+                        </button>
+                        <button
+                          onClick={() => setActiveMenuId(null)}
+                          className="w-full flex items-center gap-2 px-3 py-2 hover:bg-[#f1edec] dark:hover:bg-[#252525] rounded-lg text-[#1c1b1b] dark:text-[#f4f0ef]"
+                        >
+                          <Copy className="size-3.5" />
+                          <span>Duplicate</span>
+                        </button>
+                        <button
+                          onClick={() => {
+                            onDeleteItem?.(item);
+                            setActiveMenuId(null);
+                          }}
+                          className="w-full flex items-center gap-2 px-3 py-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 rounded-lg"
+                        >
+                          <Trash2 className="size-3.5" />
+                          <span>Delete</span>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Primary Item Identity Header (Column 0) */}
+                {columns.length > 0 && (
+                  <div className="pt-0.5">
+                    {columns[0].render(item, idx)}
+                  </div>
+                )}
+
+                {/* Secondary Meta Attributes Grid (Columns 1+) */}
+                {columns.length > 1 && (
+                  <div className="grid grid-cols-2 gap-3 pt-3 border-t border-[#c4c7c7]/20 dark:border-[#2e2e2e]">
+                    {columns.slice(1).map((col) => (
+                      <div key={col.key} className="flex flex-col gap-1">
+                        <span className="font-label-caps text-[9px] text-[#5d5f5f] dark:text-[#8e8e8e] uppercase tracking-wider">
+                          {col.header}
+                        </span>
+                        <div className="text-xs sm:text-sm font-hanken-grotesk text-[#1c1b1b] dark:text-[#f4f0ef]">
+                          {col.render(item, idx)}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })
+        )}
+      </section>
+
+      {/* 04. DESKTOP DATA TABLE CANVAS (md and up screens) */}
+      <section className="hidden md:block w-full overflow-x-auto border border-[#c4c7c7]/30 dark:border-[#2e2e2e] rounded-xl bg-[#fdf8f8] dark:bg-[#121212] shadow-xs">
         <table className="w-full text-left border-collapse min-w-[700px]">
-          
           {/* Table Header */}
           <thead>
             <tr className="border-b border-[#1c1b1b] dark:border-[#f4f0ef] bg-[#f7f3f2]/60 dark:bg-[#181818] font-label-caps text-label-caps text-[#5d5f5f] dark:text-[#8e8e8e] uppercase tracking-wider">
@@ -328,9 +363,7 @@ export function AdminDataTable<T extends { _id: string; name: string }>({
                             <span>Edit Item</span>
                           </button>
                           <button
-                            onClick={() => {
-                              setActiveMenuId(null);
-                            }}
+                            onClick={() => setActiveMenuId(null)}
                             className="w-full flex items-center gap-2 px-3 py-2 hover:bg-[#f1edec] dark:hover:bg-[#252525] rounded-lg transition-colors text-[#1c1b1b] dark:text-[#f4f0ef]"
                           >
                             <Copy className="size-3.5" />
@@ -359,7 +392,7 @@ export function AdminDataTable<T extends { _id: string; name: string }>({
 
       {/* 05. PAGINATION FOOTER */}
       <section className="flex flex-col sm:flex-row justify-between items-center gap-4 py-2 text-[#5d5f5f] dark:text-[#8e8e8e]">
-        <div className="font-body-md text-sm">
+        <div className="font-body-md text-xs sm:text-sm">
           Showing <span className="font-semibold text-[#1c1b1b] dark:text-[#f4f0ef]">{currentRangeStart}–{currentRangeEnd}</span> of{" "}
           <span className="font-semibold text-[#1c1b1b] dark:text-[#f4f0ef]">{filteredData.length}</span> items
         </div>
@@ -370,7 +403,7 @@ export function AdminDataTable<T extends { _id: string; name: string }>({
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             className="p-2 rounded-lg border border-[#c4c7c7]/30 dark:border-[#2e2e2e] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#f1edec] dark:hover:bg-[#252525] text-[#1c1b1b] dark:text-[#f4f0ef] transition-colors"
           >
-            <ChevronLeft className="size-4" />
+            <ChevronDown className="size-4 rotate-90" />
           </button>
 
           <div className="flex items-center gap-1 font-label-caps text-label-caps">
@@ -394,7 +427,7 @@ export function AdminDataTable<T extends { _id: string; name: string }>({
             onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
             className="p-2 rounded-lg border border-[#c4c7c7]/30 dark:border-[#2e2e2e] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#f1edec] dark:hover:bg-[#252525] text-[#1c1b1b] dark:text-[#f4f0ef] transition-colors"
           >
-            <ChevronRight className="size-4" />
+            <ChevronDown className="size-4 -rotate-90" />
           </button>
         </div>
       </section>
