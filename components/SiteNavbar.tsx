@@ -1,17 +1,17 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, MessageCircle, Phone, Search, X } from "lucide-react";
+import { ArrowRight, Search, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { CATALOG_CATEGORIES } from "@/lib/catalogData";
-import aboutPreview from "@/stitch_decorium_editorial_navbar/decorium_premium_full_screen_menu/about.jpg";
-import contactPreview from "@/stitch_decorium_editorial_navbar/decorium_premium_full_screen_menu/contact.jpg";
-import homePreview from "@/stitch_decorium_editorial_navbar/decorium_premium_full_screen_menu/home.jpg";
-import featuredSpace from "@/stitch_decorium_editorial_navbar/decorium_premium_full_screen_menu_mobile/featured-interior-space.jpg";
+import aboutPreview from "@/public/images/about.jpg";
+import contactPreview from "@/public/images/contact.jpg";
+import homePreview from "@/public/images/home.jpg";
+import featuredSpace from "@/public/images/featured-interior-space.jpg";
 import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
@@ -123,6 +123,7 @@ export function SiteNavbar() {
             size="icon"
             aria-label="Search collections"
             onClick={() => setIsSearchOpen(true)}
+            className="navbar-search-btn"
           >
             <Search className="size-[18px]" strokeWidth={1.75} />
           </Button>

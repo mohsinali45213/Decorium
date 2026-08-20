@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Decorium - Products</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=Raleway:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind Setup -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#c6c7c5",
+                    "on-surface-variant": "#444748",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "surface": "#fdf8f8",
+                    "surface-container-highest": "#e5e2e1",
+                    "background": "#fdf8f8",
+                    "on-primary-fixed-variant": "#474646",
+                    "surface-container-low": "#f7f3f2",
+                    "surface-variant": "#e5e2e1",
+                    "surface-container": "#f1edec",
+                    "tertiary": "#000000",
+                    "primary-fixed": "#e5e2e1",
+                    "on-secondary-container": "#606161",
+                    "secondary-container": "#dddddd",
+                    "inverse-on-surface": "#f4f0ef",
+                    "on-error": "#ffffff",
+                    "primary-container": "#1c1b1b",
+                    "outline": "#747878",
+                    "on-primary-fixed": "#1c1b1b",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#858383",
+                    "inverse-surface": "#313030",
+                    "surface-tint": "#5f5e5e",
+                    "surface-container-high": "#ebe7e6",
+                    "secondary": "#5d5f5f",
+                    "on-tertiary-fixed-variant": "#454746",
+                    "surface-dim": "#ddd9d8",
+                    "on-secondary-fixed-variant": "#454747",
+                    "secondary-fixed": "#e2e2e2",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "primary": "#000000",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "on-surface": "#1c1b1b",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#e2e3e1",
+                    "surface-bright": "#fdf8f8",
+                    "tertiary-container": "#1a1c1b",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "on-background": "#1c1b1b",
+                    "on-tertiary-fixed": "#1a1c1b",
+                    "inverse-primary": "#c8c6c5",
+                    "on-tertiary-container": "#838483",
+                    "outline-variant": "#c4c7c7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "128px",
+                    "margin-desktop": "64px",
+                    "unit": "8px",
+                    "margin-mobile": "24px",
+                    "gutter": "24px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Hanken Grotesk"],
+                    "display-lg": ["Raleway"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Raleway"],
+                    "display-lg-mobile": ["Raleway"],
+                    "headline-md": ["Raleway"],
+                    "nav-link": ["Hanken Grotesk"],
+                    "label-caps": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "display-lg": ["80px", {"lineHeight": "90px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                    "nav-link": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Custom scrollbar to match minimalist aesthetic */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fdf8f8; /* surface */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e5e2e1; /* surface-variant */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c4c7c7; /* outline-variant */
+        }
+        
+        /* Table layout utilities */
+        .grid-table-products {
+            display: grid;
+            grid-template-columns: 48px 80px minmax(200px, 1fr) 150px 150px 120px 48px;
+            align-items: center;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex antialiased">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full w-64 flex flex-col h-screen p-gutter bg-surface border-r border-outline-variant z-20">
+<!-- Brand Header -->
+<div class="mb-12">
+<h1 class="font-display-lg text-headline-md tracking-tighter text-primary">Decorium</h1>
+<p class="font-label-caps text-label-caps text-secondary uppercase mt-1">Admin Portal</p>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-secondary-fixed-variant hover:bg-surface-container-low transition-colors duration-200 ease-in-out font-nav-link text-nav-link" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                Dashboard
+            </a>
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold border-r-2 border-primary bg-surface-container-low transition-colors duration-200 ease-in-out font-nav-link text-nav-link" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+                Products
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-secondary-fixed-variant hover:bg-surface-container-low transition-colors duration-200 ease-in-out font-nav-link text-nav-link" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">category</span>
+                Categories
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-secondary-fixed-variant hover:bg-surface-container-low transition-colors duration-200 ease-in-out font-nav-link text-nav-link" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">rebase_edit</span>
+                Brands
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-secondary-fixed-variant hover:bg-surface-container-low transition-colors duration-200 ease-in-out font-nav-link text-nav-link" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">perm_media</span>
+                Media
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-secondary-fixed-variant hover:bg-surface-container-low transition-colors duration-200 ease-in-out font-nav-link text-nav-link" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">auto_awesome</span>
+                Recommendations
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-secondary-fixed-variant hover:bg-surface-container-low transition-colors duration-200 ease-in-out font-nav-link text-nav-link" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">storefront</span>
+                Showroom
+            </a>
+</nav>
+<!-- Bottom Settings -->
+<div class="mt-auto pt-4 border-t border-outline-variant">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-secondary-fixed-variant hover:bg-surface-container-low transition-colors duration-200 ease-in-out font-nav-link text-nav-link" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">settings</span>
+                Settings
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<div class="flex-1 ml-64 flex flex-col min-h-screen">
+<!-- TopNavBar (Shared Component) -->
+<header class="flex justify-between items-center h-16 px-margin-desktop bg-surface border-b border-outline-variant sticky top-0 z-10">
+<!-- Left: Empty or Breadcrumbs if needed, keeping minimal per instructions -->
+<div class="flex items-center">
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors">search</span>
+</div>
+<!-- Right: Actions -->
+<div class="flex items-center gap-6">
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity pl-6 border-l border-outline-variant">
+<span class="font-nav-link text-nav-link text-primary">Profile</span>
+<div class="w-8 h-8 rounded-full bg-secondary-fixed overflow-hidden">
+<!-- Simplified avatar placeholder -->
+<div class="w-full h-full flex items-center justify-center bg-surface-variant text-on-surface-variant font-label-caps text-label-caps">AD</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 px-margin-desktop py-12 flex flex-col gap-12 max-w-container-max mx-auto w-full">
+<!-- Page Header -->
+<section class="flex flex-col gap-2">
+<h1 class="font-display-lg text-display-lg uppercase tracking-tight text-primary">Products</h1>
+</section>
+<!-- Search & Tools Toolbar -->
+<section class="flex justify-between items-end pb-4 border-b border-secondary-fixed">
+<div class="w-1/2 max-w-md relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-transparent border border-secondary-fixed rounded-lg font-body-md text-body-md focus:outline-none focus:border-primary transition-colors placeholder:text-secondary" placeholder="Search products..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 border border-secondary-fixed rounded-lg hover:border-primary transition-colors group">
+<span class="material-symbols-outlined text-[18px] text-secondary group-hover:text-primary transition-colors">tune</span>
+<span class="font-label-caps text-label-caps uppercase text-primary">Filters</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 border border-secondary-fixed rounded-lg hover:border-primary transition-colors group">
+<span class="font-label-caps text-label-caps uppercase text-primary">Sort By: Newest</span>
+<span class="material-symbols-outlined text-[18px] text-secondary group-hover:text-primary transition-colors">expand_more</span>
+</button>
+</div>
+</section>
+<!-- Stats & Action Bar -->
+<section class="flex justify-between items-center">
+<div class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">
+                    248 Products
+                </div>
+<button class="bg-primary text-on-primary font-nav-link text-nav-link uppercase px-6 py-3 rounded-lg hover:bg-inverse-surface transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Add Product
+                </button>
+</section>
+<!-- Data Table -->
+<section class="flex-1 w-full flex flex-col">
+<!-- Table Header -->
+<div class="grid-table-products py-4 border-b border-primary font-label-caps text-label-caps text-secondary uppercase tracking-wider">
+<div class="flex justify-center">
+<input class="w-4 h-4 rounded-sm border-secondary-fixed text-primary focus:ring-primary bg-transparent cursor-pointer" type="checkbox"/>
+</div>
+<div>Image</div>
+<div>Product</div>
+<div>Category</div>
+<div>Brand</div>
+<div>Price</div>
+<div class="text-center">Actions</div>
+</div>
+<!-- Table Body -->
+<div class="flex flex-col">
+<!-- Row 1 -->
+<div class="grid-table-products py-4 border-b border-surface-variant hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-center">
+<input class="w-4 h-4 rounded-sm border-secondary-fixed text-primary focus:ring-primary bg-transparent cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity" type="checkbox"/>
+</div>
+<div>
+<img class="w-12 h-12 object-cover rounded-lg border border-surface-variant grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A high-end, minimalist travertine dining table set against a pristine, bright white studio background. The table features sharp, geometric lines and a thick, brutalist-inspired stone top. High-key lighting highlights the porous texture of the natural stone. Shot in a clean, modern editorial style with deep blacks and bright whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArO8qYB2wUxoSYhAKWWWxRLmYasFplLScvoAkhQ3c97i_5z3nhvfewcB8AvNWggXLipOpEJ6iOV0gla5nlTfxbKxwWFhNOVaJH2vkwXA_oYkZiC7U_1ah5M7TdmMpVEpSh1cLt2t25gtN3nLdtRxQ1R7kz_53Z8RAWawHr05X54_3WadRP0mLPim91ES-1KrTjHk69UGyblRyBnNFSAMwTSVcFuK5Q07AhBX4YeGnwYB-LKDt7dUc1"/>
+</div>
+<div class="font-nav-link text-body-md text-primary pr-4 truncate">Monolith Travertine Dining Table</div>
+<div>
+<span class="inline-block px-2 py-1 border border-secondary-fixed rounded text-secondary font-label-caps text-[10px] uppercase">Furniture</span>
+</div>
+<div class="font-body-md text-secondary truncate">Studio Arde</div>
+<div class="font-nav-link text-primary">₹1,25,000</div>
+<div class="flex justify-center">
+<button class="text-secondary hover:text-primary p-2 rounded hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="grid-table-products py-4 border-b border-surface-variant hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-center">
+<input class="w-4 h-4 rounded-sm border-secondary-fixed text-primary focus:ring-primary bg-transparent cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity" type="checkbox"/>
+</div>
+<div>
+<img class="w-12 h-12 object-cover rounded-lg border border-surface-variant grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A luxurious, heavily veined white and grey marble console table. The piece sits in a sparse, minimalist environment flooded with soft, diffused natural light. The styling is highly architectural, emphasizing the rigid rectangular form of the console against the vast negative space. High-contrast, clinical photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqyb31FstwqN3XZoBfoWsGI5J6qzm3_Xhberjnq8UlxSUe8UIlXXtZ04lryHbM2Xz5jWJFJx3tySwVvDm9lsLs9tPhnBzN0ZlExFou2zcng9Xj4fPIjBOJec0U8g2ERS9zRZUAT-RW1qt_XSaBhML030p8DNMKV6H7CjQTO9PDdCosFbuQ7LwpI_hxYosb6nHAM4-sk6H975eeISEafUS1djroneNJpHmQF2DQTU1Dlv3mZewzBptX"/>
+</div>
+<div class="font-nav-link text-body-md text-primary pr-4 truncate">Calacatta Marble Console</div>
+<div>
+<span class="inline-block px-2 py-1 border border-secondary-fixed rounded text-secondary font-label-caps text-[10px] uppercase">Furniture</span>
+</div>
+<div class="font-body-md text-secondary truncate">Forma</div>
+<div class="font-nav-link text-primary">₹85,500</div>
+<div class="flex justify-center">
+<button class="text-secondary hover:text-primary p-2 rounded hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="grid-table-products py-4 border-b border-surface-variant hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-center">
+<input class="w-4 h-4 rounded-sm border-secondary-fixed text-primary focus:ring-primary bg-transparent cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity" type="checkbox"/>
+</div>
+<div>
+<img class="w-12 h-12 object-cover rounded-lg border border-surface-variant grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="An ultra-modern, thin-profile black metal pendant light fixture hanging against a seamless bone-white backdrop. The light emits a focused, warm glow that sharply contrasts with the cold, precise lines of its casing. Photographed with extreme sharpness and a clinical, technical aesthetic, showcasing minimalist luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvmF82X7QcrzswPlAcsOrHgIHInaxydca4G6hV6QdeL3tqPvPJlqNbt7eCmjlFdYf3ifO8KHcyzgONFhtvqDreRlAP57wFQho_XXrpaDYlQPtjtHNQg6pal-zXrdPWlswzL0c4lTwlZidtxqOBAHu6hnzKwJkKf_04Hbafs4qfFW7M1mZSXtIZzwL1vj5Juij5VG-LASNEqG3r9vRjOM7PYLjX3b8x-5YkipGZsnWcEl0mGRpVQhDG"/>
+</div>
+<div class="font-nav-link text-body-md text-primary pr-4 truncate">Line Pendant Light</div>
+<div>
+<span class="inline-block px-2 py-1 border border-secondary-fixed rounded text-secondary font-label-caps text-[10px] uppercase">Lighting</span>
+</div>
+<div class="font-body-md text-secondary truncate">Lumina Design</div>
+<div class="font-nav-link text-primary">₹24,000</div>
+<div class="flex justify-center">
+<button class="text-secondary hover:text-primary p-2 rounded hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="grid-table-products py-4 border-b border-surface-variant hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-center">
+<input class="w-4 h-4 rounded-sm border-secondary-fixed text-primary focus:ring-primary bg-transparent cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity" type="checkbox"/>
+</div>
+<div>
+<img class="w-12 h-12 object-cover rounded-lg border border-surface-variant grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A low-profile, minimalist lounge chair upholstered in stark white bouclé fabric, resting on a thin, matte black metal frame. The setting is a bright, high-key studio with expansive whitespace. The lighting is soft but directional, carving out the subtle curves of the chair while maintaining an overall clinical, airy mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPP6BuCHD8U4_eW1pkeNA-l0FHCBaUCiO91OPma4HibZeR2LheoOqscGznj29ePdBpNJlaWdI3Qnh-x9xZ0qplYmuZCsFnA8ZGsjG5huRLRsLHdYeWWf0SwE3DGjY1vyEBNrSNbJJElMw9UJZJYI1mPAPRWbrWtXvjyl37CUGnqagT7fRpPRT47k6a2Ag8LZVoojFEa8-vjZr0mkrq1Vms8_cJKqVuObrQ-_Hd6_lvx6X3oPNe7X_W"/>
+</div>
+<div class="font-nav-link text-body-md text-primary pr-4 truncate">Bouclé Lounge Chair</div>
+<div>
+<span class="inline-block px-2 py-1 border border-secondary-fixed rounded text-secondary font-label-caps text-[10px] uppercase">Seating</span>
+</div>
+<div class="font-body-md text-secondary truncate">Nordic Rest</div>
+<div class="font-nav-link text-primary">₹68,000</div>
+<div class="flex justify-center">
+<button class="text-secondary hover:text-primary p-2 rounded hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="grid-table-products py-4 border-b border-surface-variant hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-center">
+<input class="w-4 h-4 rounded-sm border-secondary-fixed text-primary focus:ring-primary bg-transparent cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity" type="checkbox"/>
+</div>
+<div>
+<img class="w-12 h-12 object-cover rounded-lg border border-surface-variant grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A geometric, solid black marble side table featuring an intersecting cylindrical base and square top. It sits isolated against a pure white, brightly lit background. The high-contrast image emphasizes the reflective, polished surface of the dark stone and the sharp architectural angles of the design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0R7GSNgDlml0ES_0VTiQm-Icw5h2_KDPjjulkOGE42T_SUgWuVale4Knf-iVxdrGBa9gABGjGF7cu8ICjUxJ_NPr3Gp57WFdRFq8K6ALDZ7EkmHitkpAJ4K4d4-qBBTYu9o5szeYfuuohAvawTF22rIblp6NSQm-JDhggCAxzXA6pfUrJcxpeMcoxXc4nR3LvjDdlTqTT1RMJISWsMXHzvPx_JhppjFKBnlPzeN9SLglboOlbqiQ5"/>
+</div>
+<div class="font-nav-link text-body-md text-primary pr-4 truncate">Nero Marquina Side Table</div>
+<div>
+<span class="inline-block px-2 py-1 border border-secondary-fixed rounded text-secondary font-label-caps text-[10px] uppercase">Furniture</span>
+</div>
+<div class="font-body-md text-secondary truncate">Studio Arde</div>
+<div class="font-nav-link text-primary">₹42,000</div>
+<div class="flex justify-center">
+<button class="text-secondary hover:text-primary p-2 rounded hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Pagination -->
+<section class="flex justify-between items-center py-4 text-secondary font-body-md">
+<div class="text-[14px]">
+                    Showing <span class="font-nav-link text-primary">1–5</span> of <span class="font-nav-link text-primary">248</span> products
+                </div>
+<div class="flex items-center gap-4">
+<button class="text-secondary-fixed-dim cursor-not-allowed">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<div class="flex items-center gap-2 font-nav-link">
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded-lg text-secondary hover:bg-surface-container hover:text-primary transition-colors flex items-center justify-center">2</button>
+<button class="w-8 h-8 rounded-lg text-secondary hover:bg-surface-container hover:text-primary transition-colors flex items-center justify-center">3</button>
+<span class="px-1 text-secondary">...</span>
+<button class="w-8 h-8 rounded-lg text-secondary hover:bg-surface-container hover:text-primary transition-colors flex items-center justify-center">50</button>
+</div>
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</section>
+</main>
+</div>
+</body></html>

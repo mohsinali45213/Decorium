@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Decorium - Global Flagship</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&amp;family=Playfair+Display:wght@400;700&amp;display=swap" rel="stylesheet">
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface: '#fdf8f8',
+            'surface-dim': '#ddd9d8',
+            'surface-bright': '#fdf8f8',
+            'surface-container-lowest': '#ffffff',
+            'surface-container-low': '#f7f3f2',
+            primary: '#111111',
+            secondary: '#555555',
+          },
+          fontFamily: {
+            sans: ['Raleway', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          borderRadius: {
+            'theme': '8px',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-typography">
+    .tracking-widest-xl {
+      letter-spacing: 0.2em;
+    }
+  </style>
+</head>
+<body class="bg-surface text-primary font-sans antialiased min-h-screen flex flex-col">
+<!-- BEGIN: MainHeader -->
+<header class="bg-surface-container-lowest border-b border-surface-dim py-6 px-8 flex justify-between items-center sticky top-0 z-50">
+<div class="text-2xl font-serif font-bold tracking-widest uppercase">Decorium</div>
+<nav class="hidden md:flex space-x-8 text-sm font-semibold tracking-wider text-secondary">
+<a class="hover:text-primary transition-colors duration-300" href="#">COLLECTIONS</a>
+<a class="hover:text-primary transition-colors duration-300" href="#">SHOWROOMS</a>
+<a class="hover:text-primary transition-colors duration-300" href="#">JOURNAL</a>
+<a class="hover:text-primary transition-colors duration-300" href="#">CONTACT</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="text-secondary hover:text-primary transition-colors duration-300">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<button class="md:hidden text-secondary hover:text-primary transition-colors duration-300">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent -->
+<main class="flex-grow flex flex-col lg:flex-row max-w-[1600px] mx-auto w-full p-8 lg:p-16 gap-12 lg:gap-24 items-center justify-center">
+<!-- Hero Image Section (Left) -->
+<section class="w-full lg:w-1/2 relative h-[60vh] lg:h-[80vh] overflow-hidden rounded-theme shadow-lg">
+<img alt="Decorium Flagship Showroom Interior" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvQkk47Vp-myBzoCdRhTGPLxzHbMQatpa0T6tzJ9oiCLXSp0k2ooVuvZmMNY4yo7HHUtyUBYCFwtThgKzN3n1JkT9Kg8-sevQwNjiN-8p82EzoFCGRhhAmUJoA3V3n0u_cWIKHrbnTVehJE-KMcH3zxgXTpocWqqB7-8pQEL-plmWu9hCIDXdPSwNB2QV5x7BEowAEuO6VwqRKTxaNYiTW2o2VmACNTcr_su72obpEpum-bN4rYqPrLEwE">
+</section>
+<!-- Content & Details Section (Right) -->
+<section class="w-full lg:w-1/2 flex flex-col justify-center space-y-10">
+<!-- Text Content -->
+<div class="space-y-6">
+<h1 class="text-4xl lg:text-5xl font-serif font-bold tracking-widest-xl uppercase text-primary leading-tight">
+          Global Flagship
+        </h1>
+<p class="text-secondary leading-relaxed max-w-lg text-lg">
+          Experience the epitome of minimalist design. Our flagship showroom is a curated sanctuary where architectural integrity meets unparalleled comfort. Discover pieces that define spaces.
+        </p>
+</div>
+<!-- Metadata (Address & Hours) -->
+<div class="space-y-6 border-l-2 border-surface-dim pl-6 py-2">
+<div>
+<h3 class="text-xs font-bold tracking-widest uppercase text-secondary mb-1">Address</h3>
+<p class="text-primary font-medium">120 Grosse sedemead,<br>London, DT-12003</p>
+</div>
+<div>
+<h3 class="text-xs font-bold tracking-widest uppercase text-secondary mb-1">Opening Hours</h3>
+<p class="text-primary font-medium">10:00 AM - 10:00 PM</p>
+</div>
+</div>
+<!-- CTA Button -->
+<div>
+<a class="inline-block bg-primary text-surface-container-lowest font-bold text-sm tracking-widest uppercase px-10 py-4 rounded-theme hover:bg-secondary transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary shadow-md" href="#">
+          Explore Virtual Tour
+        </a>
+</div>
+<!-- Thumbnail Images -->
+<div class="pt-8 border-t border-surface-dim flex gap-6">
+<div class="w-32 h-24 lg:w-40 lg:h-28 overflow-hidden rounded-theme shadow-sm border border-surface-dim">
+<img alt="Stone Texture Detail" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer" src="https://lh3.googleusercontent.com/aida/AP1WRLuhexhXc7HANGENtlow7_37XJ7AmUAACmMM6iGCXEHEARZ8jqnwiC3v_2dnumZuo8RubZXCg8H-BsT1jT3vwhSmVtu8hENqNxPnQG4cPzRB763iDoLEgMYcWJh0cpR1CEVVI5VQAEqcm7FR7CrECVO1LDWesfgtFPD2r9k8BUy2AdyTsI5U3o9054Iu8wJ8JmNMPY2Uyi5_WeSsfeDwhYutiT5xMRE9uxKQbXTa4-Dy8ZLrRwDfeCBtq0Q">
+</div>
+<div class="w-32 h-24 lg:w-40 lg:h-28 overflow-hidden rounded-theme shadow-sm border border-surface-dim">
+<img alt="Fabric and Joint Detail" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer" src="https://lh3.googleusercontent.com/aida/AP1WRLu0pKCK0Ys8Y5K6e0_Im4kDJyaj19OvEQ_GEJ4WJr011SWHo0t8TcWiHEbq_-5NOY8_PtG2Yhd6JMGTQhxI9RZwLx65Rfq98febm7Ltz3xzHv0junMItkxzqOv7XJzp2lAujBtbvVLEnCu1Zbd9zkwrehemGp9CcsIkW7JBhsH4HYbM-qxGGgBbGUx91mrtXZVa3FWM5Z_ErIj4I_RiIIPpC7ykl-QkZYAn9MuoNr_Efk3u55S1mpFD2A">
+</div>
+</div>
+</section>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: MainFooter -->
+<footer class="bg-surface-container-lowest border-t border-surface-dim py-12 px-8 mt-auto">
+<div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-left">
+<div>
+<div class="text-xl font-serif font-bold tracking-widest uppercase mb-2">Decorium</div>
+<p class="text-sm text-secondary">© 2024 Decorium. All rights reserved.</p>
+</div>
+<div class="flex flex-col space-y-2 text-sm text-secondary font-medium tracking-wide">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="flex justify-center md:justify-end space-x-6 text-secondary">
+<!-- Social Icons Placeholders -->
+<a class="hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" fill-rule="evenodd"></path></svg>
+</a>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+</body></html>

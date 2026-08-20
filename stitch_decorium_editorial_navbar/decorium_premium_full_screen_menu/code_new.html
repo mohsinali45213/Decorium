@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Decorium - Architectural Excellence</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&amp;family=Hanken+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"on-error": "#ffffff", "inverse-on-surface": "#f4f0ef", "on-tertiary-fixed": "#1a1c1b", "primary-fixed": "#e5e2e1", "tertiary-fixed": "#e2e3e1", "surface-container-high": "#ebe7e6", surface: "#fdf8f8", "secondary-fixed-dim": "#c6c6c6", "on-primary-container": "#858383", background: "#fdf8f8", primary: "#000000", "inverse-surface": "#313030", "surface-container-highest": "#e5e2e1", "secondary-container": "#dddddd", "surface-tint": "#5f5e5e", "on-background": "#1c1b1b", "surface-container-lowest": "#ffffff", "on-secondary-container": "#606161", "on-primary": "#ffffff", "on-tertiary": "#ffffff", "surface-bright": "#fdf8f8", "primary-container": "#1c1b1b", "on-primary-fixed-variant": "#474646", error: "#ba1a1a", "on-secondary-fixed": "#1a1c1c", tertiary: "#000000", "error-container": "#ffdad6", "on-tertiary-container": "#838483", "on-secondary": "#ffffff", "secondary-fixed": "#e2e2e2", "on-surface-variant": "#444748", "inverse-primary": "#c8c6c5", "on-tertiary-fixed-variant": "#454746", "tertiary-container": "#1a1c1b", "on-surface": "#1c1b1b", "surface-dim": "#ddd9d8", "on-secondary-fixed-variant": "#454747", "surface-container": "#f1edec", outline: "#747878", "on-primary-fixed": "#1c1b1b", secondary: "#5d5f5f", "on-error-container": "#93000a", "tertiary-fixed-dim": "#c6c7c5", "outline-variant": "#c4c7c7", "surface-variant": "#e5e2e1", "primary-fixed-dim": "#c8c6c5", "surface-container-low": "#f7f3f2"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {"section-gap": "128px", "margin-desktop": "64px", gutter: "24px", "container-max": "1440px", "margin-mobile": "24px", unit: "8px"}, fontFamily: {"headline-lg": ["Bodoni Moda"], "headline-md": ["Bodoni Moda"], "body-lg": ["Hanken Grotesk"], "label-caps": ["Hanken Grotesk"], "display-lg-mobile": ["Bodoni Moda"], "body-md": ["Hanken Grotesk"], "display-lg": ["Bodoni Moda"], "nav-link": ["Hanken Grotesk"], headline: ["Raleway"], display: ["Raleway"], body: ["Hanken Grotesk"], label: ["Hanken Grotesk"]}, fontSize: {"headline-lg": ["48px", {lineHeight: "56px", fontWeight: "400"}], "headline-md": ["32px", {lineHeight: "40px", fontWeight: "400"}], "body-lg": ["18px", {lineHeight: "32px", letterSpacing: "0.01em", fontWeight: "400"}], "label-caps": ["12px", {lineHeight: "16px", letterSpacing: "0.15em", fontWeight: "600"}], "display-lg-mobile": ["48px", {lineHeight: "52px", letterSpacing: "-0.01em", fontWeight: "400"}], "body-md": ["16px", {lineHeight: "28px", fontWeight: "400"}], "display-lg": ["80px", {lineHeight: "90px", letterSpacing: "-0.02em", fontWeight: "400"}], "nav-link": ["14px", {lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "500"}]}}}};</script>
+<style>
+        .clip-path-reveal {
+            clip-path: inset(100% 0 0 0);
+            transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .is-open .clip-path-reveal {
+            clip-path: inset(0 0 0 0);
+        }
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .is-open .stagger-item:nth-child(1) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+        .is-open .stagger-item:nth-child(2) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+        .is-open .stagger-item:nth-child(3) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+        .is-open .stagger-item:nth-child(4) { transition-delay: 0.7s; opacity: 1; transform: translateY(0); }
+        .is-open .stagger-item:nth-child(5) { transition-delay: 0.8s; opacity: 1; transform: translateY(0); }
+        
+        .image-scale {
+            transform: scale(1.1);
+            transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .is-open .image-scale {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="bg-surface text-primary antialiased font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-primary" style="overflow: hidden;">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-surface-variant transition-all duration-500 ease-in-out">
+</header>
+<!-- Main Content Canvas (Hero) -->
+<main class="pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center min-h-[716px]"><div class="md:col-span-6 flex flex-col justify-center space-y-12">
+<nav class="flex flex-col space-y-8"><a class="group flex items-center gap-4 text-primary hover:text-secondary font-display-lg text-headline-md uppercase tracking-widest transition-colors duration-300 pb-2" href="#"><span class="text-secondary group-hover:text-primary transition-colors">01</span> HOME</a><a class="group flex items-center justify-between w-full text-primary hover:text-secondary font-display-lg text-headline-md uppercase tracking-widest transition-colors duration-300 pb-2" href="#"><div class="flex items-center gap-4"><span class="text-secondary group-hover:text-primary transition-colors">02</span> CATEGORIES</div><span class="material-symbols-outlined text-[32px]">arrow_forward</span></a><a class="group flex items-center gap-4 text-primary hover:text-secondary font-display-lg text-headline-md uppercase tracking-widest transition-colors duration-300 pb-2" href="#"><span class="text-secondary group-hover:text-primary transition-colors">03</span> ABOUT</a><a class="group flex items-center gap-4 text-primary hover:text-secondary font-display-lg text-headline-md uppercase tracking-widest transition-colors duration-300 pb-2" href="#"><span class="text-secondary group-hover:text-primary transition-colors">04</span> CONTACT</a></nav>
+<div class="pt-12 border-t border-surface-variant grid grid-cols-2 gap-0 mt-auto"><a href="#" class="flex items-center justify-center gap-3 py-6 border-r border-outline-variant hover:bg-surface-container-low transition-colors group"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 300;">chat</span><span class="font-display-lg text-label-caps uppercase tracking-widest">WhatsApp</span></a><a href="#" class="flex items-center justify-center gap-3 py-6 hover:bg-surface-container-low transition-colors group"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 300;">call</span><span class="font-display-lg text-label-caps uppercase tracking-widest">Call</span></a></div></div>
+<div class="md:col-span-6 h-[614px] md:h-[819px] overflow-hidden relative">
+<img alt="Minimalist interior with curved sofa" class="w-full h-full object-cover rounded-l-xl" src="https://lh3.googleusercontent.com/aida/AP1WRLu-Nrdkv3wp9XvquZMi9TWEyg1Qacq81u4NS5iVcUH2UBGkO6-ULiz2AtveRLZ_Gc0pgRY8GuP3I3o0GPS70CeC0vm_xOqJ4Rc-pXMaa2t3-h79zxvRN2V_3cPQ4NGZbImGQc0ezucF2xf_ST9Vc82Dyl9lKXR6ynbpBTN_QRDHRYTarQG7YHgITNf1GsZLbVgMiVnwCEH24dK8PgslbwCvjnVegbczXaYx9sX5RIJaL_ijQQRBvWca8Q">
+</div></section>
+</main>
+<!-- Full Screen Menu Overlay (SideNavBar adapted for fullscreen up-slide) -->
+<div class="fixed inset-0 z-[60] w-full h-full bg-surface-container-lowest text-primary clip-path-reveal flex flex-col is-open" id="full-menu">
+<!-- Menu Header / Close -->
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit w-full max-w-container-max mx-auto h-20 shrink-0 border-b border-surface-variant">
+<a class="font-display-lg text-headline-md tracking-tighter text-primary" href="#">DECORIUM</a>
+<div class="flex items-center gap-6"><button aria-label="Close Menu" class="flex items-center gap-2 group cursor-pointer font-nav-link text-nav-link uppercase tracking-widest hover:opacity-70 transition-opacity duration-300" id="close-menu-new"><span class="">Close</span><span class="material-symbols-outlined text-[24px] text-primary" style="font-variation-settings: &quot;FILL&quot; 0;">close</span></button></div>
+</div>
+<!-- Menu Content -->
+<div class="flex-grow flex flex-col md:flex-row w-full h-full overflow-hidden">
+<!-- Navigation Links -->
+<nav class="w-full md:w-1/2 flex flex-col justify-center items-start px-margin-mobile md:px-margin-desktop space-y-12 h-full relative z-10">
+<a class="stagger-item group flex items-center gap-4 text-primary hover:text-secondary font-display-lg text-display-lg-mobile md:text-display-lg transition-colors duration-300 pb-2" data-image="home" href="#">
+<span class="text-headline-md text-secondary group-hover:text-primary transition-colors">01</span> HOME
+</a>
+<a class="stagger-item group flex items-center gap-4 text-primary hover:text-secondary font-display-lg text-display-lg-mobile md:text-display-lg transition-colors duration-300 pb-2" data-image="categories" href="#" id="nav-categories-trigger">
+<span class="text-headline-md text-secondary group-hover:text-primary transition-colors">02</span> CATEGORIES
+</a>
+<a class="stagger-item group flex items-center gap-4 text-primary hover:text-secondary font-display-lg text-display-lg-mobile md:text-display-lg transition-colors duration-300 pb-2" data-image="about" href="#">
+<span class="text-headline-md text-secondary group-hover:text-primary transition-colors">03</span> ABOUT
+</a>
+<a class="stagger-item group flex items-center gap-4 text-primary hover:text-secondary font-display-lg text-display-lg-mobile md:text-display-lg transition-colors duration-300 pb-2" data-image="contact" href="#">
+<span class="text-headline-md text-secondary group-hover:text-primary transition-colors">04</span> CONTACT
+</a>
+<!-- Footer Links -->
+<div class="stagger-item pt-12 flex mt-auto mb-8 w-full gap-4"><a href="#" class="flex-1 flex items-center justify-center gap-3 py-4 border border-outline-variant hover:bg-surface-container-low transition-colors group"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 300;">chat</span><span class="font-display-lg text-label-caps uppercase tracking-widest">WhatsApp</span></a><a href="#" class="flex-1 flex items-center justify-center gap-3 py-4 border border-outline-variant hover:bg-surface-container-low transition-colors group"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 300;">call</span><span class="font-display-lg text-label-caps uppercase tracking-widest">Call</span></a></div>
+</nav>
+<!-- Editorial Image Area -->
+<div class="hidden md:block fixed top-0 right-0 w-1/2 h-full overflow-hidden z-0" id="menu-preview-area">
+<!-- Dynamic Editorial Images -->
+<div class="absolute inset-0 transition-opacity duration-500 ease-in-out opacity-100 preview-img" id="preview-home">
+<img alt="Home" class="w-full h-full object-cover image-scale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4izaow4oEMWhWTsUBqm_0vCtVluSqXm6GDdmRMUbNSYoO_lLCFUGkrprKuCVpjhSg_kpisd6BbCyhX9OjkpVZpJHwPYj9F9QpJubOAiWUNqGNxw1pwcHHIkzrTEcTJCgcfriNdqxH5ZXw91qhsGeLcXtXAHkqYuMLEFg4nO72GpXlOJsLklsZhD65ZXmlzxd0BWffZBVaH5WMZHgilcrkxzKRy2EOFD3vdETrlUv0JVMUoEB2H6Ch">
+</div>
+<div class="absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0 preview-img" id="preview-about">
+<img alt="About" class="w-full h-full object-cover image-scale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2F7eKxInE_IcKwZMSEtT6YhORDnyUeLwnECo4J4GC0pG4yNsD20Lh8lzuaXezWIAGBdEn4sD8V6kbpsh68zNHxID_2cPLBpi3G3_PFXWpYFstR6rjRQVh15IIN1GsQHFvxhZE1TcgzewX6PysBNR6lyB2uEMO4U_wikLHa7hbzlV7TtCurAq-Hw3J8vkfl4CVZlfoDP16V5Sjw7CxkX0-I9wr_nI5e8GJ8fDUiZd2NcZD-ePKoh9m">
+</div>
+<div class="absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0 preview-img" id="preview-contact">
+<img alt="Contact" class="w-full h-full object-cover image-scale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKpBOFzHwa_tf2zRyreWPkDwYrO_pWXJa03CuB6Z1PzTlQ-8dcqIW0Z44p3nGEyXt91ZAxDsXEy8uUYHMyZG96VESqatHi114NII7zNkBSppeld9m4EDSx0TO_I8uH03ZrUaaj3r_osyCh2p7gv7ngp5oN-tqTm8NL3_xbOh6E00D-uhTenaFoQnmeEpVl-_xL_Gvbd9WTdzMALa6RPXVDfcg9Nx1RKsqpdMwN3g1iuNB1hUjGVvEx">
+</div>
+<!-- Categories List Preview -->
+<div class="absolute inset-0 flex flex-col justify-center px-margin-desktop opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out bg-surface-container-lowest" id="categories-preview">
+<div class="space-y-6">
+<p class="font-label-caps text-label-caps text-secondary uppercase tracking-widest mb-8">Categories</p>
+<ul class="space-y-4">
+<li class=""><a class="font-display-lg text-headline-md uppercase tracking-tighter hover:text-secondary hover:translate-x-2 transition-all duration-300 inline-block" href="#">Furniture</a></li>
+<li class=""><a class="font-display-lg text-headline-md uppercase tracking-tighter hover:text-secondary hover:translate-x-2 transition-all duration-300 inline-block" href="#">Lighting</a></li>
+<li class=""><a class="font-display-lg text-headline-md uppercase tracking-tighter hover:text-secondary hover:translate-x-2 transition-all duration-300 inline-block" href="#">Decor</a></li>
+<li class=""><a class="font-display-lg text-headline-md uppercase tracking-tighter hover:text-secondary hover:translate-x-2 transition-all duration-300 inline-block" href="#">Surfaces</a></li>
+<li class=""><a class="font-display-lg text-headline-md uppercase tracking-tighter hover:text-secondary hover:translate-x-2 transition-all duration-300 inline-block" href="#">Outdoor</a></li>
+<li class=""><a class="font-display-lg text-headline-md uppercase tracking-tighter hover:text-secondary hover:translate-x-2 transition-all duration-300 inline-block" href="#">Accessories</a></li>
+<li class=""><a class="font-display-lg text-headline-md uppercase tracking-tighter hover:text-secondary hover:translate-x-2 transition-all duration-300 inline-block mt-4 text-primary" href="#">View All</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuTrigger = document.getElementById('menu-trigger');
+            const closeTrigger = document.getElementById('close-menu');
+            const fullMenu = document.getElementById('full-menu');
+
+            const toggleMenu = () => {
+                fullMenu.classList.toggle('is-open');
+                
+                // Toggle pointer events to prevent clicking things behind the menu
+                if (fullMenu.classList.contains('is-open')) {
+                    fullMenu.classList.remove('pointer-events-none');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                } else {
+                    // Delay adding pointer-events-none until animation finishes
+                    setTimeout(() => {
+                        fullMenu.classList.add('pointer-events-none');
+                        document.body.style.overflow = '';
+                    }, 1200); 
+                }
+            };
+
+            menuTrigger.addEventListener('click', toggleMenu);
+            closeTrigger.addEventListener('click', toggleMenu);
+            
+            // Hover logic for menu items
+            const navLinks = document.querySelectorAll('nav .stagger-item[data-image]');
+            const previewImages = document.querySelectorAll('.preview-img');
+            const categoriesPreview = document.getElementById('categories-preview');
+
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    const target = link.getAttribute('data-image');
+                    
+                    // Hide all images
+                    previewImages.forEach(img => {
+                        img.classList.remove('opacity-100');
+                        img.classList.add('opacity-0');
+                    });
+                    
+                    // Hide categories
+                    categoriesPreview.classList.add('opacity-0', 'pointer-events-none');
+                    categoriesPreview.classList.remove('opacity-100');
+
+                    if (target === 'categories') {
+                        categoriesPreview.classList.remove('opacity-0', 'pointer-events-none');
+                        categoriesPreview.classList.add('opacity-100');
+                    } else {
+                        const targetImg = document.getElementById(`preview-${target}`);
+                        if (targetImg) {
+                            targetImg.classList.remove('opacity-0');
+                            targetImg.classList.add('opacity-100');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+</body></html>

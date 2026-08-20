@@ -1,0 +1,301 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>DECORIUM - Contact</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=Raleway:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#fdf8f8",
+                        "inverse-primary": "#c8c6c5",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e5e2e1",
+                        "tertiary": "#000000",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-primary": "#ffffff",
+                        "secondary": "#5d5f5f",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f7f3f2",
+                        "error": "#ba1a1a",
+                        "primary-container": "#1c1b1b",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-surface-variant": "#444748",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "tertiary-fixed": "#e2e3e1",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#454746",
+                        "on-surface": "#1c1b1b",
+                        "tertiary-container": "#1a1c1b",
+                        "outline-variant": "#c4c7c7",
+                        "on-primary-container": "#858383",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-secondary-container": "#606161",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#474646",
+                        "on-tertiary-container": "#838483",
+                        "surface-dim": "#ddd9d8",
+                        "on-background": "#1c1b1b",
+                        "secondary-container": "#dddddd",
+                        "primary": "#000000",
+                        "background": "#fdf8f8",
+                        "surface-container-high": "#ebe7e6",
+                        "inverse-surface": "#313030",
+                        "outline": "#747878",
+                        "surface-tint": "#5f5e5e",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f4f0ef",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f1edec",
+                        "on-secondary-fixed-variant": "#454747",
+                        "tertiary-fixed-dim": "#c6c7c5",
+                        "surface-bright": "#fdf8f8",
+                        "surface-variant": "#e5e2e1",
+                        "primary-fixed": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "24px",
+                        "margin-desktop": "64px",
+                        "section-gap": "128px",
+                        "container-max": "1440px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": [
+                            "Raleway"
+                        ],
+                        "label-caps": [
+                            "Hanken Grotesk"
+                        ],
+                        "body-lg": [
+                            "Hanken Grotesk"
+                        ],
+                        "display-lg": [
+                            "Raleway"
+                        ],
+                        "nav-link": [
+                            "Hanken Grotesk"
+                        ],
+                        "display-lg-mobile": [
+                            "Raleway"
+                        ],
+                        "body-md": [
+                            "Hanken Grotesk"
+                        ],
+                        "headline-lg": [
+                            "Raleway"
+                        ]
+                    },
+                    "fontSize": {
+                        "headline-md": [
+                            "32px",
+                            {
+                                "lineHeight": "40px",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "label-caps": [
+                            "12px",
+                            {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.15em",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "body-lg": [
+                            "18px",
+                            {
+                                "lineHeight": "32px",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "display-lg": [
+                            "80px",
+                            {
+                                "lineHeight": "90px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "nav-link": [
+                            "14px",
+                            {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "500"
+                            }
+                        ],
+                        "display-lg-mobile": [
+                            "48px",
+                            {
+                                "lineHeight": "52px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "body-md": [
+                            "16px",
+                            {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "headline-lg": [
+                            "48px",
+                            {
+                                "lineHeight": "56px",
+                                "fontWeight": "400"
+                            }
+                        ]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #fdf8f8;
+            color: #1c1b1b;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant dark:border-on-surface-variant z-50 sticky top-0 w-full">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-8 max-w-container-max mx-auto">
+<div class="font-headline-lg text-headline-lg tracking-tighter text-primary dark:text-on-surface">
+                DECORIUM
+            </div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-nav-link text-nav-link uppercase tracking-widest text-secondary dark:text-on-secondary-container hover:text-primary dark:hover:text-on-surface transition-colors duration-300 cursor-pointer hover:opacity-80" href="#">PROJECTS</a>
+<a class="font-nav-link text-nav-link uppercase tracking-widest text-secondary dark:text-on-secondary-container hover:text-primary dark:hover:text-on-surface transition-colors duration-300 cursor-pointer hover:opacity-80" href="#">PORTFOLIO</a>
+<a class="font-nav-link text-nav-link uppercase tracking-widest text-secondary dark:text-on-secondary-container hover:text-primary dark:hover:text-on-surface transition-colors duration-300 cursor-pointer hover:opacity-80" href="#">BRANDS</a>
+<a class="font-nav-link text-nav-link uppercase tracking-widest text-secondary dark:text-on-secondary-container hover:text-primary dark:hover:text-on-surface transition-colors duration-300 cursor-pointer hover:opacity-80" href="#">ABOUT</a>
+<a class="font-nav-link text-nav-link uppercase tracking-widest text-primary dark:text-on-surface border-b border-primary dark:border-on-surface pb-1 cursor-pointer transition-opacity hover:opacity-80" href="#">CONTACT</a>
+</nav>
+<button class="md:hidden flex items-center justify-center p-2 text-primary dark:text-on-surface cursor-pointer transition-opacity hover:opacity-80">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 0;">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap flex flex-col gap-section-gap">
+<!-- Contact Intro & GET IN TOUCH Section -->
+<section class="flex flex-col gap-16">
+<div class="flex flex-col gap-6 max-w-3xl">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">07 / CONTACT</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tighter uppercase leading-tight">
+                    LET'S CREATE SOMETHING BEAUTIFUL TOGETHER.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    Have a project in mind, need product information, or want to visit our showroom? Our team would be happy to help.
+                </p>
+</div>
+<div class="border-t border-outline-variant pt-8">
+<h2 class="font-headline-md text-headline-md text-primary uppercase mb-8">GET IN TOUCH</h2>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter"><!-- Left Side: Image (7 columns) -->
+<div class="md:col-span-7 aspect-[4/3] md:aspect-auto md:h-[600px] rounded-lg overflow-hidden border border-outline-variant">
+    <img alt="High-end minimalist interior photography" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLu0pKCK0Ys8Y5K6e0_Im4kDJyaj19OvEQ_GEJ4WJr011SWHo0t8TcWiHEbq_-5NOY8_PtG2Yhd6JMGTQhxI9RZwLx65Rfq98febm7Ltz3xzHv0junMItkxzqOv7XJzp2lAujBtbvVLEnCu1Zbd9zkwrehemGp9CcsIkW7JBhsH4HYbM-qxGGgBbGUx91mrtXZVa3FWM5Z_ErIj4I_RiIIPpC7ykl-QkZYAn9MuoNr_Efk3u55S1mpFD2A">
+</div>
+
+<!-- Right Side: Numbered List (5 columns) -->
+<div class="md:col-span-5 flex flex-col justify-center gap-16 py-8 md:pl-8">
+    <!-- Item 01 -->
+    <div class="flex flex-col gap-4 group cursor-pointer">
+        <span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase">01 / WHATSAPP</span>
+        <div class="flex items-center justify-between border-b border-outline-variant pb-4">
+            <span class="font-headline-md text-headline-md text-primary uppercase">Start a conversation</span>
+            <span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+        </div>
+    </div>
+
+    <!-- Item 02 -->
+    <div class="flex flex-col gap-4 group cursor-pointer">
+        <span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase">02 / CALL</span>
+        <div class="flex items-center justify-between border-b border-outline-variant pb-4">
+            <span class="font-headline-md text-headline-md text-primary uppercase">+91 XXXXX XXXXX</span>
+            <span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+        </div>
+    </div>
+
+    <!-- Item 03 -->
+    <div class="flex flex-col gap-4 group cursor-pointer">
+        <span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase">03 / EMAIL</span>
+        <div class="flex items-center justify-between border-b border-outline-variant pb-4">
+            <span class="font-headline-md text-headline-md text-primary uppercase">hello@decorium.com</span>
+            <span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+        </div>
+    </div>
+</div></div>
+</div>
+</section>
+<!-- SHOWROOM / VISIT US Section -->
+<section class="flex flex-col gap-16">
+<div class="flex flex-col gap-6 max-w-3xl">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">SHOWROOM</span>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tighter uppercase leading-tight">
+                    VISIT US
+                </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    Experience our materials, furniture, lighting, and finishes in person at our showroom.
+                </p>
+</div>
+<div class="w-full aspect-[21/9] md:aspect-[3/1] rounded-lg overflow-hidden border border-outline-variant relative">
+<img alt="Architectural map graphic" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLujU-TVXt17kkFBwIRUYTWnkq2VhcdWDjdsw82uQ9G32GJiOq3Z1wShOqA6_X9iq0QM56RtyJB4bwAjCFOiUvaHT9QoxDwcpIIOCNiR4C10RCgUpaqxb1Z-TurMnIvYlXeejft8IhRignxIcCVGFt_aooKqdgHNrkBguzAQZ7LZuKU_ZbTwanxKV-ANK-RG0xytZMP5b65JgzmYjXfmFFkE9mdr75smQ1T-S1SwHOK9Hi0qXmEdCB2iow">
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter pt-8 border-t border-outline-variant">
+<div class="flex flex-col gap-4">
+<h3 class="font-headline-md text-headline-md text-primary uppercase">ADDRESS</h3>
+<div class="font-body-md text-body-md text-on-surface-variant">
+<p class="">Showroom Address</p>
+<p class="">City, State, India</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 md:items-end text-left md:text-right border border-outline-variant p-8 rounded-lg md:border-none md:p-0">
+<h3 class="font-headline-md text-headline-md text-primary uppercase">MON — SAT</h3>
+<div class="font-body-md text-body-md text-on-surface-variant mb-4">
+<p class="">10:00 AM — 7:00 PM</p>
+</div>
+<button class="border-b border-primary pb-1 text-primary font-nav-link text-nav-link uppercase hover:text-secondary hover:border-secondary transition-colors duration-200 flex items-center gap-2 group self-start md:self-end">
+                        GET DIRECTIONS
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" style="font-variation-settings: &quot;FILL&quot; 0;">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface dark:bg-surface border-t border-outline-variant dark:border-on-surface-variant w-full mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-margin-mobile max-w-container-max mx-auto gap-gutter">
+<div class="font-headline-md text-headline-md text-primary dark:text-on-surface">
+                DECORIUM
+            </div>
+<div class="font-label-caps text-label-caps text-secondary dark:text-on-secondary-container text-center">
+                © 2024 DECORIUM ARCHITECTURAL STUDIO. ALL RIGHTS RESERVED.
+            </div>
+<nav class="flex gap-6 items-center">
+<a class="font-label-caps text-label-caps text-secondary dark:text-on-secondary-container hover:text-primary dark:hover:text-on-surface transition-colors duration-200 uppercase" href="#">PRIVACY POLICY</a>
+<a class="font-label-caps text-label-caps text-secondary dark:text-on-secondary-container hover:text-primary dark:hover:text-on-surface transition-colors duration-200 uppercase" href="#">TERMS OF SERVICE</a>
+<a class="font-label-caps text-label-caps text-secondary dark:text-on-secondary-container hover:text-primary dark:hover:text-on-surface transition-colors duration-200 uppercase" href="#">INSTAGRAM</a>
+</nav>
+</div>
+</footer>
+
+
+</body></html>

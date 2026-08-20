@@ -305,6 +305,11 @@ h1, h2, h3, h4, h5, h6 {
   stroke: #000000;
 }
 
+.btn-luxury-icon.navbar-search-btn:hover {
+  transform: scale(1.0);
+ 
+}
+
 /* Left vertical line indicator hover effect */
 .h-bar-indicator {
   position: relative;

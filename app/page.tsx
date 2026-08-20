@@ -4,7 +4,7 @@ import { CollectionsSlider } from "@/components/CollectionsSlider";
 import { BrandsSection } from "@/components/BrandsSection";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SmoothScroll } from "@/components/SmoothScroll";
-import customBg from "@/stitch_decorium_editorial_navbar/decorium_floating_hero_variant_b/hero-bg-custom.jpg";
+import customBg from "@/public/images/hero-bg-custom.jpg";
 
 const homeSlides: HeroSlide[] = [
   {

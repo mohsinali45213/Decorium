@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>DECORIUM - Premium Landing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Raleway:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f7f3f2",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "secondary-fixed": "#e2e2e2",
+                        "outline-variant": "#c4c7c7",
+                        "surface-bright": "#fdf8f8",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#e2e3e1",
+                        "on-background": "#1c1b1b",
+                        "on-tertiary-container": "#838483",
+                        "inverse-surface": "#313030",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "inverse-primary": "#c8c6c5",
+                        "secondary": "#5d5f5f",
+                        "on-primary-fixed-variant": "#474646",
+                        "on-error": "#ffffff",
+                        "on-surface": "#1c1b1b",
+                        "tertiary-fixed-dim": "#c6c7c5",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "background": "#fdf8f8",
+                        "primary-fixed": "#e5e2e1",
+                        "outline": "#747878",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-surface-variant": "#444748",
+                        "surface-variant": "#e5e2e1",
+                        "on-primary-container": "#858383",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#454747",
+                        "surface-container": "#f1edec",
+                        "tertiary": "#000000",
+                        "surface": "#fdf8f8",
+                        "on-primary-fixed": "#1c1b1b",
+                        "primary": "#000000",
+                        "surface-dim": "#ddd9d8",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#ebe7e6",
+                        "on-tertiary-fixed-variant": "#454746",
+                        "tertiary-container": "#1a1c1b",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#dddddd",
+                        "on-secondary-container": "#606161",
+                        "surface-tint": "#5f5e5e",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#1c1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f4f0ef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "section-gap": "128px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "24px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Raleway"],
+                        "display-lg-mobile": ["Raleway"],
+                        "body-md": ["Hanken Grotesk"],
+                        "display-lg": ["Raleway"],
+                        "nav-link": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-md": ["Raleway"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["48px", { "lineHeight": "56px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["80px", { "lineHeight": "90px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "nav-link": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        @keyframes floatDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+        .animate-float-down {
+            animation: floatDown 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface h-screen flex flex-col overflow-hidden antialiased">
+<!-- Background Image Layer -->
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center opacity-30" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida/AP1WRLu-Nrdkv3wp9XvquZMi9TWEyg1Qacq81u4NS5iVcUH2UBGkO6-ULiz2AtveRLZ_Gc0pgRY8GuP3I3o0GPS70CeC0vm_xOqJ4Rc-pXMaa2t3-h79zxvRN2V_3cPQ4NGZbImGQc0ezucF2xf_ST9Vc82Dyl9lKXR6ynbpBTN_QRDHRYTarQG7YHgITNf1GsZLbVgMiVnwCEH24dK8PgslbwCvjnVegbczXaYx9sX5RIJaL_ijQQRBvWca8Q&quot;);"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-surface/50 via-transparent to-surface/80"></div>
+</div>
+<!-- TopNavBar -->
+
+<!-- Mobile Nav -->
+<nav class="w-full top-0 sticky z-50 bg-transparent flex justify-between items-center px-margin-mobile py-unit md:hidden border-b border-outline-variant/30">
+<div class="font-headline-md text-headline-md tracking-tighter text-primary dark:text-on-surface">
+            DECORIUM
+        </div>
+<button class="text-primary dark:text-on-surface hover:text-primary dark:hover:text-on-surface transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col justify-center items-center relative z-10 px-margin-mobile md:px-margin-desktop text-center">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-widest mb-6 md:mb-8 font-light">
+            DECORIUM
+        </h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant tracking-[0.3em]">
+            WE MAKE SPACE FOR LIFE.
+        </p>
+</main>
+<!-- Scroll Indicator -->
+<div class="pb-12 md:pb-16 flex justify-center w-full absolute bottom-0 z-10">
+<span class="material-symbols-outlined animate-float-down text-primary opacity-60">
+            south
+        </span>
+</div>
+
+
+</body></html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Decorium Mobile TopAppBar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Raleway:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c7c5",
+                        "surface-container-high": "#ebe7e6",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e2e3e1",
+                        "surface-tint": "#5f5e5e",
+                        "surface-bright": "#fdf8f8",
+                        "on-background": "#1c1b1b",
+                        "on-secondary-container": "#606161",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f7f3f2",
+                        "tertiary": "#000000",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "surface-variant": "#e5e2e1",
+                        "secondary": "#5d5f5f",
+                        "secondary-container": "#dddddd",
+                        "outline": "#747878",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-tertiary-container": "#838483",
+                        "primary-fixed": "#e5e2e1",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-container": "#f1edec",
+                        "background": "#fdf8f8",
+                        "on-primary-fixed-variant": "#474646",
+                        "tertiary-container": "#1a1c1b",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#c8c6c5",
+                        "on-surface": "#1c1b1b",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "inverse-surface": "#313030",
+                        "on-tertiary-fixed-variant": "#454746",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#1c1b1b",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#000000",
+                        "surface": "#fdf8f8",
+                        "outline-variant": "#c4c7c7",
+                        "on-primary-container": "#858383",
+                        "surface-dim": "#ddd9d8",
+                        "on-surface-variant": "#444748",
+                        "secondary-fixed": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "section-gap": "128px",
+                        "container-max": "1440px",
+                        "unit": "8px",
+                        "margin-mobile": "24px"
+                    },
+                    "fontFamily": {
+                        "nav-link": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-md": ["Raleway"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Raleway"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Raleway"],
+                        "display-lg-mobile": ["Raleway"]
+                    },
+                    "fontSize": {
+                        "nav-link": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                        "display-lg": ["80px", { "lineHeight": "90px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "display-lg-mobile": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.01em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/95 dark:bg-surface-container-highest/95 border-b border-outline-variant dark:border-outline flat no shadows flex justify-between items-center px-margin-mobile h-16 backdrop-blur-xl">
+<button aria-label="Open Menu" class="text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity duration-300 ease-in-out p-2 -ml-2 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20" type="button">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md tracking-tighter text-primary dark:text-primary-fixed cursor-pointer select-none">
+            STUDIO
+        </h1>
+<button aria-label="Shopping Bag" class="text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity duration-300 ease-in-out p-2 -mr-2 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20 relative" type="button">
+<span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full hidden"></span> <!-- Notification dot if needed -->
+</button>
+</header>
+<!-- Main Content Canvas (Empty to satisfy the page structure but prioritize the requested component) -->
+<main class="pt-[64px] min-h-screen">
+<section class="p-margin-mobile py-section-gap flex flex-col items-center justify-center h-[calc(100vh-64px)] opacity-50">
+<p class="font-label-caps text-label-caps text-secondary text-center">Canvas Area</p>
+</section>
+</main>
+</body></html>

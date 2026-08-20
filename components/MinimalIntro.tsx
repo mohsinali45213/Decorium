@@ -2,7 +2,7 @@
 
 import { ArrowDown } from "lucide-react";
 import Image from "next/image";
-import customBg from "@/stitch_decorium_editorial_navbar/decorium_floating_hero_variant_b/hero-bg-custom.jpg";
+import customBg from "@/public/images/hero-bg-custom.jpg";
 
 export function MinimalIntro() {
   return (
