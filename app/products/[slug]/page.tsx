@@ -22,11 +22,8 @@ interface ProductDetailPageProps {
 export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   const resolvedParams = use(params);
   
-  // Find product matching slug or fallback to Travertine Dining Table
-  const product =
-    CATALOG_PRODUCTS.find((p) => p.slug === resolvedParams.slug) ||
-    CATALOG_PRODUCTS.find((p) => p.slug === "travertine-dining-table") ||
-    CATALOG_PRODUCTS[0];
+  // Strict product matching by slug
+  const product = CATALOG_PRODUCTS.find((p) => p.slug === resolvedParams.slug);
 
   if (!product) {
     notFound();
@@ -137,7 +134,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                   <button
                     key={index}
                     onClick={() => handleSelectImage(index)}
-                    className={`relative size-10 sm:size-12 rounded-lg overflow-hidden transition-all duration-300 cursor-pointer ${
+                    className={`relative size-10 sm:size-12 rounded-none overflow-hidden transition-all duration-300 cursor-pointer ${
                       isActive
                         ? "border-none opacity-100 scale-105 shadow-sm"
                         : "border border-[#c4c7c7]/30 dark:border-[#2e2e2e] opacity-50 hover:opacity-100"
@@ -145,7 +142,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                   >
                     <Image
                       alt={`Thumbnail ${index + 1}`}
-                      className="object-cover rounded-lg"
+                      className="object-cover rounded-none"
                       fill
                       sizes="80px"
                       src={imgUrl}
