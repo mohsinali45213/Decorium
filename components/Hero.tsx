@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -43,17 +44,7 @@ export function Hero({ slides }: HeroProps) {
   const activeSlide = slides[currentSlide] || slides[0];
 
   return (
-    <section className="relative w-full h-[75dvh] min-h-[500px] md:h-[92dvh] md:min-h-[700px] flex items-end justify-center md:justify-end overflow-hidden px-navbar-px py-navbar-px text-left">
-      <style dangerouslySetInnerHTML={{__html: `
-        .hero-slick-slider .slick-slider,
-        .hero-slick-slider .slick-list,
-        .hero-slick-slider .slick-track,
-        .hero-slick-slider .slick-slide,
-        .hero-slick-slider .slick-slide > div {
-          height: 100% !important;
-        }
-      `}} />
-
+    <section suppressHydrationWarning className="relative w-full h-[75dvh] min-h-[500px] md:h-[92dvh] md:min-h-[700px] flex items-end justify-center md:justify-end overflow-hidden px-navbar-px py-navbar-px text-left">
       {/* Background Images */}
       <div className="absolute inset-0 w-full h-full z-0 hero-slick-slider">
         {isSlider ? (
@@ -94,7 +85,7 @@ export function Hero({ slides }: HeroProps) {
       </div>
 
       {/* Floating Card */}
-      <div className="relative z-10 w-full md:w-[480px] bg-[#f7f3f2]/90 dark:bg-[#181818]/90 backdrop-blur-md p-[clamp(24px,calc((48/1920)*100vw),48px)] rounded-lg border border-[#c4c7c7]/20 dark:border-[#2e2e2e] shadow-sm flex flex-col gap-4 md:gap-6 min-h-[320px] justify-between transition-colors duration-300">
+      <div className="relative z-10 w-full md:w-[480px] bg-[#f7f3f2] dark:bg-[#121212] p-[clamp(24px,calc((48/1920)*100vw),48px)] rounded-lg border border-[#c4c7c7]/20 dark:border-[#262626] shadow-sm flex flex-col gap-4 md:gap-6 min-h-[320px] justify-between transition-colors duration-300">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -125,13 +116,15 @@ export function Hero({ slides }: HeroProps) {
             </div>
 
             {/* Call to Action */}
-            <div className="mt-2 md:mt-4 pt-4 md:pt-0 border-t border-[#e2e2e2] dark:border-[#262626] md:border-0">
+            <div className="mt-2 md:mt-4">
               <Link
-                className="inline-flex items-center gap-2 font-label-caps text-label-caps text-[#1c1b1b] dark:text-[#f4f0ef] uppercase hover:text-[#5d5f5f] dark:hover:text-[#a0a0a0] transition-colors group"
+                className="inline-flex items-center gap-2 font-label-caps text-label-caps text-[#1c1b1b] dark:text-[#f4f0ef] uppercase hover:text-[#5d5f5f] dark:hover:text-[#a0a0a0] transition-colors group relative"
                 href={activeSlide.linkHref || "/products"}
               >
-                <span>{activeSlide.linkLabel || "Explore"}</span>
-                <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" strokeWidth={1.75} />
+                <span className="relative pb-0.5 after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100">
+                  {activeSlide.linkLabel || "Explore"}
+                </span>
+                <ArrowRight className="size-4 shrink-0" strokeWidth={1.75} />
               </Link>
             </div>
           </motion.div>

@@ -1,11 +1,12 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, MessageCircle, Phone } from "lucide-react";
+import { ArrowRight, MessageCircle, Phone, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/Button";
 import { CATALOG_CATEGORIES } from "@/lib/catalogData";
 import aboutPreview from "@/stitch_decorium_editorial_navbar/decorium_premium_full_screen_menu/about.jpg";
 import contactPreview from "@/stitch_decorium_editorial_navbar/decorium_premium_full_screen_menu/contact.jpg";
@@ -92,7 +93,7 @@ export function SiteNavbar() {
   const wordmarkClass = "font-raleway text-[clamp(1.45rem,2.4vw,2rem)] font-normal leading-none tracking-[-0.075em] text-[#1c1b1b] dark:text-[#f4f0ef]";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#e5e2e1] dark:border-[#262626] bg-[#fdf8f8]/95 dark:bg-[#121212]/95 backdrop-blur-sm transition-colors duration-300">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#e5e2e1] dark:border-[#262626] bg-[#fdf8f8] dark:bg-[#121212] backdrop-blur-sm transition-colors duration-300">
       <div className="mx-auto flex h-navbar-h max-w-[1440px] items-center justify-between px-navbar-px">
         <Link className={wordmarkClass} href="/" onClick={() => setIsOpen(false)}>
           DECORIUM
@@ -101,10 +102,11 @@ export function SiteNavbar() {
         <div className="flex items-center gap-3 md:gap-5">
           <ThemeToggle />
 
-          <button className="inline-flex size-10 items-center justify-center rounded-full border border-[#e5e2e1] dark:border-[#2e2e2e] text-[#1c1b1b] dark:text-[#f4f0ef] hover:bg-[#f1edec] dark:hover:bg-[#1f1f1f] transition-colors" type="button" aria-label="Search collections">
+          <Button variant="icon" size="icon" aria-label="Search collections">
             <svg aria-hidden="true" className="size-[18px] fill-none stroke-current stroke-[1.75]" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.25" /><path d="m16 16 4.25 4.25" strokeLinecap="round" /></svg>
-          </button>
-          <button className="font-raleway inline-flex items-center gap-2.5 text-[1rem] text-[#1c1b1b] dark:text-[#f4f0ef] uppercase hover:opacity-80 transition-opacity" type="button" aria-expanded={isOpen} aria-controls="primary-navigation" onClick={() => setIsOpen(true)}>
+          </Button>
+          
+          <button className="font-raleway inline-flex items-center gap-2.5 text-[1rem] text-[#1c1b1b] dark:text-[#f4f0ef] uppercase hover:opacity-80 transition-opacity cursor-pointer" type="button" aria-expanded={isOpen} aria-controls="primary-navigation" onClick={() => setIsOpen(true)}>
             <span className="hidden md:block">Menu</span>
             <MenuIcon />
           </button>
@@ -116,19 +118,23 @@ export function SiteNavbar() {
           <motion.div
             id="primary-navigation"
             className="fixed inset-0 z-50 flex min-h-dvh flex-col bg-[#fdf8f8] dark:bg-[#121212] text-[#1c1b1b] dark:text-[#f4f0ef] transition-colors duration-300"
-            initial={{ clipPath: "inset(100% 0 0 0)" }}
-            animate={{ clipPath: "inset(0 0 0 0)" }}
-            exit={{ clipPath: "inset(100% 0 0 0)" }}
-            transition={{ duration: 0.7, ease: [0.77, 0, 0.175, 1] }}
+            initial={{ clipPath: "circle(0% at calc(100% - 3rem) 2.5rem)" }}
+            animate={{ clipPath: "circle(150% at calc(100% - 3rem) 2.5rem)" }}
+            exit={{ clipPath: "circle(0% at calc(100% - 3rem) 2.5rem)" }}
+            transition={{ duration: 0.65, ease: [0.76, 0, 0.24, 1] }}
           >
             <ScrollLock />
             <div className="mx-auto flex h-navbar-h w-full max-w-[1440px] items-center justify-between px-navbar-px shrink-0">
               <Link className={wordmarkClass} href="/" onClick={() => setIsOpen(false)}>DECORIUM</Link>
-              <div className="flex items-center gap-3.5">
+              <div className="flex items-center gap-3 md:gap-5">
                 <ThemeToggle />
-                <button className="inline-flex size-10 items-center justify-center text-[#1c1b1b] dark:text-[#f4f0ef] hover:opacity-80 transition-opacity" type="button" aria-label="Close menu" onClick={() => setIsOpen(false)}>
-                  <CloseIcon />
-                </button>
+                <Button 
+                  variant="icon" 
+                  size="icon" 
+                  aria-label="Close menu" 
+                  onClick={() => setIsOpen(false)}
+                  icon={X}
+                />
               </div>
             </div>
             
@@ -158,25 +164,13 @@ export function SiteNavbar() {
                     );
                   })}
                 </div>
-                <div className="mt-8 flex flex-wrap gap-7 border-t border-[#c4c7c7] dark:border-[#2e2e2e] pt-5">
-                  <Link className="group inline-flex items-center gap-3 text-[#1c1b1b] dark:text-[#f4f0ef]" href="/contect" onClick={() => setIsOpen(false)}>
-                    <span className="flex size-9 items-center justify-center rounded-full bg-[#1c1b1b] dark:bg-[#f4f0ef] text-[#fdf8f8] dark:text-[#121212] transition-colors group-hover:bg-[#5d5f5f] dark:group-hover:bg-[#c4c7c7]">
-                      <Phone aria-hidden="true" size={15} strokeWidth={1.7} />
-                    </span>
-                    <span className="flex flex-col gap-0.5">
-                      <span className="font-label-caps text-label-caps-sm text-[#1c1b1b] dark:text-[#f4f0ef]">Call</span>
-                      <span className="font-label-caps text-[9px] uppercase tracking-[0.12em] text-[#5d5f5f] dark:text-[#8e8e8e]">Direct line</span>
-                    </span>
-                  </Link>
-                  <Link className="group inline-flex items-center gap-3 text-[#1c1b1b] dark:text-[#f4f0ef]" href="/contect" onClick={() => setIsOpen(false)}>
-                    <span className="flex size-9 items-center justify-center rounded-full bg-[#1c1b1b] dark:bg-[#f4f0ef] text-[#fdf8f8] dark:text-[#121212] transition-colors group-hover:bg-[#5d5f5f] dark:group-hover:bg-[#c4c7c7]">
-                      <MessageCircle aria-hidden="true" size={15} strokeWidth={1.7} />
-                    </span>
-                    <span className="flex flex-col gap-0.5">
-                      <span className="font-label-caps text-label-caps-sm text-[#1c1b1b] dark:text-[#f4f0ef]">WhatsApp</span>
-                      <span className="font-label-caps text-[9px] uppercase tracking-[0.12em] text-[#5d5f5f] dark:text-[#8e8e8e]">Message us</span>
-                    </span>
-                  </Link>
+                <div className="mt-8 flex flex-col gap-1.5 border-t border-[#c4c7c7] dark:border-[#2e2e2e] pt-5 text-left">
+                  <span className="font-label-caps text-label-caps-sm uppercase tracking-widest text-[#5d5f5f] dark:text-[#8e8e8e]">
+                    STUDIO & SHOWROOM INQUIRIES
+                  </span>
+                  <p className="font-body-sm text-body-sm text-[#1c1b1b] dark:text-[#f4f0ef]">
+                    Mon — Sat: 9:00 — 18:00 IST &nbsp;·&nbsp; <Link href="/contect" onClick={() => setIsOpen(false)} className="underline hover:opacity-80">hello@decorium.com</Link>
+                  </p>
                 </div>
               </nav>
               <div className="relative overflow-hidden bg-[#fdf8f8] dark:bg-[#121212] min-h-full pr-categories-px pb-categories-py flex flex-col justify-end">
@@ -188,14 +182,20 @@ export function SiteNavbar() {
                           <p className="font-label-caps text-label-caps-sm text-[#5d5f5f] dark:text-[#8e8e8e] mb-2 uppercase">Product index</p>
                           <h2 className="font-raleway text-headline-md text-[#1c1b1b] dark:text-[#f4f0ef] leading-tight">Categories</h2>
                         </div>
-                        <Link className="inline-flex items-center gap-2 rounded-lg bg-[#1c1b1b] dark:bg-[#f4f0ef] px-3 py-2 font-label-caps text-label-caps-sm text-white dark:text-[#121212] transition-opacity hover:opacity-80 uppercase" href="/products" onClick={() => setIsOpen(false)}>
-                          All categories <ArrowRight aria-hidden="true" size={14} strokeWidth={1.5} />
-                        </Link>
+                        <Button
+                          href="/products"
+                          variant="primary"
+                          size="md"
+                          showArrow
+                          onClick={() => setIsOpen(false)}
+                        >
+                          All Categories
+                        </Button>
                       </div>
                       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                         {CATALOG_CATEGORIES.map((category, index) => (
                           <Link
-                            className="group flex gap-4 rounded-lg border border-[#c4c7c7]/50 dark:border-[#2e2e2e] bg-[#fdf8f8] dark:bg-[#181818] p-3 transition-colors hover:bg-white dark:hover:bg-[#202020] items-center"
+                            className="group flex gap-4 rounded-lg border border-[#c4c7c7]/50 dark:border-[#2e2e2e] bg-[#fdf8f8] dark:bg-[#181818] p-3 transition-all duration-300 hover:-translate-y-1 hover:bg-[#1c1b1b] dark:hover:bg-[#f4f0ef] hover:border-[#1c1b1b] dark:hover:border-[#f4f0ef] hover:shadow-lg items-center"
                             href="/products"
                             key={category.slug}
                             onClick={() => setIsOpen(false)}
@@ -211,10 +211,10 @@ export function SiteNavbar() {
                               />
                             </div>
                             <div className="flex flex-col flex-grow justify-between h-16 py-0.5 min-w-0">
-                              <small className="font-label-caps text-label-caps-sm text-[#5d5f5f] dark:text-[#8e8e8e]">0{index + 1}</small>
-                              <span className="flex items-end justify-between gap-3 font-raleway text-sm font-normal leading-tight tracking-[-0.02em] text-[#1c1b1b] dark:text-[#f4f0ef]">
+                              <small className="font-label-caps text-label-caps-sm text-[#5d5f5f] dark:text-[#8e8e8e] group-hover:text-white/70 dark:group-hover:text-[#121212]/70 transition-colors">0{index + 1}</small>
+                              <span className="flex items-end justify-between gap-3 font-raleway text-sm font-normal leading-tight tracking-[-0.02em] text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:text-white dark:group-hover:text-[#121212] transition-colors">
                                 <span className="truncate">{category.name}</span>
-                                <ArrowRight aria-hidden="true" className="size-4 shrink-0 transition-transform group-hover:translate-x-1" strokeWidth={1.4} />
+                                <ArrowRight aria-hidden="true" className="size-4 shrink-0 transition-transform group-hover:translate-x-1 text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:text-white dark:group-hover:text-[#121212]" strokeWidth={1.4} />
                               </span>
                             </div>
                           </Link>
@@ -312,18 +312,20 @@ export function SiteNavbar() {
                             <p className="font-label-caps text-[9px] text-[#5d5f5f] dark:text-[#8e8e8e] uppercase mb-1">Product index</p>
                             <h3 className="font-raleway text-body-lg font-normal text-[#1c1b1b] dark:text-[#f4f0ef] uppercase">Categories</h3>
                           </div>
-                          <Link
-                            className="inline-flex items-center gap-1 rounded-md bg-[#1c1b1b] dark:bg-[#f4f0ef] px-2 py-1 font-label-caps text-[9px] text-white dark:text-[#121212] transition-opacity hover:opacity-80 uppercase"
+                          <Button
                             href="/products"
+                            variant="primary"
+                            size="sm"
+                            showArrow
                             onClick={() => setIsOpen(false)}
                           >
-                            All <ArrowRight aria-hidden="true" size={10} strokeWidth={1.5} />
-                          </Link>
+                            All Categories
+                          </Button>
                         </div>
                         <div className="grid grid-cols-2 gap-2">
                           {CATALOG_CATEGORIES.map((category, index) => (
                             <Link
-                              className="group flex gap-2 rounded-md border border-[#c4c7c7]/40 dark:border-[#2e2e2e] bg-[#fdf8f8] dark:bg-[#1c1c1c] p-2 shadow-sm hover:shadow-md transition-all hover:bg-white dark:hover:bg-[#252525] items-center"
+                              className="group flex gap-2 rounded-md border border-[#c4c7c7]/40 dark:border-[#2e2e2e] bg-[#fdf8f8] dark:bg-[#1c1c1c] p-2 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1c1b1b] dark:hover:bg-[#f4f0ef] hover:border-[#1c1b1b] dark:hover:border-[#f4f0ef] hover:shadow-md items-center"
                               href="/products"
                               key={category.slug}
                               onClick={() => setIsOpen(false)}
@@ -339,10 +341,10 @@ export function SiteNavbar() {
                                 />
                               </div>
                               <div className="flex flex-col flex-grow justify-center min-h-10 min-w-0">
-                                <small className="font-label-caps text-[8px] text-[#5d5f5f] dark:text-[#8e8e8e] uppercase">0{index + 1}</small>
-                                <span className="flex items-end justify-between gap-1 font-raleway text-body-sm font-normal leading-[14px] text-[#1c1b1b] dark:text-[#f4f0ef] min-w-0">
+                                <small className="font-label-caps text-[8px] text-[#5d5f5f] dark:text-[#8e8e8e] group-hover:text-white/70 dark:group-hover:text-[#121212]/70 transition-colors">0{index + 1}</small>
+                                <span className="flex items-end justify-between gap-1 font-raleway text-body-sm font-normal leading-[14px] text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:text-white dark:group-hover:text-[#121212] transition-colors min-w-0">
                                   <span className="truncate">{category.name}</span>
-                                  <ArrowRight aria-hidden="true" className="size-3 shrink-0 transition-transform group-hover:translate-x-0.5 self-end mb-0.5" strokeWidth={1.4} />
+                                  <ArrowRight aria-hidden="true" className="size-3 shrink-0 transition-transform group-hover:translate-x-0.5 text-[#1c1b1b] dark:text-[#f4f0ef] group-hover:text-white dark:group-hover:text-[#121212] self-end mb-0.5" strokeWidth={1.4} />
                                 </span>
                               </div>
                             </Link>
@@ -372,21 +374,13 @@ export function SiteNavbar() {
                 </div>
                 
                 {/* Bottom Action Section */}
-                <div className="border-t border-[#c4c7c7]/50 dark:border-[#2e2e2e] pt-5 flex w-full gap-3 mt-5 mb-5 shrink-0">
-                  <Link 
-                    href="/contect" 
-                    onClick={() => setIsOpen(false)}
-                    className="flex-grow flex items-center justify-center gap-2 py-3 border border-[#c4c7c7]/50 dark:border-[#2e2e2e] hover:bg-[#f7f3f2]/40 dark:hover:bg-[#1f1f1f] transition-colors uppercase font-label-caps text-label-caps-sm text-[#1c1b1b] dark:text-[#f4f0ef]"
-                  >
-                    <span>WhatsApp</span>
-                  </Link>
-                  <Link 
-                    href="/contect" 
-                    onClick={() => setIsOpen(false)}
-                    className="flex-grow flex items-center justify-center gap-2 py-3 border border-[#c4c7c7]/50 dark:border-[#2e2e2e] hover:bg-[#f7f3f2]/40 dark:hover:bg-[#1f1f1f] transition-colors uppercase font-label-caps text-label-caps-sm text-[#1c1b1b] dark:text-[#f4f0ef]"
-                  >
-                    <span>Call</span>
-                  </Link>
+                <div className="border-t border-[#c4c7c7]/50 dark:border-[#2e2e2e] pt-4 mt-5 mb-5 shrink-0 flex flex-col gap-1 text-left">
+                  <span className="font-label-caps text-[9px] uppercase tracking-widest text-[#5d5f5f] dark:text-[#8e8e8e]">
+                    STUDIO INQUIRIES
+                  </span>
+                  <p className="font-body-sm text-[12px] text-[#1c1b1b] dark:text-[#f4f0ef]">
+                    Mon — Sat: 9:00 — 18:00 IST &nbsp;·&nbsp; <Link href="/contect" onClick={() => setIsOpen(false)} className="underline">hello@decorium.com</Link>
+                  </p>
                 </div>
               </div>
             </div>

@@ -2,6 +2,89 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+:root {
+  --theme-font-color: #1c1b1b;
+  --theme-font-muted: #5d5f5f;
+  --theme-accent: #1c1b1b;
+}
+
+.dark {
+  --theme-font-color: #f4f0ef;
+  --theme-font-muted: #a09c9b;
+  --theme-accent: #f4f0ef;
+}
+
+/* ========================================================================= */
+/* GLOBAL DYNAMIC FONT COLOR ENGINE                                          */
+/* Overrides hardcoded text utilities to ensure 100% text color dynamism     */
+/* ========================================================================= */
+
+body {
+  color: var(--theme-font-color);
+  transition: color 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Primary text & headings */
+h1, h2, h3, h4, h5, h6,
+.font-raleway,
+.text-headline-lg,
+.text-headline-md,
+.text-display-lg,
+.font-wordmark,
+.text-\[\#1c1b1b\],
+.text-\[\#1a1a1a\],
+.text-\[\#201e1d\],
+.text-\[\#f4f0ef\],
+.text-black,
+.text-primary,
+.text-on-surface,
+.dark .text-\[\#f4f0ef\],
+.dark .text-white:not(.text-white) {
+  color: var(--theme-font-color);
+  transition: color 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Subtitles, descriptions, paragraphs and secondary text */
+p, span, a, button, input, select, textarea,
+.text-body-lg,
+.text-body-md,
+.text-body-sm {
+  color: var(--theme-font-color);
+  transition: color 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Muted / Secondary labels and eyebrow tags */
+.text-\[\#5d5f5f\],
+.text-\[\#8e8e8e\],
+.text-\[\#a0a0a0\],
+.text-\[\#666666\],
+.text-secondary,
+.text-on-surface-variant,
+.font-label-caps,
+.text-label-caps,
+.text-label-caps-sm,
+small {
+  color: var(--theme-font-muted);
+  transition: color 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Preserve pure white text on image overlays and badges */
+.text-white,
+.text-white *,
+.text-white\/70,
+.text-white\/80 {
+  color: #ffffff !important;
+}
+
+/* Hero Slick Slider Full Height */
+.hero-slick-slider .slick-slider,
+.hero-slick-slider .slick-list,
+.hero-slick-slider .slick-track,
+.hero-slick-slider .slick-slide,
+.hero-slick-slider .slick-slide > div {
+  height: 100% !important;
+}
+
 @theme {
   --font-hanken-grotesk: var(--font-hanken-grotesk);
   --font-raleway: var(--font-raleway);
@@ -20,7 +103,7 @@
 
   /* Custom theme colors from Stitch design system */
   --color-surface-variant: #e5e2e1;
-  --color-on-surface: #1c1b1b;
+  --color-on-surface: var(--theme-font-color);
   --color-inverse-surface: #313030;
   --color-on-error: #ffffff;
   --color-surface-container: #f1edec;
@@ -34,12 +117,12 @@
   --color-tertiary-container: #1a1c1b;
   --color-primary-fixed: #e5e2e1;
   --color-inverse-on-surface: #f4f0ef;
-  --color-on-background: #1c1b1b;
+  --color-on-background: var(--theme-font-color);
   --color-on-primary: #ffffff;
   --color-on-secondary-fixed-variant: #454747;
   --color-surface-container-high: #ebe7e6;
   --color-primary-container: #1c1b1b;
-  --color-secondary: #5d5f5f;
+  --color-secondary: var(--theme-font-muted);
   --color-tertiary-fixed-dim: #c6c7c5;
   --color-secondary-container: #dddddd;
   --color-inverse-primary: #c8c6c5;
@@ -51,7 +134,7 @@
   --color-outline-variant: #c4c7c7;
   --color-outline: #747878;
   --color-on-tertiary-fixed-variant: #454746;
-  --color-on-primary-fixed: #1c1b1b;
+  --color-on-primary-fixed: var(--theme-font-color);
   --color-surface-container-lowest: #ffffff;
   --color-on-primary-fixed-variant: #474646;
   --color-error: #ba1a1a;
@@ -59,10 +142,10 @@
   --color-on-secondary-fixed: #1a1c1c;
   --color-error-container: #ffdad6;
   --color-on-tertiary: #ffffff;
-  --color-primary: #000000;
+  --color-primary: var(--theme-font-color);
   --color-surface-dim: #ddd9d8;
   --color-surface: #fdf8f8;
-  --color-on-surface-variant: #444748;
+  --color-on-surface-variant: var(--theme-font-muted);
   --color-on-error-container: #93000a;
   --color-tertiary: #000000;
   --color-surface-bright: #fdf8f8;
@@ -141,7 +224,7 @@
 .h-bar-indicator {
   position: relative;
   padding-left: 0;
-  transition: padding-left .3s ease, color .3s ease;
+  transition: padding-left .3s ease, color 1s ease;
 }
 .h-bar-indicator::before {
   content: '';
@@ -150,32 +233,314 @@
   top: 50%;
   width: 3px;
   height: 0;
-  background: #1c1b1b;
+  background: var(--theme-font-color);
   transform: translateY(-50%);
-  transition: height .3s ease;
+  transition: height .3s ease, background-color 1s ease;
 }
 .h-bar-indicator:hover {
   padding-left: 12px;
-  color: #1c1b1b !important;
+  color: var(--theme-font-color) !important;
 }
 .h-bar-indicator:hover::before {
   height: 100%;
 }
 .h-bar-indicator.active-nav-bar {
   padding-left: 12px;
-  color: #1c1b1b !important;
+  color: var(--theme-font-color) !important;
 }
 .h-bar-indicator.active-nav-bar::before {
   height: 100%;
 }
 
-/* Dark mode adjustments for navigation indicator */
-.dark .h-bar-indicator::before {
-  background: #f4f0ef;
+/* Dynamic button hover accent */
+.btn-accent-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.dark .h-bar-indicator:hover {
+
+.btn-accent-hover:hover {
+  background-color: var(--theme-font-color) !important;
+  border-color: var(--theme-font-color) !important;
+  color: #ffffff !important;
+}
+
+.dark .btn-accent-hover:hover {
+  background-color: var(--theme-font-color) !important;
+  border-color: var(--theme-font-color) !important;
+  color: #121212 !important;
+}
+
+/* ========================================================================= */
+/* UNIFIED LUXURY BUTTON HOVER & ICON SHIFT SYSTEM                          */
+/* ========================================================================= */
+
+.btn-luxury {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.btn-luxury svg {
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease;
+}
+
+.btn-luxury:hover {
+  transform: translateY(-2px);
+}
+
+.btn-luxury:hover svg {
+  transform: translateX(4px);
+}
+
+.btn-luxury:active {
+  transform: translateY(0);
+}
+
+/* Primary Filled Buttons */
+/* Primary Filled Buttons */
+.btn-luxury-primary {
+  background-color: #1c1b1b !important;
+  color: #ffffff !important;
+  border: 1px solid #1c1b1b !important;
+}
+
+.btn-luxury-primary span,
+.btn-luxury-primary svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+.dark .btn-luxury-primary {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #ffffff !important;
+}
+
+.dark .btn-luxury-primary span,
+.dark .btn-luxury-primary svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+.btn-luxury-primary:hover {
+  background-color: #3b3a3a !important;
+  border-color: #3b3a3a !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.25);
+}
+
+.btn-luxury-primary:hover span,
+.btn-luxury-primary:hover svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+.dark .btn-luxury-primary:hover {
+  background-color: #e5e0df !important;
+  border-color: #e5e0df !important;
+  color: #000000 !important;
+  box-shadow: 0 6px 20px -4px rgba(255, 255, 255, 0.2);
+}
+
+.dark .btn-luxury-primary:hover span,
+.dark .btn-luxury-primary:hover svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* Outline Buttons */
+.btn-luxury-outline {
+  background-color: transparent !important;
+  color: #1c1b1b !important;
+  border: 1px solid #1c1b1b !important;
+}
+
+.btn-luxury-outline span,
+.btn-luxury-outline svg {
+  color: #1c1b1b !important;
+  stroke: #1c1b1b !important;
+}
+
+.dark .btn-luxury-outline {
+  background-color: transparent !important;
+  color: #f4f0ef !important;
+  border: 1px solid #f4f0ef !important;
+}
+
+.dark .btn-luxury-outline span,
+.dark .btn-luxury-outline svg {
+  color: #f4f0ef !important;
+  stroke: #f4f0ef !important;
+}
+
+.btn-luxury-outline:hover {
+  background-color: #1c1b1b !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-luxury-outline:hover span,
+.btn-luxury-outline:hover svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+.dark .btn-luxury-outline:hover {
+  background-color: #f4f0ef !important;
+  color: #121212 !important;
+  box-shadow: 0 6px 20px -4px rgba(255, 255, 255, 0.2);
+}
+
+.dark .btn-luxury-outline:hover span,
+.dark .btn-luxury-outline:hover svg {
+  color: #121212 !important;
+  stroke: #121212 !important;
+}
+
+/* Icon & Circular Buttons */
+.btn-luxury-icon {
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  color: #1c1b1b !important;
+}
+
+.btn-luxury-icon svg {
+  color: #1c1b1b !important;
+  stroke: #1c1b1b !important;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease;
+}
+
+.dark .btn-luxury-icon {
   color: #f4f0ef !important;
 }
-.dark .h-bar-indicator.active-nav-bar {
+
+.dark .btn-luxury-icon svg {
   color: #f4f0ef !important;
+  stroke: #f4f0ef !important;
+}
+
+.btn-luxury-icon:hover {
+  transform: scale(1.08);
+  background-color: #1c1b1b !important;
+  border-color: #1c1b1b !important;
+  color: #ffffff !important;
+}
+
+.btn-luxury-icon:hover svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  transform: scale(1.1);
+}
+
+.dark .btn-luxury-icon:hover {
+  background-color: #f4f0ef !important;
+  border-color: #f4f0ef !important;
+  color: #121212 !important;
+}
+
+.dark .btn-luxury-icon:hover svg {
+  color: #121212 !important;
+  stroke: #121212 !important;
+  transform: scale(1.1);
+}
+
+/* Dynamic link hover accent */
+.link-accent-hover {
+  transition: color 0.3s ease;
+}
+
+.link-accent-hover:hover {
+  color: var(--theme-font-color) !important;
+}
+
+/* ========================================================================= */
+/* FLOATING ACTION BUTTON BASE STYLES                                        */
+/* ========================================================================= */
+
+.btn-floating-reverse {
+  position: relative !important;
+  background-color: #1c1b1b !important;
+  border-color: #1c1b1b !important;
+  color: #ffffff !important;
+}
+
+.btn-floating-reverse span,
+.btn-floating-reverse svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.dark .btn-floating-reverse {
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #121212 !important;
+}
+
+.dark .btn-floating-reverse span,
+.dark .btn-floating-reverse svg {
+  color: #121212 !important;
+  stroke: #121212 !important;
+}
+
+/* ::before pseudo-element: Expanding Sonar Ripple Wave */
+.btn-floating-reverse::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid #1c1b1b;
+  opacity: 0;
+  animation: float-sonar-wave 2.8s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dark .btn-floating-reverse::before {
+  border-color: #ffffff;
+}
+
+/* ::after pseudo-element: Soft Glowing Aura Pulse */
+.btn-floating-reverse::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(28, 27, 27, 0.35) 0%, rgba(28, 27, 27, 0) 70%);
+  opacity: 0;
+  animation: float-aura-pulse 2.8s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dark .btn-floating-reverse::after {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+/* Keyframes for ::before sonar wave expansion */
+@keyframes float-sonar-wave {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  75% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+/* Keyframes for ::after aura glow breathing */
+@keyframes float-aura-pulse {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.7;
+  }
 }

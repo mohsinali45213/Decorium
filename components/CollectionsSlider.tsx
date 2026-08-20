@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/Button";
 import { CATALOG_CATEGORIES } from "@/lib/catalogData";
 
 import "slick-carousel/slick/slick.css";
@@ -105,25 +106,27 @@ export function CollectionsSlider() {
 
         {/* Custom Navigation */}
         <div className="flex gap-4 items-center self-start md:self-auto select-none">
-          <button
+          <Button
+            variant="icon"
+            size="icon"
             onClick={handlePrev}
-            className="flex size-11 items-center justify-center rounded-full border border-[#8a8d8d] dark:border-[#404040] text-[#1c1b1b] dark:text-[#f4f0ef] hover:bg-[#1c1b1b] dark:hover:bg-[#f4f0ef] hover:text-[#fdf8f8] dark:hover:text-[#121212] hover:border-[#1c1b1b] dark:hover:border-[#f4f0ef] cursor-pointer transition-colors"
             aria-label="Previous slide"
-          >
-            <ArrowLeft size={18} strokeWidth={1.5} />
-          </button>
+            icon={ArrowLeft}
+            className="size-11"
+          />
 
           <span className="font-label-caps text-label-caps text-[#1c1b1b] dark:text-[#f4f0ef] min-w-[54px] text-center">
             0{activeIndex + 1} / 0{CATALOG_CATEGORIES.length}
           </span>
 
-          <button
+          <Button
+            variant="icon"
+            size="icon"
             onClick={handleNext}
-            className="flex size-11 items-center justify-center rounded-full border border-[#8a8d8d] dark:border-[#404040] text-[#1c1b1b] dark:text-[#f4f0ef] hover:bg-[#1c1b1b] dark:hover:bg-[#f4f0ef] hover:text-[#fdf8f8] dark:hover:text-[#121212] hover:border-[#1c1b1b] dark:hover:border-[#f4f0ef] cursor-pointer transition-colors"
             aria-label="Next slide"
-          >
-            <ArrowRight size={18} strokeWidth={1.5} />
-          </button>
+            icon={ArrowRight}
+            className="size-11"
+          />
         </div>
       </div>
 
@@ -188,7 +191,7 @@ export function CollectionsSlider() {
                 className="inline-flex items-center gap-2 font-label-caps text-label-caps text-[#1c1b1b] dark:text-[#f4f0ef] uppercase hover:text-[#5d5f5f] dark:hover:text-[#a0a0a0] group relative"
                 href="/products"
               >
-                <span className="relative pb-1 after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100">
+                <span className="relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100">
                   Explore
                 </span>
                 <ArrowRight className="size-4" strokeWidth={1.75} />

@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { ArrowUpRight, ArrowRight, Compass } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export default function ContectPage() {
@@ -146,15 +149,18 @@ export default function ContectPage() {
             </div>
             
             <div className="flex justify-between items-end gap-6 flex-wrap mt-4">
-              <a 
+              <Button
                 href={mapDirectionsUrl}
-                target="_blank" 
+                target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-transparent border border-[#1c1b1b] dark:border-[#f4f0ef] px-8 py-4 font-label-caps text-label-caps text-[#1c1b1b] dark:text-[#f4f0ef] uppercase hover:bg-[#1c1b1b] dark:hover:bg-[#f4f0ef] hover:text-white dark:hover:text-[#121212] transition-all duration-300 rounded-md tracking-widest"
+                variant="outline"
+                size="lg"
+                icon={Compass}
+                iconPosition="right"
+                className="tracking-widest"
               >
-                <span>GET DIRECTIONS</span>
-                <Compass className="size-4" strokeWidth={1.75} />
-              </a>
+                GET DIRECTIONS
+              </Button>
             </div>
           </div>
         </section>
@@ -253,15 +259,18 @@ export default function ContectPage() {
             />
           </div>
 
-          <a 
-            href={mapDirectionsUrl} 
-            target="_blank" 
+          <Button
+            href={mapDirectionsUrl}
+            target="_blank"
             rel="noopener noreferrer"
-            className="w-full py-4 bg-transparent border border-[#1c1b1b] dark:border-[#f4f0ef] text-[#1c1b1b] dark:text-[#f4f0ef] font-label-caps text-label-caps rounded hover:bg-[#1c1b1b] dark:hover:bg-[#f4f0ef] hover:text-white dark:hover:text-[#121212] transition-colors flex items-center justify-center gap-2 tracking-widest"
+            variant="outline"
+            size="lg"
+            icon={Compass}
+            iconPosition="right"
+            className="w-full tracking-widest"
           >
-            <span>GET DIRECTIONS</span>
-            <Compass className="size-4" strokeWidth={1.75} />
-          </a>
+            GET DIRECTIONS
+          </Button>
         </section>
       </div>
 

@@ -4,6 +4,7 @@ import { Hanken_Grotesk, Raleway } from "next/font/google";
 import "./globals.css";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { FloatingActions } from "@/components/FloatingActions";
 
 const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <ThemeProvider>
           <SiteNavbar />
           {children}
+          <FloatingActions />
         </ThemeProvider>
       </body>
     </html>

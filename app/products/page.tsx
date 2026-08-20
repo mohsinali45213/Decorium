@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Search, X, SlidersHorizontal } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 import { CATALOG_PRODUCTS, CATALOG_CATEGORIES, CatalogProduct } from "@/lib/catalogData";
 
 export default function ProductsPage() {
@@ -528,22 +529,26 @@ export default function ProductsPage() {
 
             {/* Bottom Actions */}
             <div className="mt-auto pt-6 border-t border-[#c4c7c7]/40 dark:border-[#262626] flex flex-col gap-3">
-              <button
+              <Button
+                variant="primary"
+                size="md"
                 onClick={() => setIsMobileFilterOpen(false)}
-                className="w-full py-3 bg-[#1c1b1b] dark:bg-[#f4f0ef] text-white dark:text-[#121212] hover:opacity-85 font-label-caps text-label-caps uppercase rounded transition-opacity"
+                className="w-full"
               >
                 Apply Filters
-              </button>
+              </Button>
               {(selectedCategories.length > 0 || selectedBrand || searchQuery || featuredOnly) && (
-                <button
+                <Button
+                  variant="outline"
+                  size="md"
                   onClick={() => {
                     handleResetFilters();
                     setIsMobileFilterOpen(false);
                   }}
-                  className="w-full py-3 border border-[#c4c7c7]/50 dark:border-[#2e2e2e] text-[#1c1b1b] dark:text-[#f4f0ef] font-label-caps text-label-caps uppercase rounded hover:bg-[#f1edec] dark:hover:bg-[#1f1f1f] transition-colors"
+                  className="w-full"
                 >
                   Reset Filters
-                </button>
+                </Button>
               )}
             </div>
           </div>
