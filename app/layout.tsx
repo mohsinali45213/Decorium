@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Hanken_Grotesk, Raleway } from "next/font/google";
 import "./globals.css";
 import { SiteNavbar } from "@/components/SiteNavbar";
@@ -35,10 +34,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${hankenGrotesk.variable} ${raleway.variable}`}>
-      <head>
-        <Script
-          id="theme-initializer"
-          strategy="beforeInteractive"
+      <body className="min-h-screen bg-[#fdf8f8] dark:bg-[#121212] font-hanken-grotesk text-[#1c1b1b] dark:text-[#f4f0ef] antialiased selection:bg-[#1c1b1b] selection:text-[#fdf8f8] dark:selection:bg-[#f4f0ef] dark:selection:text-[#121212]">
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
@@ -55,8 +52,6 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
             `,
           }}
         />
-      </head>
-      <body className="min-h-screen bg-[#fdf8f8] dark:bg-[#121212] font-hanken-grotesk text-[#1c1b1b] dark:text-[#f4f0ef] antialiased selection:bg-[#1c1b1b] selection:text-[#fdf8f8] dark:selection:bg-[#f4f0ef] dark:selection:text-[#121212]">
         <ThemeProvider>
           <SiteNavbar />
           {children}

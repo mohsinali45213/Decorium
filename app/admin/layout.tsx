@@ -6,8 +6,15 @@ import { AdminNavbar } from "@/components/AdminNavbar";
 import { AdminSidebarProvider, useAdminSidebar } from "@/components/admin/AdminSidebarContext";
 import { LUXURY_EASE_CSS } from "@/lib/motionConfig";
 
+import { usePathname } from "next/navigation";
+
 function AdminLayoutContent({ children }: { children: ReactNode }) {
   const { isCollapsed, isMounted } = useAdminSidebar();
+  const pathname = usePathname();
+
+  if (pathname === "/admin/login") {
+    return <>{children}</>;
+  }
 
   return (
     <div className="min-h-screen w-full bg-[#fdf8f8] dark:bg-[#121212] text-[#1c1b1b] dark:text-[#f4f0ef] antialiased transition-colors duration-300 font-hanken-grotesk select-none flex flex-col md:flex-row">
