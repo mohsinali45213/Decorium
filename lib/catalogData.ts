@@ -388,6 +388,7 @@ export interface CatalogBrand {
   category?: string;
   logo?: string;
   image?: string;
+  specimenCount?: number;
   isActive: boolean;
 }
 
@@ -400,6 +401,7 @@ export const CATALOG_BRANDS: CatalogBrand[] = [
     origin: 'Fiorano Modenese, Italy',
     category: 'Continuous Porcelain Surfaces',
     logo: '/images/desktop/pexels-artbovich-7166636.jpg',
+    specimenCount: 14,
     isActive: true,
   },
   {
@@ -410,6 +412,7 @@ export const CATALOG_BRANDS: CatalogBrand[] = [
     origin: 'Stabbia, Tuscany',
     category: 'Architectural Bath Suites',
     logo: '/images/desktop/pexels-artbovich-7534232.jpg',
+    specimenCount: 9,
     isActive: true,
   },
   {
@@ -420,6 +423,7 @@ export const CATALOG_BRANDS: CatalogBrand[] = [
     origin: 'Serravalle Sesia, Italy',
     category: 'PVD Tapware & Wellness',
     logo: '/images/desktop/pexels-artbovich-8082311.jpg',
+    specimenCount: 8,
     isActive: true,
   },
   {
@@ -430,6 +434,7 @@ export const CATALOG_BRANDS: CatalogBrand[] = [
     origin: 'Querceta, Lucca, Italy',
     category: 'Precision Textured Natural Stone',
     logo: '/images/desktop/pexels-jack-davis-86003658-11408618.jpg',
+    specimenCount: 12,
     isActive: true,
   },
   {
@@ -440,6 +445,7 @@ export const CATALOG_BRANDS: CatalogBrand[] = [
     origin: 'Sassuolo, Italy',
     category: 'Monolithic Technical Ceramics',
     logo: '/images/desktop/pexels-yankrukov-5793642.jpg',
+    specimenCount: 10,
     isActive: true,
   },
   {
@@ -450,6 +456,7 @@ export const CATALOG_BRANDS: CatalogBrand[] = [
     origin: 'London, UK',
     category: 'Solid Knurled Hardware',
     logo: '/images/mobile/pexels-olenkabohovyk-5686479.jpg',
+    specimenCount: 16,
     isActive: true,
   },
   {
@@ -460,6 +467,18 @@ export const CATALOG_BRANDS: CatalogBrand[] = [
     origin: 'Vicenza, Italy',
     category: 'Quarried Natural Marble Blocks',
     logo: '/images/mobile/pexels-sylwester-ficek-154797634-34369007.jpg',
+    specimenCount: 11,
+    isActive: true,
+  },
+  {
+    _id: 'brand-flos',
+    name: 'Flos Atelier',
+    slug: 'flos-atelier',
+    categorySlug: 'hardware',
+    origin: 'Brescia, Italy',
+    category: 'Architectural Lighting & Controls',
+    logo: '/images/mobile/pexels-artdjartem-119108916-38800609.jpg',
+    specimenCount: 7,
     isActive: true,
   },
 ];

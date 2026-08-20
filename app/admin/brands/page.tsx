@@ -9,7 +9,7 @@ export default function AdminBrandsPage() {
     {
       key: "name",
       header: "BRAND IDENTITY",
-      className: "min-w-[240px]",
+      className: "min-w-[260px]",
       render: (brand) => {
         const initials = brand.name.slice(0, 2).toUpperCase();
         const brandImg = brand.logo || brand.image;
@@ -24,11 +24,11 @@ export default function AdminBrandsPage() {
                 {initials}
               </div>
             )}
-            <div>
-              <span className="font-hanken-grotesk text-body-md font-semibold text-[#1c1b1b] dark:text-[#f4f0ef] block">
+            <div className="min-w-0 flex-1">
+              <span className="font-hanken-grotesk text-body-md font-semibold text-[#1c1b1b] dark:text-[#f4f0ef] block truncate">
                 {brand.name}
               </span>
-              <span className="font-label-caps text-[10px] text-[#5d5f5f] dark:text-[#8e8e8e] block uppercase">
+              <span className="font-label-caps text-[10px] text-[#5d5f5f] dark:text-[#8e8e8e] block uppercase truncate">
                 /{brand.slug}
               </span>
             </div>
@@ -39,7 +39,7 @@ export default function AdminBrandsPage() {
     {
       key: "category",
       header: "SPECIALTY / CATEGORY",
-      className: "min-w-[220px]",
+      className: "min-w-[200px]",
       render: (brand) => (
         <span className="font-body-md text-sm text-[#1c1b1b] dark:text-[#f4f0ef]">
           {brand.category || "Natural Stone Partner"}
@@ -53,6 +53,16 @@ export default function AdminBrandsPage() {
       render: (brand) => (
         <span className="inline-block px-2.5 py-1 border border-[#c4c7c7]/40 dark:border-[#2e2e2e] rounded text-[#5d5f5f] dark:text-[#8e8e8e] font-label-caps text-[10px] uppercase">
           {brand.origin || "Italy"}
+        </span>
+      ),
+    },
+    {
+      key: "specimenCount",
+      header: "CATALOG SPECIMENS",
+      className: "w-32",
+      render: (brand) => (
+        <span className="font-hanken-grotesk font-semibold text-sm text-[#1c1b1b] dark:text-[#f4f0ef]">
+          {brand.specimenCount || 10} Specimens
         </span>
       ),
     },
@@ -77,7 +87,7 @@ export default function AdminBrandsPage() {
 
   return (
     <AdminDataTable
-      title="CATALOG BRANDS & PARTNERS"
+      title="BRANDS & PARTNERS"
       subtitle="Manage global quarry partners, surface studios, and architectural hardware manufacturers."
       searchPlaceholder="Search brands by name, origin, or category..."
       addItemLabel="Add Brand"

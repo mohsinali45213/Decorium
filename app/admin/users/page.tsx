@@ -1,7 +1,7 @@
 "use client";
 
 import { AdminDataTable, ColumnDef } from "@/components/admin/AdminDataTable";
-import { ShieldCheck, ShieldAlert, UserCheck, Clock } from "lucide-react";
+import { ShieldCheck, ShieldAlert, Clock } from "lucide-react";
 
 interface AdminUserItem {
   _id: string;
@@ -75,14 +75,34 @@ const DEMO_ADMIN_USERS: AdminUserItem[] = [
     twoFactorEnabled: false,
     avatarColor: "bg-red-900 text-red-100 dark:bg-red-300 dark:text-red-950",
   },
+  {
+    _id: "usr-07",
+    name: "Hannah Abbott",
+    email: "hannah.a@decorium.com",
+    role: "Concierge Specialist",
+    status: "Active",
+    lastActive: "2 hours ago",
+    twoFactorEnabled: true,
+    avatarColor: "bg-blue-800 text-blue-100 dark:bg-blue-300 dark:text-blue-950",
+  },
+  {
+    _id: "usr-08",
+    name: "Marcus Vance",
+    email: "marcus.v@decorium.com",
+    role: "Showroom Manager",
+    status: "Active",
+    lastActive: "5 hours ago",
+    twoFactorEnabled: true,
+    avatarColor: "bg-purple-800 text-purple-100 dark:bg-purple-300 dark:text-purple-950",
+  },
 ];
 
 export default function AdminUsersPage() {
   const columns: ColumnDef<AdminUserItem>[] = [
     {
       key: "name",
-      header: "USER & IDENTITY",
-      className: "min-w-[240px]",
+      header: "USER IDENTITY",
+      className: "min-w-[260px]",
       render: (user) => {
         const initials = user.name
           .split(" ")
@@ -91,15 +111,15 @@ export default function AdminUsersPage() {
           .toUpperCase();
 
         return (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3.5">
             <div className={`size-10 rounded-lg flex items-center justify-center font-semibold text-xs font-label-caps ${user.avatarColor} border border-[#c4c7c7]/30 dark:border-[#2e2e2e] shrink-0`}>
               {initials}
             </div>
-            <div>
-              <span className="font-hanken-grotesk text-body-md font-semibold text-[#1c1b1b] dark:text-[#f4f0ef] block">
+            <div className="min-w-0 flex-1">
+              <span className="font-hanken-grotesk text-body-md font-semibold text-[#1c1b1b] dark:text-[#f4f0ef] block truncate">
                 {user.name}
               </span>
-              <span className="font-body-sm text-xs text-[#5d5f5f] dark:text-[#8e8e8e] block">
+              <span className="font-body-sm text-xs text-[#5d5f5f] dark:text-[#8e8e8e] block truncate">
                 {user.email}
               </span>
             </div>
@@ -110,7 +130,7 @@ export default function AdminUsersPage() {
     {
       key: "role",
       header: "ACCESS ROLE",
-      className: "min-w-[180px]",
+      className: "min-w-[200px]",
       render: (user) => (
         <span className="inline-block px-2.5 py-1 border border-[#c4c7c7]/40 dark:border-[#2e2e2e] rounded font-label-caps text-[10px] uppercase text-[#1c1b1b] dark:text-[#f4f0ef]">
           {user.role}
@@ -119,7 +139,7 @@ export default function AdminUsersPage() {
     },
     {
       key: "status",
-      header: "STATUS",
+      header: "USER STATUS",
       className: "w-32",
       render: (user) => {
         const statusConfig = {
@@ -179,7 +199,7 @@ export default function AdminUsersPage() {
       addItemLabel="Invite User"
       columns={columns}
       data={DEMO_ADMIN_USERS}
-      itemsPerPage={6}
+      itemsPerPage={8}
       onAddItem={() => alert("Invite User Modal Triggered")}
     />
   );

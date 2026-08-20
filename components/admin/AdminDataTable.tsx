@@ -284,7 +284,7 @@ export function AdminDataTable<T extends { _id: string }>({
       </section>
 
       {/* 04. DESKTOP DATA TABLE CANVAS (md and up screens) */}
-      <section className="hidden md:block w-full overflow-x-auto border border-[#c4c7c7]/30 dark:border-[#2e2e2e] rounded-xl bg-[#fdf8f8] dark:bg-[#121212] shadow-xs">
+      <section className="hidden md:block w-full min-h-[480px] overflow-x-auto border border-[#c4c7c7]/30 dark:border-[#2e2e2e] rounded-xl bg-[#fdf8f8] dark:bg-[#121212] shadow-xs">
         <table className="w-full text-left border-collapse min-w-[700px]">
           {/* Table Header */}
           <thead>
